@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
-    print(SizeConfig.isMall);
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

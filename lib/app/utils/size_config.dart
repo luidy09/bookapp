@@ -22,7 +22,8 @@ class SizeConfig {
     blockSizeHorizontal = screenWidth / 100;
     blockSizeVertical = screenHeight / 100;
 
-    isMall = (minScreenWidth >= screenWidth);
+    isMall =
+        (minScreenWidth >= screenWidth) && (screenHeight < minScreenHeight);
 
     _safeAreaHorizontal =
         _mediaQueryData.padding.left + _mediaQueryData.padding.right;

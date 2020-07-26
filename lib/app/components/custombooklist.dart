@@ -35,6 +35,8 @@ class _CustomBookListState extends State<CustomBookList> {
     setState(() {
       if (widget.genre == "all") {
         books = dbHelper.getBooks();
+      } else if (widget.genre == "fav") {
+        books = dbHelper.getEspecificBook("favorite = 1 ");
       } else {
         books = dbHelper.getEspecificBook("genre = '${widget.genre}' ");
       }
