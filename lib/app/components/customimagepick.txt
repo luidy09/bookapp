@@ -1,0 +1,60 @@
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+class CustomImagePick extends StatefulWidget {
+  @override
+  _CustomImagePickState createState() => _CustomImagePickState();
+}
+
+class _CustomImagePickState extends State<CustomImagePick> {
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      _image = File(pickedFile.path);
+    });
+    final bytes = _image.readAsBytesSync();
+
+    String img64 = base64Encode(bytes);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        width: double.infinity,
+        color: Color(0XFF1A002D),
+        child: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                SizedBox(height: 20),
+                Stack(children: <Widget>[
+                  Center(
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white,
+                      maxRadius: 80.0,
+                    ),
+                  ),
+                  Center(
+                    child: IconButton(
+                        padding: EdgeInsets.only(top: 50),
+                        icon: Icon(Icons.add_a_photo,
+                            size: 50.0, color: Color(0XFFEA5840)),
+                        onPressed: () {
+                          setState(() {
+                            getImage();
+                          });
+                        }),
+                  ),
+                ]),
+              ],
+            ),
+          ],
+        ));
+  }
+}
