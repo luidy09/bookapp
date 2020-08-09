@@ -1,7 +1,7 @@
 import 'package:bookapp/app/controllers/appcontroller.dart';
 import 'package:bookapp/app/interfaces/local_storage_interface.dart';
 import 'package:bookapp/app/services/shared_local_storage_service.dart';
-import 'package:bookapp/app/views/carousel/carousel_page.dart';
+import 'package:bookapp/app/views/carousel/carousel_pageview.dart';
 import 'package:bookapp/app/views/dashboard/dashboard_page.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:bookapp/app/views/form/form_page.dart';
@@ -29,7 +29,7 @@ class AppModule extends MainModule {
   @override
   //Routas
   List<Router> get routers => [
-        Router('/', child: (context, args) => CarouselPage()),
+        Router('/', child: (context, args) => CarouselPageView()),
         Router('/home', child: (context, args) => HomePage()),
         Router('/dashboard', child: (context, args) => DashboardPage()) ,
         Router('/formu', child: (context, args) => FormPage()),

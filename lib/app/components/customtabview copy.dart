@@ -237,6 +237,7 @@ class _CustomTabViewState extends State<CustomTabView>
               ),
             ),
           ])
+        // ignore: dead_code
         : FutureBuilder(
             future: dbHelper.genres(),
             builder: (context, snapshot) {
