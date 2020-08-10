@@ -240,7 +240,7 @@ class DBHelper {
         livros.add(Book.fromMap(maps[i]));
       }
     }
-    print(livros);
+
     return livros;
   }
 

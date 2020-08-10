@@ -6,7 +6,7 @@ part of 'bookState.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$BookState on _BookState, Store {
   final _$titleAtom = Atom(name: '_BookState.title');
@@ -294,7 +294,59 @@ mixin _$BookState on _BookState, Store {
     });
   }
 
+  final _$isLoadingAtom = Atom(name: '_BookState.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$isSearchingAtom = Atom(name: '_BookState.isSearching');
+
+  @override
+  bool get isSearching {
+    _$isSearchingAtom.reportRead();
+    return super.isSearching;
+  }
+
+  @override
+  set isSearching(bool value) {
+    _$isSearchingAtom.reportWrite(value, super.isSearching, () {
+      super.isSearching = value;
+    });
+  }
+
   final _$_BookStateActionController = ActionController(name: '_BookState');
+
+  @override
+  void loading(dynamic load) {
+    final _$actionInfo =
+        _$_BookStateActionController.startAction(name: '_BookState.loading');
+    try {
+      return super.loading(load);
+    } finally {
+      _$_BookStateActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearching(bool state) {
+    final _$actionInfo = _$_BookStateActionController.startAction(
+        name: '_BookState.setSearching');
+    try {
+      return super.setSearching(state);
+    } finally {
+      _$_BookStateActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   dynamic setLivro(Book livro) {
@@ -354,44 +406,27 @@ mixin _$BookState on _BookState, Store {
   @override
   String toString() {
     return '''
-// ignore: unnecessary_brace_in_string_interps
 title: ${title},
-// ignore: unnecessary_brace_in_string_interps
 author: ${author},
-// ignore: unnecessary_brace_in_string_interps
 pages: ${pages},
-// ignore: unnecessary_brace_in_string_interps
 reads: ${reads},
-// ignore: unnecessary_brace_in_string_interps
 lastRead: ${lastRead},
-// ignore: unnecessary_brace_in_string_interps
 price: ${price},
-// ignore: unnecessary_brace_in_string_interps
 paragraph: ${paragraph},
-// ignore: unnecessary_brace_in_string_interps
 genre: ${genre},
-// ignore: unnecessary_brace_in_string_interps
 publishing: ${publishing},
-// ignore: unnecessary_brace_in_string_interps
 description: ${description},
-// ignore: unnecessary_brace_in_string_interps
 favorite: ${favorite},
-// ignore: unnecessary_brace_in_string_interps
 classification: ${classification},
-// ignore: unnecessary_brace_in_string_interps
 dataCriacao: ${dataCriacao},
-// ignore: unnecessary_brace_in_string_interps
 image: ${image},
-// ignore: unnecessary_brace_in_string_interps
 id: ${id},
-// ignore: unnecessary_brace_in_string_interps
 percent: ${percent},
-// ignore: unnecessary_brace_in_string_interps
 total: ${total},
-// ignore: unnecessary_brace_in_string_interps
 lendo: ${lendo},
-// ignore: unnecessary_brace_in_string_interps
-terminados: ${terminados}
+terminados: ${terminados},
+isLoading: ${isLoading},
+isSearching: ${isSearching}
     ''';
   }
 }

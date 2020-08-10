@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:bookapp/app/components/book_detail_card.dart';
 import 'package:bookapp/app/components/custom_progress_bar.dart';
 import 'package:bookapp/app/models/books.dart';
 import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 class CustomSearch extends StatefulWidget {
   @override
@@ -13,16 +15,16 @@ class CustomSearch extends StatefulWidget {
 }
 
 class _CustomSearchState extends State<CustomSearch> {
-  List<String> litems = ["1", "2", "Third", "4"];
-
   Future<List<Book>> books;
   bool isSearching;
+
+  TextEditingController searchController = TextEditingController();
+
   DBHelper dbHelper;
 
   @override
   void initState() {
     super.initState();
-
     dbHelper = DBHelper();
   }
 
@@ -53,36 +55,66 @@ class _CustomSearchState extends State<CustomSearch> {
                       offset: Offset(0, 3), // changes position of shadow
                     ),
                   ]),
-              child: TextField(
-                onChanged: (val) {
-                  getBooks(val.trim());
-                },
-                keyboardType: TextInputType.text,
-                autofocus: false,
-                enableInteractiveSelection: true,
-                decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.search,
-                      size: (SizeConfig.isMall) ? 20 : 30,
-                      color: Color(0XFFEB852E)),
-                  hintText: 'Pesquisar',
-                  hintStyle: TextStyle(),
-                  border: InputBorder.none,
+              child: Observer(
+                builder: (_) => TextField(
+                  controller: searchController,
+                  onChanged: (val) {
+                    getBooks(val.trim());
+                    if (val.isNotEmpty) {
+                      if (!bookState.isSearching) {
+                        bookState.setSearching(true);
+                      }
+                    } else {
+                      if (bookState.isSearching) {
+                        bookState.setSearching(false);
+                      }
+                    }
+                  },
+                  keyboardType: TextInputType.text,
+                  autofocus: false,
+                  enableInteractiveSelection: true,
+                  decoration: InputDecoration(
+                    prefixIcon: !bookState.isSearching
+                        ? Opacity(
+                            opacity: 0.5,
+                            child: Icon(Icons.search,
+                                size: (SizeConfig.isMall) ? 20 : 30,
+                                color: Color(0XFFEB852E)),
+                          )
+                        : Opacity(
+                            opacity: bookState.isSearching ? 0.5 : 0.0,
+                            child: InkWell(
+                              onTap: () {
+                                searchController.text = "";
+                                bookState.setSearching(false);
+                              },
+                              child: Icon(Icons.close,
+                                  size: (SizeConfig.isMall) ? 20 : 30,
+                                  color: Color(0XFFEB852E)),
+                            ),
+                          ),
+                    hintText: 'Pesquisar',
+                    hintStyle: TextStyle(),
+                    border: InputBorder.none,
+                  ),
                 ),
               )),
         ),
         SizedBox(height: 5),
-        FutureBuilder(
-            future: books,
-            builder: (BuildContext context, snapshot) {
-              if (snapshot.hasData) {
-                List<Book> list = snapshot.data;
+        Observer(
+          builder: (_) => bookState.isSearching
+              ? FutureBuilder(
+                  future: books,
+                  builder: (BuildContext context, snapshot) {
+                    if (snapshot.hasData) {
+                      List<Book> list = snapshot.data;
 
-                print("DATA LENGTH: ${list.length}");
-
-                return lista(list);
-              }
-              return Container();
-            }),
+                      return lista(list);
+                    }
+                    return Container();
+                  })
+              : Container(),
+        ),
       ],
     );
   }
@@ -155,9 +187,7 @@ class _CustomSearchState extends State<CustomSearch> {
                   child: Container(
                       width: SizeConfig.isMall ? 75 : 100,
                       height: 130.0,
-                      //color: Colors.teal[200],
                       decoration: BoxDecoration(
-                          color: Colors.teal[200],
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(5),
                               bottomLeft: Radius.circular(5))),
@@ -229,7 +259,7 @@ class _CustomSearchState extends State<CustomSearch> {
                                       ? Colors.redAccent
                                       : (percent >= 30 && percent < 50)
                                           ? Colors.orange
-                                          : Color(0xff00bc96),
+                                          : Color(0xff7adbcb),
                                   fontSize: SizeConfig.isMall ? 7 : 13,
                                   fontWeight: FontWeight.normal,
                                 ),

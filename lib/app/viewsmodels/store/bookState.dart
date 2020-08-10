@@ -49,9 +49,17 @@ abstract class _BookState with Store {
   @observable
   bool isLoading = false;
 
+  @observable
+  bool isSearching = false;
+
   @action
   void loading(load) {
     isLoading = load;
+  }
+
+  @action
+  void setSearching(bool state) {
+    isSearching = state;
   }
 
   @action

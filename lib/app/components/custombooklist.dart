@@ -126,7 +126,6 @@ class _CustomBookListState extends State<CustomBookList> {
                       height: 130.0,
                       //color: Colors.teal[200],
                       decoration: BoxDecoration(
-                          color: Colors.teal[200],
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(5),
                               bottomLeft: Radius.circular(5))),
@@ -198,7 +197,7 @@ class _CustomBookListState extends State<CustomBookList> {
                                       ? Colors.redAccent
                                       : (percent >= 30 && percent < 50)
                                           ? Colors.orange
-                                          : Color(0xff00bc96),
+                                          : Color(0xff7adbcb),
                                   fontSize: SizeConfig.isMall ? 7 : 13,
                                   fontWeight: FontWeight.normal,
                                 ),
