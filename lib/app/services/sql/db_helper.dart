@@ -223,6 +223,27 @@ class DBHelper {
     return quantLidos;
   }
 
+  Future<List<Book>> searchBook(String search) async {
+    List<Book> livros = [];
+
+    if (search.isEmpty) {
+      print("Empty");
+      return livros;
+    }
+
+    var dbClient = await db;
+    List<Map> maps = await dbClient
+        .rawQuery("SELECT *  FROM  livro  WHERE title  LIKE '%$search%' ");
+
+    if (maps.length > 0) {
+      for (int i = 0; i < maps.length; i++) {
+        livros.add(Book.fromMap(maps[i]));
+      }
+    }
+    print(livros);
+    return livros;
+  }
+
   Future close() async {
     var dbClient = await db;
     dbClient.close();

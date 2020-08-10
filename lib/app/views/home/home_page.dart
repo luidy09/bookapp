@@ -1,7 +1,13 @@
+import 'dart:io';
+
+import 'package:bookapp/app/components/custom_progress_bar.dart';
 import 'package:bookapp/app/components/customdrawer.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
+import 'package:bookapp/app/models/books.dart';
+import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/utils/size_config.dart';
+import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,11 +20,32 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<String> litems = ["1", "2", "Third", "4"];
+  Future<List<Book>> books;
+  bool isSearching;
+  DBHelper dbHelper;
+
+  @override
+  void initState() {
+    super.initState();
+
+    dbHelper = DBHelper();
+  }
+
+  getBooks(search) {
+    setState(() {
+      books = dbHelper.searchBook(search);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig.init(context);
 
+    getBooks("d");
+
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -48,7 +75,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: (SizeConfig.isMall) ? 5.0 : 10.0,
               ),
-              CustomTabView(),
+              false ? CustomTabView() : Container(),
               SizedBox(
                 height: (SizeConfig.isMall) ? 5.0 : 10.0,
               ),
