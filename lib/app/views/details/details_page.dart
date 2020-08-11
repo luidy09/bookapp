@@ -103,15 +103,10 @@ class _DetailsPageState extends State<DetailsPage> {
                           if (bookState.favorite == 1) {
                             bookState.setFavorite(0);
                             dbHelper.setFavoriteBook(widget.id, 0);
-
-                            print("Não Fav");
-                            print(bookState.favorite);
                           } else {
                             bookState.setFavorite(1);
                             dbHelper.setFavoriteBook(widget.id, 1);
 
-                            //  b.favorite = bookState.favorite;
-                            print("Fav");
                             print(bookState.favorite);
                           }
                         }))

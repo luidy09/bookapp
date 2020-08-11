@@ -2,9 +2,7 @@ import 'package:bookapp/app/components/book_detail_card.dart';
 import 'package:bookapp/app/components/customdrawer.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
-
 import 'package:bookapp/app/utils/size_config.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 

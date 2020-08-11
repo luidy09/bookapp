@@ -326,54 +326,59 @@ class BookDetailCard extends StatelessWidget {
             transform: Matrix4.translationValues(0.0, curvedValue * 200, 0.0),
             child: Opacity(
               opacity: a1.value,
-              child: AlertDialog(
-                title: Row(children: [
-                  Icon(Icons.trending_up, size: 30, color: Color(0XFFEB852E)),
-                  SizedBox(width: 10),
-                  Text('Desempenho de leitura',
-                      style:
-                          TextStyle(fontSize: 18.0, color: Color(0XFF1A002D)))
-                ]),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Center(
-                      child: Observer(
-                        builder: (_) => CustomSlider(
-                          colors: [Color(0xFFf5af19), Color(0xFFEA5840)],
-                          value: bookState.lastRead / bookState.pages,
-                          decrease: decreaseLastRead,
-                          increase: increaseLastRead,
-                          onChanged: changeLastRead,
-                          sliderHeight: 48.0,
-                          min: 0,
-                          max: bookState.pages,
-                          fullWidth: true,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: AlertDialog(
+                  contentPadding: EdgeInsets.all(5),
+                  insetPadding: EdgeInsets.all(8),
+                  title: Row(children: [
+                    Icon(Icons.trending_up, size: 30, color: Color(0XFFEB852E)),
+                    SizedBox(width: 10),
+                    Text('Desempenho de leitura',
+                        style:
+                            TextStyle(fontSize: 18.0, color: Color(0XFF1A002D)))
+                  ]),
+                  content: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      Center(
+                        child: Observer(
+                          builder: (_) => CustomSlider(
+                            colors: [Color(0xFFf5af19), Color(0xFFEA5840)],
+                            value: bookState.lastRead / bookState.pages,
+                            decrease: decreaseLastRead,
+                            increase: increaseLastRead,
+                            onChanged: changeLastRead,
+                            sliderHeight: 48.0,
+                            min: 0,
+                            max: bookState.pages,
+                            fullWidth: true,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Center(
-                      child: Observer(
-                        builder: (_) => CustomSlider(
-                          colors: [Color(0xFFFF416C), Color(0xFFff4b2b)],
-                          value: bookState.paragraph / 200,
-                          decrease: decreaseParagraph,
-                          increase: increaseParagraph,
-                          onChanged: changeParagraph,
-                          sliderHeight: 48.0,
-                          min: 0,
-                          max: 200,
-                          fullWidth: true,
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Center(
+                        child: Observer(
+                          builder: (_) => CustomSlider(
+                            colors: [Color(0xFFFF416C), Color(0xFFff4b2b)],
+                            value: bookState.paragraph / 200,
+                            decrease: decreaseParagraph,
+                            increase: increaseParagraph,
+                            onChanged: changeParagraph,
+                            sliderHeight: 48.0,
+                            min: 0,
+                            max: 200,
+                            fullWidth: true,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
                 ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
           );
