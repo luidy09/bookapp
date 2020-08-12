@@ -1,10 +1,5 @@
-import 'dart:io';
-
 import 'package:bookapp/app/components/book_card.dart';
-import 'package:bookapp/app/components/custom_progress_bar.dart';
-import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
-import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:bookapp/app/viewsmodels/store/bookState.dart';
 import 'package:flutter/material.dart';
 import 'package:bookapp/app/models/books.dart';

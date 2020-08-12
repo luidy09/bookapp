@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:bookapp/app/components/book_card.dart';
 import 'package:bookapp/app/components/book_detail_card.dart';
-import 'package:bookapp/app/components/custom_progress_bar.dart';
 import 'package:bookapp/app/models/books.dart';
 import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/utils/size_config.dart';
-import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
