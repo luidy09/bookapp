@@ -4,6 +4,7 @@ import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:bookapp/app/utils/constants.dart';
 
 class CustomTabView extends StatefulWidget {
   CustomTabView({Key key}) : super(key: key);
@@ -117,8 +118,8 @@ class _CustomTabViewState extends State<CustomTabView> {
                   child: Container(
                       child: Column(children: <Widget>[
                     ButtonsTabBar(
-                      backgroundColor: Color(0XFFc2c2c2),
-                      unselectedBackgroundColor: Color(0xfff5f5f5),
+                      backgroundColor: intenseGray,
+                      unselectedBackgroundColor: simpleGray,
                       unselectedLabelStyle: TextStyle(color: Colors.black),
                       labelStyle: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),

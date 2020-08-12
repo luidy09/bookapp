@@ -322,7 +322,9 @@ class BookDetailCard extends StatelessWidget {
     return showGeneralDialog(
         context: context,
         barrierDismissible: true,
-        pageBuilder: (context, animation1, animation2) {},
+        pageBuilder: (context, animation1, animation2) {
+          return;
+        },
         barrierLabel:
             MaterialLocalizations.of(context).modalBarrierDismissLabel,
         barrierColor: Colors.black45,
