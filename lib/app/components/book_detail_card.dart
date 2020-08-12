@@ -357,7 +357,7 @@ class BookDetailCard extends StatelessWidget {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 15,
                       ),
                       Center(
                         child: Observer(

@@ -74,16 +74,20 @@ void initState() {
                                   ),
                                   SizedBox(height: 10),
                                   Container(
-                                      child: Container(
                                     height: 80,
-                                    child: Text(
-                                      'Às vezes ser fiel a si mesmo significa usar um fato de Batman em vez de um smoking (terno) ',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Color(0XFF1A002D)),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Às vezes ser fiel a si mesmo significa usar um fato de Batman em vez de um smoking (terno).',
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Color(0XFF1A002D)),
+                                      ),
                                     ),
-                                  ))
+                                  )
                                 ],
                               ),
                             ),
@@ -113,9 +117,7 @@ void initState() {
                                   alignment: FractionalOffset.bottomRight,
                                   child: FlatButton(
                                     onPressed: () {
-                                      pageController.animateToPage(1,
-                                          duration: Duration(milliseconds: 0),
-                                          curve: Curves.bounceIn);
+                                      pageController.jumpToPage(1);
                                     },
                                     child: Text(
                                       'Pular',
@@ -196,16 +198,20 @@ void initState() {
                                   )),
                                   SizedBox(height: 10),
                                   Container(
-                                      child: Container(
                                     height: 80,
-                                    child: Text(
-                                      'Se ignoras teu inimigo e conheces a ti mesmo, tuas chances de perder e de ganhar serão idênticas .',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Color(0XFF1A002D)),
+                                    child: Align(
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        'Se ignoras teu inimigo e conheces a ti mesmo, tuas chances de perder e de ganhar serão idênticas .',
+                                        overflow: TextOverflow.ellipsis,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 3,
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            color: Color(0XFF1A002D)),
+                                      ),
                                     ),
-                                  ))
+                                  )
                                 ],
                               ),
                             ),
