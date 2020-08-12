@@ -94,7 +94,7 @@ class _CustomSliderState extends State<CustomSlider> {
               ),
             ),
             SizedBox(
-              width: this.widget.sliderHeight * .1,
+              width: this.widget.sliderHeight * .05,
             ),
             Expanded(
               child: Center(
@@ -123,7 +123,7 @@ class _CustomSliderState extends State<CustomSlider> {
               ),
             ),
             SizedBox(
-              width: this.widget.sliderHeight * .1,
+              width: this.widget.sliderHeight * .05,
             ),
             InkWell(
               onTap: widget.increase,

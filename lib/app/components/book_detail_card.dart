@@ -46,7 +46,7 @@ class BookDetailCard extends StatelessWidget {
   }
 
   changeParagraph(double value) {
-    double calc = value * bookState.pages;
+    double calc = value * 1500;
     int paragraph = calc.round();
     bookState.setParagraph(paragraph);
     dbHelper.updateAttr(bookState.id, "paragraph", paragraph);
@@ -61,7 +61,7 @@ class BookDetailCard extends StatelessWidget {
   }
 
   increaseParagraph() {
-    if (bookState.paragraph != 200) {
+    if (bookState.paragraph != 1500) {
       dbHelper.increase(bookState.id, "paragraph");
       int value = bookState.paragraph + 1;
       bookState.setParagraph(value);
@@ -144,7 +144,8 @@ class BookDetailCard extends StatelessWidget {
                               icon: Icon(Icons.trending_up,
                                   color: Color(0XFFEB852E), size: 30),
                               onPressed: () {
-                                _showdialogstatisc(context);
+                                // _showdialogstatisc(context);
+                                _showDialog(context);
                               },
                               tooltip: 'Estátistica',
                             ),
@@ -317,6 +318,91 @@ class BookDetailCard extends StatelessWidget {
     );
   }
 
+  Future<bool> _showDialog(context) {
+    return showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        pageBuilder: (context, animation1, animation2) {},
+        barrierLabel:
+            MaterialLocalizations.of(context).modalBarrierDismissLabel,
+        barrierColor: Colors.black45,
+        transitionDuration: const Duration(milliseconds: 200),
+        transitionBuilder: (context, a1, a2, widget) {
+          final curvedValue = Curves.easeInOutBack.transform(a1.value) - 1.0;
+          return Transform(
+            transform: Matrix4.translationValues(0.0, curvedValue * 200, 0.0),
+            child: Center(
+              child: Opacity(
+                opacity: a1.value,
+                child: Container(
+                    width: MediaQuery.of(context).size.width - 10,
+                    height: 230,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(top: 15, left: 10),
+                            child: Row(children: [
+                              Icon(Icons.trending_up,
+                                  size: 30, color: Color(0XFFEB852E)),
+                              SizedBox(width: 10),
+                              Text('Desempenho de leitura',
+                                  style: TextStyle(
+                                      fontSize: 18.0, color: Color(0XFF1A002D)))
+                            ]),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 8, right: 8),
+                            child: Observer(
+                              builder: (_) => CustomSlider(
+                                colors: [Color(0xFFf5af19), Color(0xFFEA5840)],
+                                value: bookState.lastRead / bookState.pages,
+                                decrease: decreaseLastRead,
+                                increase: increaseLastRead,
+                                onChanged: changeLastRead,
+                                sliderHeight: 48.0,
+                                min: 0,
+                                max: bookState.pages,
+                                fullWidth: true,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 15,
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 8, right: 8),
+                            child: Observer(
+                              builder: (_) => CustomSlider(
+                                colors: [Color(0xFFFF416C), Color(0xFFff4b2b)],
+                                value: bookState.paragraph / 1500,
+                                decrease: decreaseParagraph,
+                                increase: increaseParagraph,
+                                onChanged: changeParagraph,
+                                min: 0,
+                                max: 1500,
+                                sliderHeight: 48.0,
+                                fullWidth: true,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ),
+          );
+        });
+  }
+
   Future<bool> _showdialogstatisc(context) {
     return showGeneralDialog(
         barrierColor: Colors.black.withOpacity(0.5),
@@ -327,7 +413,9 @@ class BookDetailCard extends StatelessWidget {
             child: Opacity(
               opacity: a1.value,
               child: Container(
-                width: MediaQuery.of(context).size.width,
+                width: MediaQuery.of(context).size.width - 10,
+                height: MediaQuery.of(context).size.height - 80,
+                padding: EdgeInsets.all(20),
                 child: AlertDialog(
                   contentPadding: EdgeInsets.all(5),
                   insetPadding: EdgeInsets.all(8),

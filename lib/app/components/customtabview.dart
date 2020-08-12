@@ -60,6 +60,7 @@ class _CustomTabViewState extends State<CustomTabView> {
 
     if (s == "Todos") {
       tab = Tab(
+        iconMargin: EdgeInsets.only(bottom: 10, right: 20),
         icon: Icon(Icons.all_inclusive),
         text: "$s",
       );
@@ -124,11 +125,8 @@ class _CustomTabViewState extends State<CustomTabView> {
                       tabs: listaTab,
                     ),
                     Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.only(),
-                        child: TabBarView(
-                          children: listaView,
-                        ),
+                      child: TabBarView(
+                        children: listaView,
                       ),
                     ),
                   ])),
