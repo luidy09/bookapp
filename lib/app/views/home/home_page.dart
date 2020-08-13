@@ -31,24 +31,28 @@ class _HomePageState extends State<HomePage> {
       body: Container(
         width: double.infinity,
         child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                child: Column(children: <Widget>[
-                  Container(
-                    width: (SizeConfig.isMall) ? 100.0 : 200.0,
-                    height: (SizeConfig.isMall) ? 50.0 : 100.0,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/logo02.png'),
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                  CustomSearch(),
-                ]),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        width: (SizeConfig.isMall) ? 120.0 : 200.0,
+                        height: (SizeConfig.isMall) ? 70.0 : 100.0,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/logo02.png'),
+                              fit: BoxFit.cover),
+                        ),
+                      ),
+                      SizedBox(height: SizeConfig.isMall ? 10 : 20),
+                      CustomSearch(),
+                    ]),
               ),
               SizedBox(
-                height: (SizeConfig.isMall) ? 5.0 : 10.0,
+                height: (SizeConfig.isMall) ? 10.0 : 15.0,
               ),
               Observer(
                   builder: (_) =>

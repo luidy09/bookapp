@@ -1,5 +1,5 @@
+import 'package:bookapp/app/components/custom_carrossel_page.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class CarouselPageView extends StatefulWidget {
   @override
@@ -34,256 +34,24 @@ void initState() {
       body: PageView(
         controller: pageController,
         children: [
-          Container(
-            width: double.infinity,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Stack(children: [
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 80.0),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30.0),
-                              child: Center(
-                                child: CircleAvatar(
-                                  child: Image.asset(
-                                      'assets/images/readbook.png',
-                                      fit: BoxFit.contain),
-                                  backgroundColor: Colors.grey[300],
-                                  radius: 150.0,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 45.0),
-                            Center(
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    child: Text(
-                                      'Jada Pinkett Smith',
-                                      style: TextStyle(
-                                          fontSize: 30,
-                                          color: Color(0XFFEB852E),
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Container(
-                                    height: 80,
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Às vezes ser fiel a si mesmo significa usar um fato de Batman em vez de um smoking (terno).',
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.center,
-                                        maxLines: 3,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Color(0XFF1A002D)),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                    ]),
-                  ),
-                  SizedBox(height: 60),
-                  Center(
-                    child: SmoothPageIndicator(
-                        controller: pageController,
-                        count: 2,
-                        effect: ExpandingDotsEffect(
-                          activeDotColor: Color(0XFF1A002D),
-                          dotHeight: 10.0,
-                        )),
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 20),
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Align(
-                                  alignment: FractionalOffset.bottomRight,
-                                  child: FlatButton(
-                                    onPressed: () {
-                                      pageController.jumpToPage(1);
-                                    },
-                                    child: Text(
-                                      'Pular',
-                                      style: TextStyle(
-                                          fontSize: 22,
-                                          color: Color(0XFF1A002D),
-                                          fontFamily: 'Montserrat'),
-                                    ),
-                                  ) /*ButtonTheme(
-                            height: 60,
-                          
-                            minWidth: 150,
-                            child: RaisedButton(
-                              color: Color(0XFF1A002D),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                side: BorderSide(color: Color(0XFF1A002D)),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  Navigator.popAndPushNamed(context, '/home');
-                                });
-                              },
-                              child: Text(
-                                'Iniciar',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontFamily: 'Montserrat'),
-                              ),
-                            ),
-                          ),*/
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ]),
+          CustomCarrosselPage(
+            pageController: pageController,
+            imgPath: 'assets/images/readbook.png',
+            title: 'Jada Pinkett Smith',
+            message:
+                'Às vezes ser fiel a si mesmo significa usar um fato de Batman em vez de um smoking (terno).',
+            btnText: 'Continuar',
+            goHome: false,
           ),
-          Container(
-            width: double.infinity,
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    child: Stack(children: [
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            SizedBox(height: 80.0),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 30.0, right: 30.0),
-                              child: Center(
-                                child: CircleAvatar(
-                                  child: Image.asset('assets/images/book.png',
-                                      fit: BoxFit.contain),
-                                  backgroundColor: Colors.grey[300],
-                                  radius: 150.0,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 45.0),
-                            Center(
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                      child: Text(
-                                    'A Arte Da Guerra',
-                                    style: TextStyle(
-                                        fontSize: 30,
-                                        color: Color(0XFFEB852E),
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
-                                  )),
-                                  SizedBox(height: 10),
-                                  Container(
-                                    height: 80,
-                                    child: Align(
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Se ignoras teu inimigo e conheces a ti mesmo, tuas chances de perder e de ganhar serão idênticas .',
-                                        overflow: TextOverflow.ellipsis,
-                                        textAlign: TextAlign.center,
-                                        maxLines: 3,
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Color(0XFF1A002D)),
-                                      ),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ]),
-                    ]),
-                  ),
-                  SizedBox(height: 60),
-                  Center(
-                    child: SmoothPageIndicator(
-                        controller: pageController,
-                        count: 2,
-                        effect: ExpandingDotsEffect(
-                          activeDotColor: Color(0XFF1A002D),
-                          dotHeight: 10.0,
-                        )),
-                  ),
-                  SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: Column(
-                      children: <Widget>[
-                        SizedBox(height: 20),
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Align(
-                                  alignment: FractionalOffset.bottomRight,
-                                  child: FlatButton(
-                                    onPressed: () {
-                                      Navigator.popAndPushNamed(
-                                          context, '/home');
-                                    },
-                                    child: Text(
-                                      'Iniciar',
-                                      style: TextStyle(
-                                          fontSize: 22,
-                                          color: Color(0XFF1A002D),
-                                          fontFamily: 'Montserrat'),
-                                    ),
-                                  ) /*ButtonTheme(
-                            height: 60,
-                          
-                            minWidth: 150,
-                            child: RaisedButton(
-                              color: Color(0XFF1A002D),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15),
-                                side: BorderSide(color: Color(0XFF1A002D)),
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  Navigator.popAndPushNamed(context, '/home');
-                                });
-                              },
-                              child: Text(
-                                'Iniciar',
-                                style: TextStyle(
-                                    fontSize: 22,
-                                    color: Colors.white,
-                                    fontFamily: 'Montserrat'),
-                              ),
-                            ),
-                          ),*/
-                                  ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ]),
-          ),
+          CustomCarrosselPage(
+            pageController: pageController,
+            imgPath: 'assets/images/book.png',
+            title: 'A Arte Da Guerra',
+            message:
+                'Se ignoras teu inimigo e conheces a ti mesmo, tuas chances de perder e de ganhar serão idênticas .',
+            btnText: 'Começar',
+            goHome: true,
+          )
         ],
       ),
     );

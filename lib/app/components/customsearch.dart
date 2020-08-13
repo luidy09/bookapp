@@ -2,6 +2,7 @@ import 'package:bookapp/app/components/book_card.dart';
 import 'package:bookapp/app/components/book_detail_card.dart';
 import 'package:bookapp/app/models/books.dart';
 import 'package:bookapp/app/services/sql/db_helper.dart';
+import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -35,23 +36,17 @@ class _CustomSearchState extends State<CustomSearch> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.only(left: 10.0, right: 10.0),
           child: Container(
-              height: (SizeConfig.isMall) ? 35.0 : 50.0,
+              height: (SizeConfig.isMall) ? 40.0 : 50.0,
               decoration: BoxDecoration(
-                  border: Border.all(color: Color(0XFFdedede)),
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.5),
-                      spreadRadius: 2,
-                      blurRadius: 3,
-                      offset: Offset(0, 3), // changes position of shadow
-                    ),
-                  ]),
+                border: Border.all(color: simpleGray, width: 0.0),
+                borderRadius: BorderRadius.circular(10),
+                color: simpleGray,
+              ),
               child: Observer(
                 builder: (_) => TextField(
                   controller: searchController,
@@ -76,7 +71,7 @@ class _CustomSearchState extends State<CustomSearch> {
                             opacity: 0.5,
                             child: Icon(Icons.search,
                                 size: (SizeConfig.isMall) ? 20 : 30,
-                                color: Color(0XFFEB852E)),
+                                color: Color(0xFF1A002D)),
                           )
                         : Opacity(
                             opacity: bookState.isSearching ? 0.5 : 0.0,
@@ -87,7 +82,7 @@ class _CustomSearchState extends State<CustomSearch> {
                               },
                               child: Icon(Icons.close,
                                   size: (SizeConfig.isMall) ? 20 : 30,
-                                  color: Color(0XFFEB852E)),
+                                  color: Color(0xFF1A002D)),
                             ),
                           ),
                     hintText: 'Pesquisar',

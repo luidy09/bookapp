@@ -125,6 +125,7 @@ class _CustomTabViewState extends State<CustomTabView> {
                           color: Colors.white, fontWeight: FontWeight.bold),
                       tabs: listaTab,
                     ),
+                    SizedBox(height: SizeConfig.isMall ? 5.0 : 10),
                     Expanded(
                       child: TabBarView(
                         children: listaView,

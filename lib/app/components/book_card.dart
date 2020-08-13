@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bookapp/app/components/custom_progress_bar.dart';
+import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:flutter/material.dart';
@@ -51,27 +52,25 @@ class BookCard extends StatelessWidget {
                       )));
         },
         child: Container(
+          padding: const EdgeInsets.only(left: 5.0, right: 5.0),
           margin: EdgeInsets.only(top: SizeConfig.isMall ? 5.0 : 10.0),
           decoration: BoxDecoration(
-              color: Color(0xfffafafa), borderRadius: BorderRadius.circular(5)),
+              color: simpleGray, borderRadius: BorderRadius.circular(10)),
           width: double.infinity,
           height: (SizeConfig.isMall) ? 75 : 100,
           child: Row(
             children: <Widget>[
-              Expanded(
-                child: Container(
-                    width: SizeConfig.isMall ? 75 : 100,
-                    height: 130.0,
-                    //color: Colors.teal[200],
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(5),
-                            bottomLeft: Radius.circular(5))),
-                    child: ClipRRect(
-                        child: imagePath == null || imagePath == ''
-                            ? Image.asset("assets/images/book.png",
-                                fit: BoxFit.cover)
-                            : Image.file(File(imagePath), fit: BoxFit.fill))),
+              Container(
+                width: SizeConfig.isMall ? 50 : 70,
+                margin: const EdgeInsets.all(5.0),
+                //color: Colors.teal[200],
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                        image: imagePath == null || imagePath == ''
+                            ? AssetImage("assets/images/capa.jpg")
+                            : FileImage(File(imagePath)),
+                        fit: BoxFit.cover)),
               ),
               Expanded(
                 flex: 3,
