@@ -140,7 +140,8 @@ class _CustomDetailState extends State<CustomDetail> {
                             width: 150,
                             height: 30,
                             child: Icon(
-                              Icons.add, color: Color(0XFF2B8896),
+                              Icons.add,
+                              color: Color(0XFF2B8896),
                               size: 20,
                             ),
                             decoration: BoxDecoration(
@@ -161,7 +162,10 @@ class _CustomDetailState extends State<CustomDetail> {
                         child: Center(
                           child: Text(
                             '10',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0XFF2B8896)),
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0XFF2B8896)),
                           ),
                         ),
                         decoration: BoxDecoration(
@@ -211,10 +215,8 @@ class _CustomDetailState extends State<CustomDetail> {
                         child: Container(
                           width: 150,
                           height: 30,
-                          child: Icon(
-                            Icons.add,
-                            size: 20, color: Color(0XFF2B8896)
-                          ),
+                          child: Icon(Icons.add,
+                              size: 20, color: Color(0XFF2B8896)),
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.only(
@@ -235,7 +237,9 @@ class _CustomDetailState extends State<CustomDetail> {
                           child: Text(
                             '10',
                             style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold, color: Color(0XFF2B8896)),
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0XFF2B8896)),
                           ),
                         ),
                         decoration: BoxDecoration(

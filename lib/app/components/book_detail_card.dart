@@ -80,18 +80,20 @@ class BookDetailCard extends StatelessWidget {
     bookState.setPercent();
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0XFF1A002D),
+        backgroundColor: Colors.white,
         centerTitle: true,
         elevation: 0.0,
         leading: IconButton(
-            icon: Icon(Icons.arrow_back),
+            icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext contetx) => HomePage()));
             }),
         title: Text(
           '${book.title}',
+          style: TextStyle(color: Color(0XFF1A002D)),
         ),
         actions: <Widget>[
           Observer(
@@ -119,174 +121,158 @@ class BookDetailCard extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  child: Stack(children: [
-                    Container(
-                      width: double.infinity,
-                      padding: EdgeInsets.only(
-                          top: 300, bottom: 20, right: 32, left: 32),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(50),
-                            bottomRight: Radius.circular(50),
-                          ),
-                          color: Color(0XFF1A002D)),
-                      child: Column(children: <Widget>[
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.trending_up,
-                                  color: Color(0XFFEB852E), size: 30),
-                              onPressed: () {
-                                // _showdialogstatisc(context);
-                                _showDialog(context);
-                              },
-                              tooltip: 'Estátistica',
-                            ),
-                            IconButton(
-                              icon: Icon(Icons.tune,
-                                  color: Color(0XFF2B8896), size: 30),
-                              onPressed: () {
-                                _showdialogoptions(context);
-                              },
-                              tooltip: 'Opções',
-                            ),
-                          ],
-                        )
-                      ]),
-                    ),
-                    Positioned(
-                      bottom: 100,
-                      right: 25,
-                      left: 25,
-                      child: Center(
-                        child: Container(
-                            height: 250,
-                            width: 200.0,
-                            child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: img == null || img == ''
-                                    ? Image.asset("assets/images/book.png",
-                                        fit: BoxFit.cover)
-                                    : Image.file(File(img), fit: BoxFit.fill))),
-                      ),
-                    ),
-                  ]),
-                ),
-                SizedBox(height: 30),
-                Padding(
-                  padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: Column(
-                    children: <Widget>[
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: 20),
+              Container(
+                child: Stack(children: [
+                  Container(
+                    width: double.infinity,
+                    padding: EdgeInsets.only(
+                        top: 300, bottom: 20, right: 32, left: 32),
+                    child: Column(children: <Widget>[
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
-                          numInfo(
-                            value: bookState.paragraph,
-                            color: 0XFFEB852E,
-                            type: 1,
-                            icon: Icon(Icons.import_contacts,
-                                color: Color(0XFFEB852E)),
+                          IconButton(
+                            icon: Icon(Icons.trending_up,
+                                color: Color(0XFFEB852E), size: 30),
+                            onPressed: () {
+                              // _showdialogstatisc(context);
+                              _showDialog(context);
+                            },
+                            tooltip: 'Estátistica',
                           ),
-                          SizedBox(width: 4),
-                          numInfo(
+                          IconButton(
+                            icon: Icon(Icons.tune,
+                                color: Color(0XFF2B8896), size: 30),
+                            onPressed: () {
+                              _showdialogoptions(context);
+                            },
+                            tooltip: 'Opções',
+                          ),
+                        ],
+                      )
+                    ]),
+                  ),
+                  Positioned(
+                    bottom: 100,
+                    right: 25,
+                    left: 25,
+                    child: Center(
+                      child: Container(
+                          height: 250,
+                          width: 200.0,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: img == null || img == ''
+                                  ? Card(
+                                      shadowColor: Colors.grey,
+                                      elevation: 5.0,
+                                      child: Image.asset(
+                                          "assets/images/book.png",
+                                          fit: BoxFit.cover),
+                                    )
+                                  : Card(
+                                      shadowColor: Colors.grey,
+                                      elevation: 5.0,
+                                      child: Image.file(File(img),
+                                          fit: BoxFit.fill)))),
+                    ),
+                  ),
+                ]),
+              ),
+              // SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: Divider(
+                  color: Colors.grey,
+                  thickness: 0,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30),
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        numInfo(
+                          value: bookState.paragraph,
+                          color: 0XFFEB852E,
+                          type: 1,
+                          text: Text('Pág.', style: TextStyle(fontSize: 18.0),),
+                        ),
+                        SizedBox(width: 4),
+                        numInfo(
                             value: bookState.paragraph,
                             color: 0xFFEA5840,
                             type: 2,
-                            icon: Stack(
-                                alignment: Alignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    child: Icon(
-                                      Icons.import_contacts,
-                                      color: Color(0xFFEA5840),
-                                    ),
-                                  ),
-                                  Container(
-                                    margin:
-                                        EdgeInsets.only(left: 20.0, top: 20.0),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                      color: Colors.white,
-                                    ),
-                                    child: Icon(
-                                      Icons.check_circle,
-                                      color: Color(0xFFEA5840),
-                                      size: 18,
-                                    ),
-                                  ),
-                                ]),
-                          ),
-                          numInfo(
+                            text: Text('Pág. Lidas',style: TextStyle(fontSize: 18.0),)),
+                        numInfo(
                             value: bookState.paragraph,
                             color: 0XFF2B8896,
                             type: 3,
-                            icon: Icon(
-                              Icons.format_align_left,
-                              color: Color(0XFF2B8896),
-                              size: 20,
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 20),
-                      Container(
-                        alignment: Alignment.topLeft,
-                        child: Text(
-                          'Sobre o livro',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Color(0XFF1A002D),
+                            text: RichText(text: TextSpan(children: [WidgetSpan(child: Icon(Icons.format_align_left))]))/*Text('Paragrafo', style: TextStyle(fontSize: 18.0),)*/)
+                      ],
+                    ),
+                    SizedBox(height: 10),
+                    Divider(
+                      color: Colors.grey,
+                      thickness: 0,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Chip(
+                          backgroundColor: Colors.grey[100],
+                          avatar: CircleAvatar(
+                            backgroundColor: Color(0XFF1A002D),
+                            child: Text('G',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white)),
                           ),
+                          label: Container(
+                              height: 40,
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('${bookState.genre}'))),
                         ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Chip(
-                            avatar: CircleAvatar(
+                        Chip(
+                          backgroundColor: Colors.grey[100],
+                          avatar: CircleAvatar(
                               backgroundColor: Color(0XFF1A002D),
-                              child: Text('G'),
-                            ),
-                            label: Text('${bookState.genre}'),
-                          ),
-                          Chip(
-                            avatar: CircleAvatar(
-                              backgroundColor: Color(0XFF1A002D),
-                              child: Text('E'),
-                            ),
-                            label: Text('${bookState.publishing} '),
-                          )
-                        ],
+                              child: Text('E',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white))),
+                          label: Container(
+                              height: 40,
+                              child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text('${bookState.publishing}'))),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 30),
+                    Container(
+                      child: Text(
+                        "${bookState.description}",style: TextStyle(fontSize: 18),
+                        textAlign: TextAlign.justify,
                       ),
-                      Divider(
-                        color: Colors.grey,
-                        thickness: 0,
-                      ),
-                      Container(
-                        child: Text(
-                          "${bookState.description} ",
-                          textAlign: TextAlign.justify,
-                        ),
-                      ),
-                      SizedBox(height: 30)
-                    ],
-                  ),
-                )
-              ]),
-        ),
+                    ),
+                    SizedBox(height: 30)
+                  ],
+                ),
+              )
+            ]),
       ),
     );
   }
 
-  Widget numInfo({value, color, icon, type}) {
+  Widget numInfo({value, color, text, type}) {
     return Expanded(
       child: Container(
         height: 40,
@@ -297,7 +283,7 @@ class BookDetailCard extends StatelessWidget {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              icon,
+              text,
               Text('',
                   style:
                       TextStyle(fontSize: 18, fontWeight: FontWeight.normal)),
@@ -309,7 +295,7 @@ class BookDetailCard extends StatelessWidget {
                           ? '${bookState.lastRead}'
                           : '${bookState.paragraph}',
                   style: TextStyle(
-                    color: Color(color),
+                    color: Color(color),fontSize: 18 
                   ),
                 ),
               ),
@@ -416,7 +402,7 @@ class BookDetailCard extends StatelessWidget {
               opacity: a1.value,
               child: AlertDialog(
                 shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
+                    borderRadius: BorderRadius.circular(20.0)),
                 title: Row(
                   children: <Widget>[
                     Icon(Icons.tune, color: Color(0XFF2B8896), size: 30),
@@ -460,6 +446,10 @@ class BookDetailCard extends StatelessWidget {
                                       color: Colors.grey[700]))
                             ],
                           )),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 18.0, left: 18.0),
+                        child: Divider(color: Colors.grey[600]),
+                      ),
                       FlatButton(
                           onPressed: () {
                             Navigator.of(context).pop();

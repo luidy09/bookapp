@@ -29,10 +29,8 @@ class _CustomFormImageState extends State<CustomFormImage> {
               : SizeConfig.screenHeight * .3,
       constraints: BoxConstraints(minHeight: 99, maxHeight: 300),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(30),
-              bottomRight: Radius.circular(30)),
-          color: Color(0XFF1A002D),
+         
+          color:Colors.white,
           image: DecorationImage(image: widget.img)),
     );
   }

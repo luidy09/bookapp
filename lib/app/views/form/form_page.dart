@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:bookapp/app/components/custom_form_image.dart';
 import 'package:bookapp/app/models/books.dart';
 import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
@@ -46,7 +45,7 @@ class _FormPageState extends State<FormPage> {
   String image;
   String img;
 
-  var fillColor = Color(0XFF1A002D).withAlpha(100);
+  var fillColor = Colors.grey[100];
   var iconColor = Color(0XFF1A002D);
 
   @override
@@ -159,19 +158,19 @@ class _FormPageState extends State<FormPage> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-        // ignore: unused_local_variable
- double screenHeight = screenSize.height;
+    // ignore: unused_local_variable
+    double screenHeight = screenSize.height;
     // ignore: unused_local_variable
     double screenWidth = screenSize.width;
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-          backgroundColor: Color(0XFF1A002D),
+          backgroundColor: Colors.white,
           centerTitle: true,
           elevation: 0.0,
           leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
               onPressed: () {
                 if (!isUpdating) {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -186,9 +185,8 @@ class _FormPageState extends State<FormPage> {
                   );
                 }
               }),
-          title: Text(
-            (!isUpdating) ? 'Novo Livro' : "${curBook.title}",
-          )),
+          title: Text((!isUpdating) ? 'Novo Livro' : "${curBook.title}",
+              style: TextStyle(color: Color(0XFF1A002D)))),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -208,30 +206,50 @@ class _FormPageState extends State<FormPage> {
                                 ? Center(
                                     child: curBook.image == null ||
                                             curBook.image == ''
-                                        ? CustomFormImage(
+                                        ? CircleAvatar(
+                                            radius: 100,
+                                            backgroundImage: AssetImage(
+                                                "assets/images/book.png"),
+
+                                            /*CustomFormImage(
                                             img: AssetImage(
-                                                "assets/images/book.png"))
-                                        : CustomFormImage(
+                                                "assets/images/book.png")*/
+                                          )
+                                        : CircleAvatar(
+                                            radius: 100,
+                                            backgroundImage: FileImage(
+                                              File(curBook.image),
+                                            ) /*CustomFormImage(
                                             img:
-                                                FileImage(File(curBook.image))))
+                                                FileImage(File(curBook.image)*/
+                                            ))
                                 : Center(
                                     child: _image == null
-                                        ? CustomFormImage(
+                                        ? CircleAvatar(
+                                            radius: 100,
+                                            backgroundColor: Colors.grey[100],
+                                          )
+                                        /*CustomFormImage(
                                             img: AssetImage(
-                                                "assets/images/book.png"))
-                                        : CustomFormImage(
-                                            img: FileImage(_image))),
+                                                "assets/images/book.png"))*/
+                                        : CircleAvatar(
+                                            radius: 100,
+                                            backgroundImage: FileImage(_image),
+                                          ) /*CustomFormImage(
+                                            img: FileImage(_image))*/
+                                    ),
                           ),
                           Positioned(
+                            left: 150,
+                            top: 20,
+                            bottom: 30,
                             child: _image == null && !isUpdating
-                                ? Center(
-                                    child: IconButton(
-                                        padding: EdgeInsets.only(top: 50),
-                                        icon: Icon(Icons.add_a_photo,
-                                            size: 30, color: Colors.white),
-                                        onPressed: () {
-                                          _showdialogoptionsCam(context);
-                                        }),
+                                ? IconButton(
+                                    icon: Icon(Icons.add_a_photo,
+                                        size: 70, color: Colors.grey[700]),
+                                    onPressed: () {
+                                      _showdialogoptionsCam(context);
+                                    },
                                   )
                                 : Text(''),
                           ),
