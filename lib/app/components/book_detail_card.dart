@@ -202,19 +202,28 @@ class BookDetailCard extends StatelessWidget {
                           value: bookState.paragraph,
                           color: 0XFFEB852E,
                           type: 1,
-                          text: Text('Pág.', style: TextStyle(fontSize: 18.0),),
+                          text: Text(
+                            'Pág.',
+                            style: TextStyle(fontSize: 18.0),
+                          ),
                         ),
                         SizedBox(width: 4),
                         numInfo(
                             value: bookState.paragraph,
                             color: 0xFFEA5840,
                             type: 2,
-                            text: Text('Pág. Lidas',style: TextStyle(fontSize: 18.0),)),
+                            text: Text(
+                              'Pág. Lidas',
+                              style: TextStyle(fontSize: 18.0),
+                            )),
                         numInfo(
                             value: bookState.paragraph,
                             color: 0XFF2B8896,
                             type: 3,
-                            text: RichText(text: TextSpan(children: [WidgetSpan(child: Icon(Icons.format_align_left))]))/*Text('Paragrafo', style: TextStyle(fontSize: 18.0),)*/)
+                            text: RichText(
+                                text: TextSpan(children: [
+                              WidgetSpan(child: Icon(Icons.format_align_left))
+                            ])) /*Text('Paragrafo', style: TextStyle(fontSize: 18.0),)*/)
                       ],
                     ),
                     SizedBox(height: 10),
@@ -259,7 +268,8 @@ class BookDetailCard extends StatelessWidget {
                     SizedBox(height: 30),
                     Container(
                       child: Text(
-                        "${bookState.description}",style: TextStyle(fontSize: 18),
+                        "${bookState.description}",
+                        style: TextStyle(fontSize: 18),
                         textAlign: TextAlign.justify,
                       ),
                     ),
@@ -294,9 +304,7 @@ class BookDetailCard extends StatelessWidget {
                       : (type == 2)
                           ? '${bookState.lastRead}'
                           : '${bookState.paragraph}',
-                  style: TextStyle(
-                    color: Color(color),fontSize: 18 
-                  ),
+                  style: TextStyle(color: Color(color), fontSize: 18),
                 ),
               ),
             ]),
@@ -351,7 +359,7 @@ class BookDetailCard extends StatelessWidget {
                             margin: EdgeInsets.only(left: 8, right: 8),
                             child: Observer(
                               builder: (_) => CustomSlider(
-                                colors: [Color(0xFFf5af19), Color(0xFFEA5840)],
+                                colors: [Color(0xFFff9966), Color(0xFFff5e62)],
                                 value: bookState.lastRead / bookState.pages,
                                 decrease: decreaseLastRead,
                                 increase: increaseLastRead,
@@ -370,7 +378,7 @@ class BookDetailCard extends StatelessWidget {
                             margin: EdgeInsets.only(left: 8, right: 8),
                             child: Observer(
                               builder: (_) => CustomSlider(
-                                colors: [Color(0xFFFF416C), Color(0xFFff4b2b)],
+                                colors: [Color(0xFF06beb6), Color(0xFF48b1bf)],
                                 value: bookState.paragraph / 1500,
                                 decrease: decreaseParagraph,
                                 increase: increaseParagraph,
@@ -402,12 +410,16 @@ class BookDetailCard extends StatelessWidget {
               opacity: a1.value,
               child: AlertDialog(
                 shape: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
+                    borderRadius: BorderRadius.circular(10.0)),
                 title: Row(
                   children: <Widget>[
-                    Icon(Icons.tune, color: Color(0XFF2B8896), size: 30),
+                    Icon(Icons.tune, color: Color(0xFF2B8896), size: 30),
                     SizedBox(width: 10),
-                    Text('Opções'),
+                    Text('Opções',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Color(0xFF1A002D))),
                     Divider(
                       color: Colors.grey,
                     )

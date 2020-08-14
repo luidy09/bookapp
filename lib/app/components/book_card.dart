@@ -55,7 +55,9 @@ class BookCard extends StatelessWidget {
           padding: const EdgeInsets.only(left: 5.0, right: 5.0),
           margin: EdgeInsets.only(top: SizeConfig.isMall ? 5.0 : 10.0),
           decoration: BoxDecoration(
-              color: simpleGray, borderRadius: BorderRadius.circular(10)),
+              //color: simpleGray,
+              border: Border.all(color: simpleGray, width: 1),
+              borderRadius: BorderRadius.circular(10)),
           width: double.infinity,
           height: (SizeConfig.isMall) ? 75 : 100,
           child: Row(
@@ -100,7 +102,7 @@ class BookCard extends StatelessWidget {
                             child: Icon(Icons.favorite,
                                 size: SizeConfig.isMall ? 18 : 25,
                                 color: isFavorite == 1
-                                    ? Color(0XFFEA5840)
+                                    ? Color(0xFFee7071)
                                     : Colors.grey),
                           ),
                         ],
@@ -114,7 +116,7 @@ class BookCard extends StatelessWidget {
                         '$author',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(height: SizeConfig.isMall ? 0 : 10.0),
+                      SizedBox(height: SizeConfig.isMall ? 0 : 5.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -132,7 +134,7 @@ class BookCard extends StatelessWidget {
                               style: TextStyle(
                                 color: (percent < 30)
                                     ? Colors.redAccent
-                                    : (percent >= 30 && percent < 50)
+                                    : (percent >= 30 && percent < 60)
                                         ? Colors.orange
                                         : Color(0xff7adbcb),
                                 fontSize: SizeConfig.isMall ? 7 : 13,

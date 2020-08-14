@@ -7,11 +7,14 @@ class CustomProgressBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LinearProgressIndicator(
-      minHeight: 6,
-      backgroundColor: simpleGray,
-      valueColor: AlwaysStoppedAnimation<Color>(getProgressColor(percent)),
-      value: (percent / 100),
+    return ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(8)),
+      child: LinearProgressIndicator(
+        minHeight: 6,
+        backgroundColor: simpleGray,
+        valueColor: AlwaysStoppedAnimation<Color>(getProgressColor(percent)),
+        value: (percent / 100),
+      ),
     );
   }
 }
