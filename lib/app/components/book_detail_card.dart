@@ -8,6 +8,7 @@ import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/viewsmodels/store/bookState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 final bookState = BookState();
 
@@ -91,10 +92,11 @@ class BookDetailCard extends StatelessWidget {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (BuildContext contetx) => HomePage()));
             }),
-        title: Text(
-          '${book.title}',
-          style: TextStyle(color: Color(0XFF1A002D)),
-        ),
+        title: Text('${book.title}',
+            style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+              color: Color(0XFF1A002D),
+            ))),
         actions: <Widget>[
           Observer(
               builder: (_) => IconButton(
@@ -121,163 +123,178 @@ class BookDetailCard extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              Container(
-                child: Stack(children: [
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.only(
-                        top: 300, bottom: 20, right: 32, left: 32),
-                    child: Column(children: <Widget>[
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          IconButton(
-                            icon: Icon(Icons.trending_up,
-                                color: Color(0XFFEB852E), size: 30),
-                            onPressed: () {
-                              // _showdialogstatisc(context);
-                              _showDialog(context);
-                            },
-                            tooltip: 'Estátistica',
-                          ),
-                          IconButton(
-                            icon: Icon(Icons.tune,
-                                color: Color(0XFF2B8896), size: 30),
-                            onPressed: () {
-                              _showdialogoptions(context);
-                            },
-                            tooltip: 'Opções',
-                          ),
-                        ],
-                      )
-                    ]),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+            Widget>[
+          SizedBox(height: 10),
+          Center(
+            child: Container(
+                height: 250,
+                width: 200.0,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: img == null || img == ''
+                        ? Card(
+                            shadowColor: Colors.grey,
+                            elevation: 5.0,
+                            child: Image.asset("assets/images/book.png",
+                                fit: BoxFit.cover),
+                          )
+                        : Card(
+                            shadowColor: Colors.grey,
+                            elevation: 5.0,
+                            child: Image.file(File(img), fit: BoxFit.fill)))),
+          ),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(top: 20, bottom: 10, right: 32, left: 32),
+            child: Column(children: <Widget>[
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Icons.trending_up,
+                        color: Color(0XFFEB852E), size: 30),
+                    onPressed: () {
+                      // _showdialogstatisc(context);
+                      _showDialog(context);
+                    },
+                    tooltip: 'Estátistica',
                   ),
-                  Positioned(
-                    bottom: 100,
-                    right: 25,
-                    left: 25,
-                    child: Center(
-                      child: Container(
-                          height: 250,
-                          width: 200.0,
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: img == null || img == ''
-                                  ? Card(
-                                      shadowColor: Colors.grey,
-                                      elevation: 5.0,
-                                      child: Image.asset(
-                                          "assets/images/book.png",
-                                          fit: BoxFit.cover),
-                                    )
-                                  : Card(
-                                      shadowColor: Colors.grey,
-                                      elevation: 5.0,
-                                      child: Image.file(File(img),
-                                          fit: BoxFit.fill)))),
-                    ),
+                  IconButton(
+                    icon: Icon(Icons.tune, color: Color(0XFF2B8896), size: 30),
+                    onPressed: () {
+                      _showdialogoptions(context);
+                    },
+                    tooltip: 'Opções',
                   ),
-                ]),
-              ),
-              // SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: Divider(
-                  color: Colors.grey,
-                  thickness: 0,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 30, right: 30),
-                child: Column(
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: <Widget>[
-                        numInfo(
-                          value: bookState.paragraph,
-                          color: 0XFFEB852E,
-                          type: 1,
-                          text: Text(
-                            'Pág.',
-                            style: TextStyle(fontSize: 18.0),
-                          ),
-                        ),
-                        SizedBox(width: 4),
-                        numInfo(
-                            value: bookState.paragraph,
-                            color: 0xFFEA5840,
-                            type: 2,
-                            text: Text(
-                              'Pág. Lidas',
-                              style: TextStyle(fontSize: 18.0),
-                            )),
-                        numInfo(
-                            value: bookState.paragraph,
-                            color: 0XFF2B8896,
-                            type: 3,
-                            text: RichText(
-                                text: TextSpan(children: [
-                              WidgetSpan(child: Icon(Icons.format_align_left))
-                            ])) /*Text('Paragrafo', style: TextStyle(fontSize: 18.0),)*/)
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                    Divider(
-                      color: Colors.grey,
-                      thickness: 0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Chip(
-                          backgroundColor: Colors.grey[100],
-                          avatar: CircleAvatar(
-                            backgroundColor: Color(0XFF1A002D),
-                            child: Text('G',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white)),
-                          ),
-                          label: Container(
-                              height: 40,
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text('${bookState.genre}'))),
-                        ),
-                        Chip(
-                          backgroundColor: Colors.grey[100],
-                          avatar: CircleAvatar(
-                              backgroundColor: Color(0XFF1A002D),
-                              child: Text('E',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white))),
-                          label: Container(
-                              height: 40,
-                              child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text('${bookState.publishing}'))),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 30),
-                    Container(
-                      child: Text(
-                        "${bookState.description}",
-                        style: TextStyle(fontSize: 18),
-                        textAlign: TextAlign.justify,
-                      ),
-                    ),
-                    SizedBox(height: 30)
-                  ],
-                ),
+                ],
               )
             ]),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[100],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Row(
+                          children: [
+                            numInfo(
+                              value: bookState.paragraph,
+                              color: 0XFFEB852E,
+                              type: 1,
+                              text: Text(
+                                'Páginas',
+                                style: TextStyle(fontSize: 18.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 0,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Row(
+                          children: [
+                            numInfo(
+                                value: bookState.paragraph,
+                                color: 0xFFEA5840,
+                                type: 2,
+                                text: Text(
+                                  'Páginas Lidas',
+                                  style: TextStyle(fontSize: 18.0),
+                                )),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Divider(
+                          color: Colors.grey,
+                          thickness: 0,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        child: Row(
+                          children: [
+                            numInfo(
+                                value: bookState.paragraph,
+                                color: 0XFF2B8896,
+                                type: 3,
+                                text: Text(
+                                  'Paragrafo',
+                                  style: TextStyle(fontSize: 18.0),
+                                ))
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Chip(
+                      backgroundColor: Colors.grey[100],
+                      avatar: CircleAvatar(
+                        backgroundColor: Color(0XFF1A002D),
+                        child: Text('G',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white)),
+                      ),
+                      label: Container(
+                          height: 40,
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('${bookState.genre}'))),
+                    ),
+                    Chip(
+                      backgroundColor: Colors.grey[100],
+                      avatar: CircleAvatar(
+                          backgroundColor: Color(0XFF1A002D),
+                          child: Text('E',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white))),
+                      label: Container(
+                          height: 40,
+                          child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('${bookState.publishing}'))),
+                    )
+                  ],
+                ),
+                SizedBox(height: 30),
+                Container(
+                  child: SingleChildScrollView(
+                    child: Text(
+                      "${bookState.description}",
+                      style: TextStyle(fontSize: 18),
+                      textAlign: TextAlign.justify,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 30)
+              ],
+            ),
+          )
+        ]),
       ),
     );
   }
@@ -291,7 +308,7 @@ class BookDetailCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               text,
               Text('',

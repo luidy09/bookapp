@@ -4,6 +4,7 @@ import 'package:bookapp/app/services/sql/db_helper.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 
 class FormPage extends StatefulWidget {
@@ -186,7 +187,10 @@ class _FormPageState extends State<FormPage> {
                 }
               }),
           title: Text((!isUpdating) ? 'Novo Livro' : "${curBook.title}",
-              style: TextStyle(color: Color(0XFF1A002D)))),
+              style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                color: Color(0XFF1A002D),
+              )))),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

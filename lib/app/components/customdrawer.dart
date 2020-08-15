@@ -45,7 +45,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
-                            fontFamily: 'Montserrat'),
+                            ),
                       ),
                     ),
                   ),
@@ -72,7 +72,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
-                            fontFamily: 'Montserrat'),
+                            ),
                       ),
                     ),
                   ),
@@ -94,7 +94,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
-                            fontFamily: 'Montserrat'),
+                            ),
                       ),
                       // trailing: CustomSwitch(),
                     ),
@@ -117,7 +117,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
-                            fontFamily: 'Montserrat'),
+                           ),
                       ),
                     ),
                   ),
@@ -146,7 +146,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
-                            fontFamily: 'Montserrat'),
+                          ),
                       ),
                     ),
                   ),

@@ -5,6 +5,7 @@ import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class BookCard extends StatelessWidget {
   final genre,
@@ -72,7 +73,7 @@ class BookCard extends StatelessWidget {
                         image: imagePath == null || imagePath == ''
                             ? AssetImage("assets/images/capa.jpg")
                             : FileImage(File(imagePath)),
-                        fit: BoxFit.cover)),
+                        fit: BoxFit.fill)),
               ),
               Expanded(
                 flex: 3,
@@ -108,9 +109,10 @@ class BookCard extends StatelessWidget {
                         ],
                       ),
                       Text('$title',
-                          style: TextStyle(
-                              color: Color(0XFF1A002D),
-                              fontWeight: FontWeight.bold)),
+                          style: GoogleFonts.montserrat(
+                              textStyle: TextStyle(
+                                  color: Color(0XFF1A002D),
+                                  fontWeight: FontWeight.bold))),
                       SizedBox(height: SizeConfig.isMall ? 0 : 5),
                       Text(
                         '$author',

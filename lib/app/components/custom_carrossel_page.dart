@@ -105,7 +105,7 @@ class CustomCarrosselPage extends StatelessWidget {
                                   style: TextStyle(
                                       fontSize: SizeConfig.isMall ? 12 : 18,
                                       color: Color(0xFF1A002D),
-                                      fontFamily: 'Montserrat'),
+                                      ),
                                 ),
                               ),
                             )),

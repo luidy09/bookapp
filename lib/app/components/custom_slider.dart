@@ -114,6 +114,8 @@ class _CustomSliderState extends State<CustomSlider> {
                     inactiveTickMarkColor: Colors.red.withOpacity(.7),
                   ),
                   child: Slider(
+                    activeColor: Colors.red[600],
+                    inactiveColor: Colors.grey[100],
                       value: widget.value,
                       onChanged: (value) {
                         widget.onChanged(value);
