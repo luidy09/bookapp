@@ -12,9 +12,11 @@ class CustomSlider extends StatefulWidget {
   final fullWidth;
   final value;
   final List<Color> colors;
+  final valueColor;
 
   CustomSlider(
-      {this.colors,
+      {this.valueColor,
+      this.colors,
       this.value,
       this.onChanged,
       this.increase,
@@ -102,7 +104,6 @@ class _CustomSliderState extends State<CustomSlider> {
                   data: SliderTheme.of(context).copyWith(
                     activeTrackColor: Colors.white.withOpacity(1),
                     inactiveTrackColor: Colors.white.withOpacity(.5),
-
                     trackHeight: 4.0,
                     thumbShape: CustomSliderThumbCircle(
                       thumbRadius: this.widget.sliderHeight * .4,
@@ -114,8 +115,8 @@ class _CustomSliderState extends State<CustomSlider> {
                     inactiveTickMarkColor: Colors.red.withOpacity(.7),
                   ),
                   child: Slider(
-                    activeColor: Colors.red[600],
-                    inactiveColor: Colors.grey[100],
+                      activeColor: widget.valueColor,
+                      inactiveColor: Colors.grey[100],
                       value: widget.value,
                       onChanged: (value) {
                         widget.onChanged(value);

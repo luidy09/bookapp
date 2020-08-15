@@ -259,7 +259,7 @@ class BookDetailCard extends StatelessWidget {
                                 color: Colors.white)),
                       ),
                       label: Container(
-                          height: 40,
+                          height: 30,
                           child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text('${bookState.genre}'))),
@@ -273,7 +273,7 @@ class BookDetailCard extends StatelessWidget {
                                   fontWeight: FontWeight.bold,
                                   color: Colors.white))),
                       label: Container(
-                          height: 40,
+                          height: 30,
                           child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text('${bookState.publishing}'))),
@@ -376,6 +376,7 @@ class BookDetailCard extends StatelessWidget {
                             margin: EdgeInsets.only(left: 8, right: 8),
                             child: Observer(
                               builder: (_) => CustomSlider(
+                                valueColor: Color(0xFFff5e62),
                                 colors: [Color(0xFFff9966), Color(0xFFff5e62)],
                                 value: bookState.lastRead / bookState.pages,
                                 decrease: decreaseLastRead,
@@ -395,6 +396,7 @@ class BookDetailCard extends StatelessWidget {
                             margin: EdgeInsets.only(left: 8, right: 8),
                             child: Observer(
                               builder: (_) => CustomSlider(
+                                valueColor: Color(0xFF48b1bf),
                                 colors: [Color(0xFF06beb6), Color(0xFF48b1bf)],
                                 value: bookState.paragraph / 1500,
                                 decrease: decreaseParagraph,
