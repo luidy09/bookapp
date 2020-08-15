@@ -110,7 +110,6 @@ class _CustomSliderState extends State<CustomSlider> {
                       max: this.widget.max,
                     ),
                     overlayColor: Colors.white.withOpacity(.4),
-                    //valueIndicatorColor: Colors.white,
                     activeTickMarkColor: Colors.white,
                     inactiveTickMarkColor: Colors.red.withOpacity(.7),
                   ),
