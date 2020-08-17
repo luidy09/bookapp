@@ -3,10 +3,7 @@ import 'package:bookapp/app/components/customdrawer.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
 import 'package:bookapp/app/utils/size_config.dart';
-import 'package:bookapp/app/views/exchange/exchange.dart';
-import 'package:bookapp/app/views/library/library.dart';
-import 'package:bookapp/app/views/publication/publication.dart';
-import 'package:bookapp/app/views/sale/sale.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -73,29 +70,25 @@ class _HomePageState extends State<HomePage> {
             IconButton(
               icon: Icon(Icons.book),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => Library()));
+                Navigator.of(context).pushNamed('/library');
               },
             ),
             IconButton(
               icon: Icon(Icons.cached),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => Exchange()));
+                Navigator.of(context).pushNamed('/exchange');
               },
             ),
             IconButton(
               icon: Icon(Icons.monetization_on),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => Sale()));
+                Navigator.of(context).pushNamed('/sale');
               },
             ),
             IconButton(
               icon: Icon(Icons.photo_size_select_actual),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => Publication()));
+                Navigator.of(context).pushNamed('/publication');
               },
             )
           ],

@@ -4,6 +4,7 @@ import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/exchange/exchange_card.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Exchange extends StatefulWidget {
   @override
@@ -148,7 +149,10 @@ class _ExchangeState extends State<Exchange> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text("Troca de livros", style: TextStyle(color: Colors.black)),
+        title: Text("Troca de livros",  style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+              color: Color(0XFF1A002D),
+            ))),
         elevation: 0.0,
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
@@ -246,6 +250,6 @@ class _ExchangeState extends State<Exchange> {
         child: const Icon(Icons.add),
       ),
     );
-    ;
+    
   }
 }

@@ -13,7 +13,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-               textTheme: GoogleFonts.montserratTextTheme(Theme.of(context).textTheme),
+                
+                textTheme: GoogleFonts.montserratTextTheme(
+                    Theme.of(context).textTheme),
                 primarySwatch: Colors.blue,
                 visualDensity: VisualDensity.adaptivePlatformDensity,
                 brightness: isDark ? Brightness.dark : Brightness.light),

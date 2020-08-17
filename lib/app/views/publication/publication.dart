@@ -1,5 +1,6 @@
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Publication extends StatefulWidget {
   @override
@@ -14,7 +15,10 @@ class _PublicationState extends State<Publication> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text("Publicações", style: TextStyle(color: Colors.black)),
+        title: Text("Publicações", style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+              color: Color(0XFF1A002D),
+            ))),
         elevation: 0.0,
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),

@@ -4,8 +4,12 @@ import 'package:bookapp/app/services/shared_local_storage_service.dart';
 import 'package:bookapp/app/views/carousel/carousel_pageview.dart';
 import 'package:bookapp/app/views/dashboard/dashboard_page.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
+import 'package:bookapp/app/views/exchange/exchange.dart';
 import 'package:bookapp/app/views/form/form_page.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
+import 'package:bookapp/app/views/library/library.dart';
+import 'package:bookapp/app/views/publication/publication.dart';
+import 'package:bookapp/app/views/sale/sale.dart';
 import 'package:bookapp/app/viewsmodels/change_theme_viewmodel.dart';
 import 'package:bookapp/app_widget.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +37,10 @@ class AppModule extends MainModule {
         Router('/home', child: (context, args) => HomePage()),
         Router('/dashboard', child: (context, args) => DashboardPage()) ,
         Router('/formu', child: (context, args) => FormPage()),
-        Router('/detail', child: (context, args) => DetailsPage())
+        Router('/detail', child: (context, args) => DetailsPage()),
+        Router('/library', child: (context, args) => Library()),
+        Router('/publication', child: (context, args) => Publication()),
+        Router('/exchange', child: (context, args) => Exchange()),
+        Router('/sale', child: (context, args) => Sale()),
       ];
 }
