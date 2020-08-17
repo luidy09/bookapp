@@ -7,12 +7,12 @@ import 'package:bookapp/app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class CustomSearch extends StatefulWidget {
+class CustomSearchExchange extends StatefulWidget {
   @override
-  _CustomSearchState createState() => _CustomSearchState();
+  _CustomSearchExchangeState createState() => _CustomSearchExchangeState();
 }
 
-class _CustomSearchState extends State<CustomSearch> {
+class _CustomSearchExchangeState extends State<CustomSearchExchange> {
   Future<List<Book>> books;
   bool isSearching;
 
@@ -38,54 +38,51 @@ class _CustomSearchState extends State<CustomSearch> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Padding(
-          padding: EdgeInsets.only(left: 10.0, right: 10.0),
-          child: Container(
-              height: (SizeConfig.isMall) ? 40.0 : 50.0,
-              decoration: BoxDecoration(
-                border: Border.all(color: simpleGray, width: 0.0),
-                borderRadius: BorderRadius.circular(10),
-                color: simpleGray,
-              ),
-              child: Observer(
-                builder: (_) => TextField(
-                  controller: searchController,
-                  onChanged: (val) {
-                    getBooks(val.trim());
-                    if (val.isNotEmpty) {
-                      if (!bookState.isSearching) {
-                        bookState.setSearching(true);
-                      }
-                    } else {
-                      if (bookState.isSearching) {
-                        bookState.setSearching(false);
-                      }
+        Container(
+            height: (SizeConfig.isMall) ? 40.0 : 50.0,
+            decoration: BoxDecoration(
+              border: Border.all(color: simpleGray, width: 0.0),
+              borderRadius: BorderRadius.circular(10),
+              color: simpleGray,
+            ),
+            child: Observer(
+              builder: (_) => TextField(
+                controller: searchController,
+                onChanged: (val) {
+                  getBooks(val.trim());
+                  if (val.isNotEmpty) {
+                    if (!bookState.isSearching) {
+                      bookState.setSearching(true);
                     }
-                  },
-                  keyboardType: TextInputType.text,
-                  autofocus: false,
-                  enableInteractiveSelection: true,
-                  decoration: InputDecoration(
-                    prefixIcon: !bookState.isSearching
-                        ? Icon(Icons.search,
-                            size: (SizeConfig.isMall) ? 20 : 30,
-                            color: Color(0xFF19002D))
-                        : InkWell(
-                            onTap: () {
-                              searchController.text = "";
-                              bookState.setSearching(false);
-                            },
-                            child: Icon(Icons.close,
-                                size: (SizeConfig.isMall) ? 20 : 30,
-                                color: Color(0xFF1A002D)),
-                          ),
-                    hintText: 'Pesquisar',
-                    hintStyle: TextStyle(),
-                    border: InputBorder.none,
-                  ),
+                  } else {
+                    if (bookState.isSearching) {
+                      bookState.setSearching(false);
+                    }
+                  }
+                },
+                keyboardType: TextInputType.text,
+                autofocus: false,
+                enableInteractiveSelection: true,
+                decoration: InputDecoration(
+                  prefixIcon: !bookState.isSearching
+                      ? Icon(Icons.search,
+                          size: (SizeConfig.isMall) ? 20 : 30,
+                          color: Color(0xFF19002D))
+                      : InkWell(
+                          onTap: () {
+                            searchController.text = "";
+                            bookState.setSearching(false);
+                          },
+                          child: Icon(Icons.close,
+                              size: (SizeConfig.isMall) ? 20 : 30,
+                              color: Color(0xFF19002D)),
+                        ),
+                  hintText: 'Pesquisar',
+                  hintStyle: TextStyle(),
+                  border: InputBorder.none,
                 ),
-              )),
-        ),
+              ),
+            )),
         SizedBox(height: 5),
         Observer(
           builder: (_) => bookState.isSearching
