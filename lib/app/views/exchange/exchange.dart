@@ -1,9 +1,8 @@
 import 'package:bookapp/app/components/customsearch_exchange.dart';
-import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
+import 'package:bookapp/app/views/exchange/exchange_card.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Exchange extends StatefulWidget {
   @override
@@ -16,6 +15,96 @@ class _ExchangeState extends State<Exchange> {
   );
 
   bool isActiveButton = true;
+
+  List<Widget> exchanges = [
+    ExchangeCard(
+      id: 1,
+      username: "Pedro Pombal Viegas",
+      email: "pedropombalviegas@gmail.com",
+      phone1: "222 333 345",
+      phone2: "923 454 567",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
+      title: "Crepúsculo II",
+      timeago: "há 3 dias",
+      exchangeImage: "assets/images/book_landscape.jpg",
+      author: "Jane Austen",
+      genre: "Romance",
+      userImage: "assets/images/users/n4Ngwvi7.jpg",
+    ),
+    ExchangeCard(
+      id: 2,
+      username: "Aime Muteba",
+      email: "aimemuteba@gmail.com",
+      phone1: "222 333 345",
+      phone2: "923 454 567",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
+      title: "50 Tons de Cinzas",
+      timeago: "17 fev 2020",
+      exchangeImage: "assets/images/landbook.jpg",
+      author: "Christian Grey",
+      genre: "Romance",
+      userImage: "assets/images/users/NTIxMTkuanBn.jpg",
+    ),
+    ExchangeCard(
+      id: 3,
+      username: "Luidy da Silva ",
+      email: "luidysilva@gmail.com",
+      phone1: "222 444 378",
+      phone2: "925 254 367",
+      address: "Luanda,Rangel  Rua Simão Abreu, N 123",
+      title: "A arte da guerra",
+      timeago: "há 2 horas",
+      exchangeImage: "assets/images/landbook1.jpg",
+      author: "Sun Tzu",
+      genre: "Estrategia",
+      userImage: "assets/images/users/MzYyNTIuanBn.jpg",
+    ),
+  ];
+
+  List<Widget> myexchanges = [
+    ExchangeCard(
+      id: 3,
+      username: "Jelson Neto",
+      email: "jelsonneto@gmail.com",
+      phone1: "222 444 378",
+      phone2: "925 254 367",
+      address: "Luanda,Rangel  Rua Simão Abreu, N 123",
+      title: "Lueji",
+      timeago: "há 2 horas",
+      exchangeImage: "assets/images/pepetela.jpg",
+      author: "Pepetela",
+      genre: "Estrategia",
+      userImage: "assets/images/users/photo-1521587765099-8835e7201186.jpeg",
+    ),
+    ExchangeCard(
+      id: 1,
+      username: "Jacob Silvano Pessela",
+      email: "jacobpessela@gmail.com",
+      phone1: "222 333 345",
+      phone2: "923 454 567",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
+      title: "Foco ",
+      timeago: "há 5 dias",
+      exchangeImage: "assets/images/landbook4.jpeg",
+      author: "Daniel Goleman",
+      genre: "Romance",
+      userImage: "assets/images/users/LgPx_hOQ.jpg",
+    ),
+    ExchangeCard(
+      id: 2,
+      username: "Diocleciano Gonga",
+      email: "dioclecianogonga@gmail.com",
+      phone1: "222 333 345",
+      phone2: "923 454 567",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
+      title: "Cosmos",
+      timeago: "há 4 horas",
+      exchangeImage: "assets/images/landbook2.jpg",
+      author: "Carl Sagan",
+      genre: "Romance",
+      userImage: "assets/images/users/KtCFjlD4.jpg",
+    ),
+  ];
 
   @override
   void initState() {
@@ -121,6 +210,7 @@ class _ExchangeState extends State<Exchange> {
                 ],
               ),
             ),
+            SizedBox(height: 20),
             Container(
                 child: Expanded(
               child: PageView(
@@ -131,27 +221,16 @@ class _ExchangeState extends State<Exchange> {
                 scrollDirection: Axis.horizontal,
                 controller: _pageController,
                 children: [
-                  Container(
-                    child: Column(
-                      children: [
-                        Container(
-                            child: Row(
-                          children: [Text("Crepsculo"), Text("há 3 dias ")],
-                        )),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  "assets/images/book_landscape.jpg"),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                      color: Colors.amber, child: Center(child: Text("Page1"))),
+                  ListView.builder(
+                      itemCount: exchanges.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return exchanges[index];
+                      }),
+                  ListView.builder(
+                      itemCount: myexchanges.length,
+                      itemBuilder: (BuildContext ctxt, int index) {
+                        return myexchanges[index];
+                      }),
                 ],
               ),
             ))
