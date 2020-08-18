@@ -61,12 +61,13 @@ class _CustomTabViewState extends State<CustomTabView> {
 
     if (s == "Todos") {
       tab = Tab(
-        iconMargin: EdgeInsets.only(bottom: 10, right: 20),
+        iconMargin: EdgeInsets.only(bottom: 10, right: 30),
         icon: Icon(Icons.all_inclusive),
         text: "$s",
       );
     } else if (s == "Favorito") {
       tab = Tab(
+        iconMargin: EdgeInsets.only(bottom: 10, right: 30),
         icon: Icon(Icons.favorite),
         text: "$s",
       );
@@ -118,11 +119,16 @@ class _CustomTabViewState extends State<CustomTabView> {
                   child: Container(
                       child: Column(children: <Widget>[
                     ButtonsTabBar(
-                      backgroundColor: intenseGray,
-                      unselectedBackgroundColor: simpleGray,
-                      unselectedLabelStyle: TextStyle(color: Colors.black),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                      backgroundColor: mainColorGreen,
+                      unselectedBackgroundColor: reducedColorGreen,
+                      unselectedLabelStyle:
+                          TextStyle(fontSize: 16, color: Color(0xff9C9C9C)),
                       labelStyle: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
                       tabs: listaTab,
                     ),
                     SizedBox(height: SizeConfig.isMall ? 5.0 : 10),

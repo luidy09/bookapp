@@ -6,6 +6,8 @@ const mainColorDarkBlue = Color(0xff19002D);
 const mainColorGreen = Color(0xff00BC96);
 const mainColorRed = Color(0xffEA5840);
 
+const reducedColorGreen = Color(0xffE0F7F2);
+
 const Color simpleGray = Color(0xfff5f5f5);
 const progressColor = Color(0xff8ce0d7);
 const containerBorderColor = Color(0xffCECECE);

@@ -179,9 +179,8 @@ class _ExchangeState extends State<Exchange> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(9)),
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                    color: (isActiveButton)
-                        ? Color(0xff00BC96)
-                        : Color(0xffE0F7F2),
+                    color:
+                        (isActiveButton) ? mainColorGreen : reducedColorGreen,
                     onPressed: () {
                       if (!isActiveButton) changeActive(0);
                     },
@@ -198,9 +197,8 @@ class _ExchangeState extends State<Exchange> {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(9)),
                     padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                    color: (!isActiveButton)
-                        ? Color(0xff00BC96)
-                        : Color(0xffE0F7F2),
+                    color:
+                        (!isActiveButton) ? mainColorGreen : reducedColorGreen,
                     onPressed: () {
                       if (isActiveButton) changeActive(1);
                     },
