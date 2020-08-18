@@ -31,6 +31,8 @@ const proposalBookAuthorColor = Color(0xff8D8D8D);
 
 const librayUserNameColor = Color(0xff1A022E);
 const librayaContactColor = Color(0xff9D9D9D);
+const libraryProfileContactColor = Color(0xff050505);
+const libraryFollowButtonTextColor = Color(0xffEBEBEB);
 
 //STYLES
 
@@ -78,6 +80,12 @@ const librayUserNameStyle = TextStyle(
 const librayaContactStyle = TextStyle(color: librayaContactColor, fontSize: 10);
 
 const librayaFollowersStyle = TextStyle(color: mainColorGreen, fontSize: 8);
+
+const libraryProfileContactStyle =
+    TextStyle(color: libraryProfileContactColor, fontSize: 13);
+
+const libraryFollowButtonTextStyle =
+    TextStyle(color: libraryFollowButtonTextColor, fontSize: 16);
 
 getProgressColor(percent) {
   return (percent < 30)

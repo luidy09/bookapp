@@ -1,5 +1,6 @@
 import 'package:bookapp/app/components/library_info_widget.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/views/library/library_profile.dart';
 import 'package:flutter/material.dart';
 
 class LibraryCard extends StatelessWidget {
@@ -18,6 +19,15 @@ class LibraryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (BuildContext context) => LibraryProfile(
+                idLibrary: idLibrary,
+                userImage: userImage,
+                username: username,
+                address: address,
+                email: email,
+                phone1: phone1,
+                phone2: phone2)));
         print(idLibrary);
       },
       child: Container(
