@@ -2,6 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:bookapp/app/utils/constants.dart';
 
 class ProposalCard extends StatelessWidget {
+  final proposalId,
+      username,
+      timeago,
+      userImage,
+      title,
+      genre,
+      author,
+      bookImage;
+
+  ProposalCard(
+      {this.proposalId,
+      this.author,
+      this.genre,
+      this.timeago,
+      this.title,
+      this.userImage,
+      this.username,
+      this.bookImage});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,8 +51,7 @@ class ProposalCard extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.transparent,
-                    backgroundImage:
-                        AssetImage("assets/images/users/n4Ngwvi7.jpg"),
+                    backgroundImage: AssetImage("$userImage"),
                   ),
                   SizedBox(width: 15),
                   Container(
@@ -42,8 +60,8 @@ class ProposalCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Mr. Karma", style: userNameStyle),
-                          Text("14 de Junho de 2019", style: addressInfoStyle),
+                          Text("$username", style: userNameStyle),
+                          Text("$timeago", style: addressInfoStyle),
                         ],
                       ))
                 ],
@@ -60,13 +78,12 @@ class ProposalCard extends StatelessWidget {
                     height: 114,
                     width: 96,
                     decoration: BoxDecoration(
-                        color: Colors.teal,
                         borderRadius: BorderRadius.all(
                           Radius.circular(6),
                         ),
                         image: DecorationImage(
-                          image: AssetImage("assets/images/unnamed.png"),
-                        )),
+                            image: AssetImage("$bookImage"),
+                            fit: BoxFit.cover)),
                   ),
                   SizedBox(
                     width: 15,
@@ -76,16 +93,16 @@ class ProposalCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Drama",
+                        "$genre",
                         style: proposalBookGenreStyle,
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "O cão e os Caluandas",
+                        "$title",
                         style: proposalBookNameStyle,
                       ),
                       SizedBox(height: 10),
-                      Text("Pepetela", style: proposalBookAuthorStyle)
+                      Text("$author", style: proposalBookAuthorStyle)
                     ],
                   ))
                 ],

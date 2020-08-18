@@ -20,7 +20,7 @@ class _ExchangeState extends State<Exchange> {
 
   List<Widget> exchanges = [
     ExchangeCard(
-      id: 1,
+      idExchange: 1,
       username: "Pedro Pombal Viegas",
       email: "pedropombalviegas@gmail.com",
       phone1: "222 333 345",
@@ -28,13 +28,13 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda, Rua Amilcar Cabral , N 123",
       title: "Crepúsculo II",
       timeago: "há 3 dias",
-      exchangeImage: "assets/images/book_landscape.jpg",
+      bookImage: "assets/images/book_landscape.jpg",
       author: "Jane Austen",
       genre: "Romance",
       userImage: "assets/images/users/n4Ngwvi7.jpg",
     ),
     ExchangeCard(
-      id: 2,
+      idExchange: 2,
       username: "Aime Muteba",
       email: "aimemuteba@gmail.com",
       phone1: "222 333 345",
@@ -42,13 +42,13 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda, Rua Amilcar Cabral , N 123",
       title: "50 Tons de Cinzas",
       timeago: "17 fev 2020",
-      exchangeImage: "assets/images/landbook.jpg",
+      bookImage: "assets/images/landbook.jpg",
       author: "Christian Grey",
       genre: "Romance",
       userImage: "assets/images/users/NTIxMTkuanBn.jpg",
     ),
     ExchangeCard(
-      id: 3,
+      idExchange: 3,
       username: "Luidy da Silva ",
       email: "luidysilva@gmail.com",
       phone1: "222 444 378",
@@ -56,7 +56,7 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda,Rangel  Rua Simão Abreu, N 123",
       title: "A arte da guerra",
       timeago: "há 2 horas",
-      exchangeImage: "assets/images/landbook1.jpg",
+      bookImage: "assets/images/landbook1.jpg",
       author: "Sun Tzu",
       genre: "Estrategia",
       userImage: "assets/images/users/MzYyNTIuanBn.jpg",
@@ -65,7 +65,7 @@ class _ExchangeState extends State<Exchange> {
 
   List<Widget> myexchanges = [
     ExchangeCard(
-      id: 3,
+      idExchange: 3,
       username: "Jelson Neto",
       email: "jelsonneto@gmail.com",
       phone1: "222 444 378",
@@ -73,13 +73,13 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda,Rangel  Rua Simão Abreu, N 123",
       title: "Lueji",
       timeago: "há 2 horas",
-      exchangeImage: "assets/images/pepetela.jpg",
+      bookImage: "assets/images/pepetela.jpg",
       author: "Pepetela",
       genre: "Estrategia",
       userImage: "assets/images/users/photo-1521587765099-8835e7201186.jpeg",
     ),
     ExchangeCard(
-      id: 1,
+      idExchange: 1,
       username: "Jacob Silvano Pessela",
       email: "jacobpessela@gmail.com",
       phone1: "222 333 345",
@@ -87,13 +87,13 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda, Rua Amilcar Cabral , N 123",
       title: "Foco ",
       timeago: "há 5 dias",
-      exchangeImage: "assets/images/landbook4.jpeg",
+      bookImage: "assets/images/landbook4.jpeg",
       author: "Daniel Goleman",
       genre: "Romance",
       userImage: "assets/images/users/LgPx_hOQ.jpg",
     ),
     ExchangeCard(
-      id: 2,
+      idExchange: 2,
       username: "Diocleciano Gonga",
       email: "dioclecianogonga@gmail.com",
       phone1: "222 333 345",
@@ -101,7 +101,7 @@ class _ExchangeState extends State<Exchange> {
       address: "Luanda, Rua Amilcar Cabral , N 123",
       title: "Cosmos",
       timeago: "há 4 horas",
-      exchangeImage: "assets/images/landbook2.jpg",
+      bookImage: "assets/images/landbook2.jpg",
       author: "Carl Sagan",
       genre: "Romance",
       userImage: "assets/images/users/KtCFjlD4.jpg",
@@ -243,7 +243,7 @@ class _ExchangeState extends State<Exchange> {
           ],
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         backgroundColor: mainColorGreen,
         onPressed: () {
           print("Pressed");

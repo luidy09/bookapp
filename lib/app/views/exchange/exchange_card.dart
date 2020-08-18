@@ -4,7 +4,7 @@ import 'package:bookapp/app/views/exchange/exchange_detail.dart';
 import 'package:flutter/material.dart';
 
 class ExchangeCard extends StatelessWidget {
-  final id,
+  final idExchange,
       title,
       author,
       genre,
@@ -15,11 +15,11 @@ class ExchangeCard extends StatelessWidget {
       email,
       phone1,
       phone2,
-      exchangeImage;
+      bookImage;
   const ExchangeCard(
-      {this.id,
+      {this.idExchange,
       this.title,
-      this.exchangeImage,
+      this.bookImage,
       this.author,
       this.genre,
       this.timeago,
@@ -55,7 +55,7 @@ class ExchangeCard extends StatelessWidget {
             height: 200,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("$exchangeImage"), fit: BoxFit.cover),
+                  image: AssetImage("$bookImage"), fit: BoxFit.cover),
             ),
           ),
           Container(
@@ -82,11 +82,22 @@ class ExchangeCard extends StatelessWidget {
                   SizedBox(height: 20),
                   InkWell(
                     onTap: () {
-                      print("Exchange ID is : $id");
+                      print("Exchange ID is : $idExchange");
 
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (BuildContext context) => ExchangeDetail(),
+                          builder: (BuildContext context) => ExchangeDetail(
+                            userImage: userImage,
+                            username: username,
+                            address: address,
+                            phone1: phone1,
+                            phone2: phone2,
+                            email: email,
+                            title: title,
+                            genre: genre,
+                            author: author,
+                            bookImage: bookImage,
+                          ),
                         ),
                       );
                     },
