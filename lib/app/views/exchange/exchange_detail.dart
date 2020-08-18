@@ -39,98 +39,105 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
                     builder: (BuildContext contetx) => Exchange()));
               }),
         ),
-        body: Column(
-          children: [
-            Container(
-              child: Stack(
-                alignment: Alignment.topLeft,
-                children: <Widget>[
-                  Container(
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 230,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/images/landbook2.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          height: 107,
-                          decoration: BoxDecoration(),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    top: 180,
-                    left: 10,
-                    right: 10,
-                    child: Container(
-                      height: 156,
+        body: SingleChildScrollView(
+          physics: ScrollPhysics(),
+          child: Column(
+            children: [
+              Container(
+                child: Stack(
+                  alignment: Alignment.topLeft,
+                  children: <Widget>[
+                    Container(
                       child: Column(
                         children: [
-                          SizedBox(height: 20),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Jane Austen", style: authorNameStyle),
-                                Text(
-                                  "Romance",
-                                  style: genreStyle,
-                                ),
-                              ],
+                            height: 230,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/landbook2.jpg"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                          SizedBox(height: 15),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 20),
-                            child: UserInfoWidget(
-                              userImage:
-                                  "assets/images/users/photo-1463453091185-61582044d556.jpeg",
-                              address: "Luanda, Rua Amilcar Cabral , N 123",
-                              email: "lelo@gmail.com",
-                              phone1: "923 454 567",
-                              phone2: "222 333 345",
-                              username: "Pedro Pombal Viegas ",
-                            ),
-                          ),
-                        ],
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(11),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.5),
-                            spreadRadius: 4,
-                            blurRadius: 6,
-                            offset: Offset(0, 3), // changes position of shadow
+                            height: 107,
+                            decoration: BoxDecoration(),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                ],
+                    Positioned(
+                      top: 180,
+                      left: 10,
+                      right: 10,
+                      child: Container(
+                        height: 156,
+                        child: Column(
+                          children: [
+                            SizedBox(height: 20),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Jane Austen", style: authorNameStyle),
+                                  Text(
+                                    "Romance",
+                                    style: genreStyle,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(height: 15),
+                            Container(
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: UserInfoWidget(
+                                userImage:
+                                    "assets/images/users/photo-1463453091185-61582044d556.jpeg",
+                                address: "Luanda, Rua Amilcar Cabral , N 123",
+                                email: "lelo@gmail.com",
+                                phone1: "923 454 567",
+                                phone2: "222 333 345",
+                                username: "Pedro Pombal Viegas ",
+                              ),
+                            ),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(11),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 4,
+                              blurRadius: 6,
+                              offset:
+                                  Offset(0, 3), // changes position of shadow
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              child: Container(
+              Container(
                 child: ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+
                     // physics : NeverScrollableScrollPhysics(),
                     itemCount: proposals.length,
                     itemBuilder: (BuildContext ctxt, int index) {
                       return proposals[index];
                     }),
               ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }
