@@ -149,7 +149,8 @@ class _ExchangeState extends State<Exchange> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text("Troca de livros",  style: GoogleFonts.montserrat(
+        title: Text("Troca de livros",
+            style: GoogleFonts.montserrat(
                 textStyle: TextStyle(
               color: Color(0XFF1A002D),
             ))),
@@ -250,6 +251,5 @@ class _ExchangeState extends State<Exchange> {
         child: const Icon(Icons.add),
       ),
     );
-    
   }
 }

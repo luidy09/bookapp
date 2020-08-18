@@ -1,4 +1,6 @@
+import 'package:bookapp/app/components/user_info_widget.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/views/exchange/exchange_detail.dart';
 import 'package:flutter/material.dart';
 
 class ExchangeCard extends StatelessWidget {
@@ -69,36 +71,24 @@ class ExchangeCard extends StatelessWidget {
               padding: EdgeInsets.only(left: 10, right: 10, top: 5),
               child: Column(
                 children: [
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        CircleAvatar(
-                          backgroundColor: Colors.transparent,
-                          backgroundImage: AssetImage("$userImage"),
-                        ),
-                        SizedBox(width: 15),
-                        Container(
-                            padding: EdgeInsets.only(right: 10, top: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("$username", style: userNameStyle),
-                                Text("$address", style: addressInfoStyle),
-                                Text("$email", style: addressInfoStyle),
-                                Text("$phone1 / $phone2",
-                                    style: addressInfoStyle),
-                              ],
-                            ))
-                      ],
-                    ),
+                  UserInfoWidget(
+                    userImage: userImage,
+                    address: address,
+                    email: email,
+                    phone1: phone1,
+                    phone2: phone2,
+                    username: username,
                   ),
                   SizedBox(height: 20),
                   InkWell(
                     onTap: () {
                       print("Exchange ID is : $id");
+
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => ExchangeDetail(),
+                        ),
+                      );
                     },
                     child: Container(
                       height: 43,

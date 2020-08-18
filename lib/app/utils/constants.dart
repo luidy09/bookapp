@@ -4,6 +4,7 @@ const Color intenseGray = Color(0xFFc2c2c2);
 
 const mainColorDarkBlue = Color(0xff19002D);
 const mainColorGreen = Color(0xff00BC96);
+const mainColorRed = Color(0xffEA5840);
 
 const Color simpleGray = Color(0xfff5f5f5);
 const progressColor = Color(0xff8ce0d7);
@@ -18,6 +19,8 @@ const userNameColor = Color(0xff000000);
 
 const buttonBorderColor = Color(0xff707070);
 const buttonTextColor = Color(0xff0A0808);
+
+const proposalBookAuthorColor = Color(0xff8D8D8D);
 
 const bookTitleStyle = TextStyle(
     color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold);
@@ -37,6 +40,23 @@ const userNameStyle =
 const addressInfoStyle = TextStyle(color: addressInfoColor, fontSize: 10);
 
 const buttonTextStyle = TextStyle(color: buttonTextColor, fontSize: 16);
+
+const proposerNameStyle =
+    TextStyle(color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold);
+
+const proposalBookNameStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold);
+
+const proposalBookGenreStyle = TextStyle(
+    color: genreTextColor, fontSize: 12, fontWeight: FontWeight.normal);
+
+const proposalBookAuthorStyle = TextStyle(
+    color: proposalBookAuthorColor,
+    fontSize: 12,
+    fontWeight: FontWeight.normal);
+
+const proposalActionButtonStyle =
+    TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.normal);
 
 getProgressColor(percent) {
   return (percent < 30)
