@@ -11,6 +11,9 @@ const reducedColorGreen = Color(0xffE0F7F2);
 const Color simpleGray = Color(0xfff5f5f5);
 const progressColor = Color(0xff8ce0d7);
 const containerBorderColor = Color(0xffCECECE);
+
+var librayContainerColor = Color(0xffA2A2A2).withAlpha(10);
+
 const timeagoColor = Color(0xff9C9C9C);
 const authorNameColor = Color(0xffA9A9A9);
 const genreTextColor = Color(0xffEA5840);
@@ -23,6 +26,13 @@ const buttonBorderColor = Color(0xff707070);
 const buttonTextColor = Color(0xff0A0808);
 
 const proposalBookAuthorColor = Color(0xff8D8D8D);
+
+//Library Colors
+
+const librayUserNameColor = Color(0xff1A022E);
+const librayaContactColor = Color(0xff9D9D9D);
+
+//STYLES
 
 const bookTitleStyle = TextStyle(
     color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold);
@@ -59,6 +69,15 @@ const proposalBookAuthorStyle = TextStyle(
 
 const proposalActionButtonStyle =
     TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.normal);
+
+//Library Styles
+
+const librayUserNameStyle = TextStyle(
+    color: librayUserNameColor, fontSize: 17, fontWeight: FontWeight.bold);
+
+const librayaContactStyle = TextStyle(color: librayaContactColor, fontSize: 10);
+
+const librayaFollowersStyle = TextStyle(color: mainColorGreen, fontSize: 8);
 
 getProgressColor(percent) {
   return (percent < 30)
