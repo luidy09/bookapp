@@ -1,8 +1,11 @@
-import 'package:bookapp/app/components/ImageStackCustom.dart';
-import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/library/library.dart';
+import 'package:bookapp/app/views/library/library_profile_info_card.dart';
+import 'package:bookapp/app/views/library/library_publication_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../utils/constants.dart';
+import 'library_book_selling_card.dart';
 
 class LibraryProfile extends StatefulWidget {
   final idLibrary, username, userImage, address, email, phone1, phone2;
@@ -28,6 +31,78 @@ class _LibraryProfileState extends State<LibraryProfile> {
     "assets/images/users/n4Ngwvi7.jpg"
   ];
 
+  List<Widget> books = [
+    LibraryBookSellingcard(
+      author: "Dárdano Santos",
+      bookImage: "assets/images/landbook3.jpg",
+      genre: "Motivacional",
+      price: "1700,00 AOA",
+      sellingId: 1,
+      timeago: "há 1 dia",
+      title: "A Arte de Seguir Alguém ",
+    ),
+    LibraryBookSellingcard(
+      author: "Dárdano Santos",
+      bookImage: "assets/images/landbook4.jpeg",
+      genre: "Motivacional",
+      price: "1700,00 AOA",
+      sellingId: 2,
+      timeago: "há 1 dia",
+      title: "A Arte de Seguir Alguém ",
+    ),
+    LibraryBookSellingcard(
+      author: "Dárdano Santos",
+      bookImage: "assets/images/landbook1.jpg",
+      genre: "Motivacional",
+      price: "1700,00 AOA",
+      sellingId: 3,
+      timeago: "há 1 dia",
+      title: "A Arte de Seguir Alguém ",
+    ),
+    LibraryBookSellingcard(
+      author: "Pepetela",
+      bookImage: "assets/images/pepetela.jpg",
+      genre: "Contos",
+      price: "4 500,00 AOA",
+      sellingId: 1,
+      timeago: "há 4 dias",
+      title: "Lueji ",
+    ),
+  ];
+
+  List<Widget> publications = [
+    LibraryPublicationCard(
+      username: "Livraria Lelo",
+      content:
+          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+      pubId: 1,
+      pubImage: "assets/images/landbook1.jpg",
+      timeago: "há 1 dia",
+      title: "Promoção mês de Agosto",
+      userImage: "assets/images/users/NTIxMTkuanBn.jpg",
+    ),
+    LibraryPublicationCard(
+      username: "Livraria Lelo",
+      content:
+          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+      pubId: 1,
+      pubImage: "assets/images/book_landscape.jpg",
+      timeago: "há 1 dia",
+      title: "Promoção mês de Agosto",
+      userImage: "assets/images/users/MzYyNTIuanBn.jpg",
+    ),
+    LibraryPublicationCard(
+      username: "Livraria Lelo",
+      content:
+          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+      pubId: 1,
+      pubImage: "assets/images/landbook.jpg",
+      timeago: "há 1 dia",
+      title: "Promoção mês de Agosto",
+      userImage: "assets/images/users/XzAzMDE4MzAuanBn.jpg",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,89 +125,72 @@ class _LibraryProfileState extends State<LibraryProfile> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
-        child: Column(
-          children: [
-            Container(
-              height: 378,
-              decoration: BoxDecoration(
-                  color: librayContainerColor,
-                  borderRadius: BorderRadius.circular(9)),
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        radius: 60,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage("${widget.userImage}"),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                          child: Text("${widget.username}",
-                              style: librayUserNameStyle)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                          child: Text("${widget.address}",
-                              style: libraryProfileContactStyle)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                          child: Text("${widget.email}",
-                              style: libraryProfileContactStyle)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        child: Text("${widget.phone1} / ${widget.phone2}",
-                            style: libraryProfileContactStyle),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(left: 40),
-
-                        // width: ,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ImageStackCustom(
-                              isUrl: false,
-                              totalCount: images.length,
-                              imageList: images,
-                              imageRadius: 25, // Radius of each images
-                              imageCount:
-                                  3, // Maximum number of images to be shown in stack
-                              // Border width around the images
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(9)),
-                          padding: EdgeInsets.symmetric(horizontal: 45),
-                          color: mainColorGreen,
-                          onPressed: () {},
-                          child: Text("Seguir",
-                              style: libraryFollowButtonTextStyle),
-                        ),
-                      ),
-                    ],
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              LibraryProfileInfoCard(
+                images: images,
+                userImage: widget.userImage,
+                username: widget.username,
+                address: widget.address,
+                email: widget.email,
+                phone1: widget.phone1,
+                phone2: widget.phone2,
+              ),
+              SizedBox(height: 15),
+              Container(
+                margin: EdgeInsets.only(left: 25),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                            child: Text("Livros a venda",
+                                style: sellingDescriptionText))),
+                    Expanded(child: Container())
+                  ],
                 ),
               ),
-            )
-          ],
+              SizedBox(height: 15),
+              SizedBox(
+                height: 330,
+                child: ListView.builder(
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: books.length,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return books[index];
+                    }),
+              ),
+              SizedBox(height: 15),
+              Container(
+                margin: EdgeInsets.only(left: 25),
+                child: Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                            child: Text("Publicações",
+                                style: sellingDescriptionText))),
+                    Expanded(child: Container())
+                  ],
+                ),
+              ),
+              SizedBox(height: 15),
+              SizedBox(
+                height: 404,
+                child: ListView.builder(
+                    physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: publications.length,
+                    itemBuilder: (BuildContext ctxt, int index) {
+                      return publications[index];
+                    }),
+              ),
+              SizedBox(height: 50),
+            ],
+          ),
         ),
       ),
     );

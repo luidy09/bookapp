@@ -34,6 +34,10 @@ const librayaContactColor = Color(0xff9D9D9D);
 const libraryProfileContactColor = Color(0xff050505);
 const libraryFollowButtonTextColor = Color(0xffEBEBEB);
 
+//PUBLICATION
+
+const libraryPublicationColor = Color(0xff0D0F0E);
+
 //STYLES
 
 const bookTitleStyle = TextStyle(
@@ -41,12 +45,25 @@ const bookTitleStyle = TextStyle(
 
 const timeagoStyle =
     TextStyle(color: timeagoColor, fontSize: 14, fontWeight: FontWeight.normal);
+const timeagoMdStyle =
+    TextStyle(color: timeagoColor, fontSize: 13, fontWeight: FontWeight.normal);
+
+const timeagoSmallStyle =
+    TextStyle(color: timeagoColor, fontSize: 10, fontWeight: FontWeight.normal);
 
 const authorNameStyle = TextStyle(
     color: authorNameColor, fontSize: 16, fontWeight: FontWeight.normal);
+const authorNameSmallStyle = TextStyle(
+    color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal);
+
+const bookPriceStyle = TextStyle(
+    color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal);
 
 const genreStyle = TextStyle(
     color: genreTextColor, fontSize: 16, fontWeight: FontWeight.normal);
+
+const genreSmallRedStyle =
+    TextStyle(color: mainColorRed, fontSize: 11, fontWeight: FontWeight.normal);
 
 const userNameStyle =
     TextStyle(color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold);
@@ -86,6 +103,27 @@ const libraryProfileContactStyle =
 
 const libraryFollowButtonTextStyle =
     TextStyle(color: libraryFollowButtonTextColor, fontSize: 16);
+
+const buttonBuyBookLibraryStyle =
+    TextStyle(color: libraryFollowButtonTextColor, fontSize: 12);
+
+const sellingDescriptionText = TextStyle(
+    color: librayUserNameColor, fontSize: 15, fontWeight: FontWeight.bold);
+
+const bookToSellStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 12, fontWeight: FontWeight.bold);
+
+//PUBLICATION
+const libraryPublicationStyle = TextStyle(
+    color: libraryPublicationColor, fontSize: 14, fontWeight: FontWeight.bold);
+
+const libraryPublicationTextStyle =
+    TextStyle(color: libraryPublicationColor, fontSize: 14);
+const buttonPubLibraryStyle =
+    TextStyle(color: libraryFollowButtonTextColor, fontSize: 16);
+
+const userNamePubLibraryStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold);
 
 getProgressColor(percent) {
   return (percent < 30)
