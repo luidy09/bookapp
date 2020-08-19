@@ -35,7 +35,7 @@ class AppModule extends MainModule {
   List<Router> get routers => [
         Router('/', child: (context, args) => CarouselPageView()),
         Router('/home', child: (context, args) => HomePage()),
-        Router('/dashboard', child: (context, args) => DashboardPage()) ,
+        Router('/dashboard', child: (context, args) => DashboardPage()),
         Router('/formu', child: (context, args) => FormPage()),
         Router('/detail', child: (context, args) => DetailsPage()),
         Router('/library', child: (context, args) => Library()),

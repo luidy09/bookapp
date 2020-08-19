@@ -1,5 +1,7 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
+import 'package:bookapp/app/views/login/login.dart';
+import 'package:bookapp/app/views/registration/register_first.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -94,7 +96,11 @@ class CustomCarrosselPage extends StatelessWidget {
                                 if (!goHome) {
                                   pageController.jumpToPage(1);
                                 } else {
-                                  Navigator.popAndPushNamed(context, '/home');
+                                  Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              Login()));
                                 }
                               },
                               child: Padding(
@@ -103,9 +109,9 @@ class CustomCarrosselPage extends StatelessWidget {
                                 child: Text(
                                   "$btnText",
                                   style: TextStyle(
-                                      fontSize: SizeConfig.isMall ? 12 : 18,
-                                      color: Color(0xFF1A002D),
-                                      ),
+                                    fontSize: SizeConfig.isMall ? 12 : 18,
+                                    color: Color(0xFF1A002D),
+                                  ),
                                 ),
                               ),
                             )),

@@ -125,6 +125,13 @@ const buttonPubLibraryStyle =
 const userNamePubLibraryStyle = TextStyle(
     color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold);
 
+//FORM LABEL STYLES
+
+const formLabelStyle =
+    TextStyle(color: libraryProfileContactColor, fontSize: 13);
+
+const formButtonGreenlStyle = TextStyle(color: mainColorGreen, fontSize: 13);
+
 getProgressColor(percent) {
   return (percent < 30)
       ? Colors.redAccent.withOpacity(0.7)
