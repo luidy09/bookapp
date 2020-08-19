@@ -1,42 +1,28 @@
+import 'package:bookapp/app/models/user_model.dart';
+
 class Reader {
   int pkLeitor;
-  String nome;
   String bi;
-  String endereco;
-  String telefone;
-  String email;
-  String senha;
+  UserModel user;
 
-  Reader(
-      {this.pkLeitor,
-      this.nome,
-      this.bi,
-      this.endereco,
-      this.telefone,
-      this.email,
-      this.senha});
+  Reader({this.pkLeitor, this.bi, this.user});
 
   Reader.fromJson(Map<String, dynamic> json) {
     pkLeitor = json['pkLeitor'] ?? "";
-    nome = json['nome'] ?? "";
     bi = json['bi'] ?? "";
-    endereco = json['endereco'] ?? "";
-    telefone = json['telefone'] ?? "";
-    email = json['email'] ?? "";
-    senha = json['senha'] ?? "";
+    user = UserModel.fromJson(json);
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['pkLeitor'] = pkLeitor;
-    data['nome'] = nome;
-    data['bi'] = bi;
-    data['endereco'] = endereco;
-    data['telefone'] = telefone;
-    data['email'] = email;
-    data['senha'] = senha;
-    return data;
-  }
+  Map<String, dynamic> toJson() => {
+        'pkLeitor': pkLeitor,
+        'bi': bi,
+        'nome': user.nome,
+        'endereco': user.endereco,
+        'telefone': user.telefone,
+        'telefone1': user.telefone1,
+        'email': user.email,
+        'senha': user.senha,
+      };
 
   static List<Reader> fromJsonList(List<dynamic> json) => (json == null)
       ? null
