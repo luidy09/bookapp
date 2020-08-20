@@ -54,7 +54,7 @@ class _CustomFABBottomNavigationState extends State<CustomFABBottomNavigation> {
           ),
           IconButton(
             icon: Icon(
-              Icons.web_asset,
+              Icons.collections,
               color:
                   (widget.activeNumber == 4) ? mainColorRed : mainColorDarkBlue,
             ),
@@ -82,6 +82,73 @@ class CustomFABBottomNavigationCenter extends StatefulWidget {
 
 class _CustomFABBottomNavigationCenterState
     extends State<CustomFABBottomNavigationCenter> {
+  @override
+  Widget build(BuildContext context) {
+    return BottomAppBar(
+      shape: CircularNotchedRectangle(),
+      //color: bottomNaviagtionColor,
+      child: new Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.import_contacts,
+              color:
+                  (widget.activeNumber == 1) ? mainColorRed : mainColorDarkBlue,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/library');
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.compare_arrows,
+              color:
+                  (widget.activeNumber == 2) ? mainColorRed : mainColorDarkBlue,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/exchange');
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.shopping_basket,
+              color:
+                  (widget.activeNumber == 3) ? mainColorRed : mainColorDarkBlue,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/sale');
+            },
+          ),
+          IconButton(
+            icon: Icon(
+              Icons.collections,
+              color:
+                  (widget.activeNumber == 4) ? mainColorRed : mainColorDarkBlue,
+            ),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/publication');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class CustomFABBottomNavigationPub extends StatefulWidget {
+  final activeNumber;
+
+  CustomFABBottomNavigationPub({this.activeNumber});
+
+  @override
+  _CustomFABBottomNavigationPubState createState() =>
+      _CustomFABBottomNavigationPubState();
+}
+
+class _CustomFABBottomNavigationPubState
+    extends State<CustomFABBottomNavigationPub> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(

@@ -50,7 +50,7 @@ class _LibraryState extends State<Library> {
     ),
   ];
 
-  getLibaries(search) {
+  getLibraries(search) {
     setState(() {
       //books = dbHelper.searchBook(search);
     });

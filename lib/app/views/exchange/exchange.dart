@@ -171,10 +171,10 @@ class _ExchangeState extends State<Exchange> {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 5),
+                margin: EdgeInsets.only(top: 20),
                 child: CustomSearchExchange(),
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               Container(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
