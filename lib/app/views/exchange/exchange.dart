@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
 import 'package:bookapp/app/components/customsearch_exchange.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
@@ -148,109 +149,113 @@ class _ExchangeState extends State<Exchange> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
         backgroundColor: Colors.white,
-        centerTitle: true,
-        title: Text("Troca de livros",
-            style: GoogleFonts.montserrat(
-                textStyle: TextStyle(
-              color: Color(0XFF1A002D),
-            ))),
-        elevation: 0.0,
-        leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext contetx) => HomePage()));
-            }),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(top: 5),
-              child: CustomSearchExchange(),
-            ),
-            SizedBox(height: 20),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9)),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                    color:
-                        (isActiveButton) ? mainColorGreen : reducedColorGreen,
-                    onPressed: () {
-                      if (!isActiveButton) changeActive(0);
-                    },
-                    child: Text("Disponível",
-                        style: (isActiveButton)
-                            ? TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)
-                            : TextStyle(
-                                fontSize: 16, color: Color(0xff9C9C9C))),
-                  ),
-                  FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9)),
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 12),
-                    color:
-                        (!isActiveButton) ? mainColorGreen : reducedColorGreen,
-                    onPressed: () {
-                      if (isActiveButton) changeActive(1);
-                    },
-                    child: Text("Meus Livros",
-                        style: (!isActiveButton)
-                            ? TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold)
-                            : TextStyle(
-                                fontSize: 16, color: Color(0xff9C9C9C))),
-                  )
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Container(
-                child: Expanded(
-              child: PageView(
-                onPageChanged: (int page) {
-                  print("PAGE IS $page");
-                  changePage(page);
-                },
-                scrollDirection: Axis.horizontal,
-                controller: _pageController,
-                children: [
-                  ListView.builder(
-                      itemCount: exchanges.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return exchanges[index];
-                      }),
-                  ListView.builder(
-                      itemCount: myexchanges.length,
-                      itemBuilder: (BuildContext ctxt, int index) {
-                        return myexchanges[index];
-                      }),
-                ],
-              ),
-            ))
-          ],
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: Text("Troca de livros",
+              style: GoogleFonts.montserrat(
+                  textStyle: TextStyle(
+                color: Color(0XFF1A002D),
+              ))),
+          elevation: 0.0,
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext contetx) => HomePage()));
+              }),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: mainColorGreen,
-        onPressed: () {
-          print("Pressed");
-        },
-        child: const Icon(Icons.add),
-      ),
-    );
+        body: Padding(
+          padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(top: 5),
+                child: CustomSearchExchange(),
+              ),
+              SizedBox(height: 20),
+              Container(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      color:
+                          (isActiveButton) ? mainColorGreen : reducedColorGreen,
+                      onPressed: () {
+                        if (!isActiveButton) changeActive(0);
+                      },
+                      child: Text("Disponível",
+                          style: (isActiveButton)
+                              ? TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)
+                              : TextStyle(
+                                  fontSize: 16, color: Color(0xff9C9C9C))),
+                    ),
+                    FlatButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(9)),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+                      color: (!isActiveButton)
+                          ? mainColorGreen
+                          : reducedColorGreen,
+                      onPressed: () {
+                        if (isActiveButton) changeActive(1);
+                      },
+                      child: Text("Meus Livros",
+                          style: (!isActiveButton)
+                              ? TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold)
+                              : TextStyle(
+                                  fontSize: 16, color: Color(0xff9C9C9C))),
+                    )
+                  ],
+                ),
+              ),
+              SizedBox(height: 20),
+              Container(
+                  child: Expanded(
+                child: PageView(
+                  onPageChanged: (int page) {
+                    print("PAGE IS $page");
+                    changePage(page);
+                  },
+                  scrollDirection: Axis.horizontal,
+                  controller: _pageController,
+                  children: [
+                    ListView.builder(
+                        itemCount: exchanges.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return exchanges[index];
+                        }),
+                    ListView.builder(
+                        itemCount: myexchanges.length,
+                        itemBuilder: (BuildContext ctxt, int index) {
+                          return myexchanges[index];
+                        }),
+                  ],
+                ),
+              ))
+            ],
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: mainColorGreen,
+          child: const Icon(Icons.add),
+          onPressed: () {},
+        ),
+        bottomNavigationBar: CustomFABBottomNavigation(
+          activeNumber: 2,
+        ));
   }
 }

@@ -1,8 +1,11 @@
 import 'package:bookapp/app/components/book_detail_card.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
 import 'package:bookapp/app/components/customdrawer.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
+import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
+import 'package:bookapp/app/views/form/form_page.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -21,79 +24,74 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      backgroundColor: Colors.white,
-      appBar: AppBar(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
-        elevation: 0.0,
-        iconTheme: new IconThemeData(color: Color(0XFF1A002D)),
-      ),
-      drawer: CustomDrawer(),
-      body: Container(
-        width: double.infinity,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Container(
-                child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      Container(
-                        width: (SizeConfig.isMall) ? 120.0 : 200.0,
-                        height: (SizeConfig.isMall) ? 70.0 : 100.0,
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage('assets/images/logo02.png'),
-                              fit: BoxFit.cover),
-                        ),
-                      ),
-                      SizedBox(height: SizeConfig.isMall ? 10 : 20),
-                      CustomSearch(),
-                    ]),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: InkWell(
+            onTap: () {
+              print("User Profile");
+            },
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              height: 10,
+              child: CircleAvatar(
+                radius: 10,
+                backgroundColor: Colors.transparent,
+                backgroundImage: AssetImage("assets/images/users/n4Ngwvi7.jpg"),
               ),
-              SizedBox(
-                height: (SizeConfig.isMall) ? 10.0 : 15.0,
-              ),
-              Observer(
-                  builder: (_) =>
-                      !bookState.isSearching ? CustomTabView() : Container()),
-              SizedBox(
-                height: (SizeConfig.isMall) ? 5.0 : 10.0,
-              ),
-            ]),
-      ),
-      bottomNavigationBar: Container(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              icon: Icon(Icons.book),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/library');
-              },
             ),
-            IconButton(
-              icon: Icon(Icons.cached),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/exchange');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.monetization_on),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/sale');
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.photo_size_select_actual),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/publication');
-              },
-            )
-          ],
+          ),
+          elevation: 0.0,
+          iconTheme: new IconThemeData(color: Color(0XFF1A002D)),
         ),
-      ),
-    );
+        body: Container(
+          width: double.infinity,
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Container(
+                          width: (SizeConfig.isMall) ? 120.0 : 200.0,
+                          height: (SizeConfig.isMall) ? 70.0 : 100.0,
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/images/logo02.png'),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        SizedBox(height: SizeConfig.isMall ? 10 : 20),
+                        CustomSearch(),
+                      ]),
+                ),
+                SizedBox(
+                  height: (SizeConfig.isMall) ? 10.0 : 15.0,
+                ),
+                Observer(
+                    builder: (_) =>
+                        !bookState.isSearching ? CustomTabView() : Container()),
+                SizedBox(
+                  height: (SizeConfig.isMall) ? 5.0 : 10.0,
+                ),
+              ]),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: mainColorGreen,
+          child: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => FormPage(
+                      isUpdating: false,
+                    )));
+          },
+        ),
+        bottomNavigationBar: CustomFABBottomNavigation(
+          activeNumber: 0,
+        ));
   }
 }

@@ -377,7 +377,7 @@ class _FormPageState extends State<FormPage> {
                             labelText: 'Descrição'),
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
                       Center(
                         child: RaisedButton(

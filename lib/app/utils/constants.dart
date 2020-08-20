@@ -27,6 +27,10 @@ const buttonTextColor = Color(0xff0A0808);
 
 const proposalBookAuthorColor = Color(0xff8D8D8D);
 
+//HOME
+
+var bottomNaviagtionColor = Color(0xffA2A2A2);
+
 //Library Colors
 
 const librayUserNameColor = Color(0xff1A022E);

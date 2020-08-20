@@ -66,96 +66,97 @@ class _LibraryState extends State<Library> {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: Text("Livrarias",
-              style: GoogleFonts.montserrat(
-                  textStyle: TextStyle(
-                color: Color(0XFF1A002D),
-              ))),
-          centerTitle: true,
-          elevation: 0.0,
-          leading: IconButton(
-              icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => HomePage()));
-              }),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: (SizeConfig.isMall) ? 40.0 : 50.0,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: simpleGray, width: 0.0),
-                    borderRadius: BorderRadius.circular(10),
-                    color: simpleGray,
-                  ),
-                  child: TextField(
-                    controller: searchController,
-                    onChanged: (val) {
-                      //getBooks(val.trim());
+        title: Text("Livrarias",
+            style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+              color: Color(0XFF1A002D),
+            ))),
+        centerTitle: true,
+        elevation: 0.0,
+        leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext contetx) => HomePage()));
+            }),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                height: (SizeConfig.isMall) ? 40.0 : 50.0,
+                decoration: BoxDecoration(
+                  border: Border.all(color: simpleGray, width: 0.0),
+                  borderRadius: BorderRadius.circular(10),
+                  color: simpleGray,
+                ),
+                child: TextField(
+                  controller: searchController,
+                  onChanged: (val) {
+                    //getBooks(val.trim());
 
-                      if (val.isNotEmpty) {
-                        if (!isSearchingLibrary) {
-                          setIsSearchig(true);
-                        }
-                      } else {
-                        if (isSearchingLibrary) {
-                          setIsSearchig(false);
-                        }
+                    if (val.isNotEmpty) {
+                      if (!isSearchingLibrary) {
+                        setIsSearchig(true);
                       }
-                    },
-                    keyboardType: TextInputType.text,
-                    autofocus: false,
-                    enableInteractiveSelection: true,
-                    decoration: InputDecoration(
-                      prefixIcon: !isSearchingLibrary
-                          ? Icon(Icons.search,
-                              size: (SizeConfig.isMall) ? 20 : 30,
-                              color: Color(0xFF19002D))
-                          : InkWell(
-                              onTap: () {
-                                searchController.text = "";
+                    } else {
+                      if (isSearchingLibrary) {
+                        setIsSearchig(false);
+                      }
+                    }
+                  },
+                  keyboardType: TextInputType.text,
+                  autofocus: false,
+                  enableInteractiveSelection: true,
+                  decoration: InputDecoration(
+                    prefixIcon: !isSearchingLibrary
+                        ? Icon(Icons.search,
+                            size: (SizeConfig.isMall) ? 20 : 30,
+                            color: Color(0xFF19002D))
+                        : InkWell(
+                            onTap: () {
+                              searchController.text = "";
 
-                                setIsSearchig(false);
-                              },
-                              child: Icon(Icons.close,
-                                  size: (SizeConfig.isMall) ? 20 : 30,
-                                  color: Color(0xFF19002D)),
-                            ),
-                      hintText: 'Pesquisar',
-                      hintStyle: TextStyle(),
-                      border: InputBorder.none,
-                    ),
+                              setIsSearchig(false);
+                            },
+                            child: Icon(Icons.close,
+                                size: (SizeConfig.isMall) ? 20 : 30,
+                                color: Color(0xFF19002D)),
+                          ),
+                    hintText: 'Pesquisar',
+                    hintStyle: TextStyle(),
+                    border: InputBorder.none,
                   ),
                 ),
-                SizedBox(height: 20),
-                isSearchingLibrary
-                    ? Expanded(
-                        child: ListView.builder(
-                          itemCount: librariesSearch.length,
-                          itemBuilder: (BuildContext context, index) {
-                            return librariesSearch[index];
-                          },
-                        ),
-                      )
-                    : Expanded(
-                        child: ListView.builder(
-                          itemCount: libraries.length,
-                          itemBuilder: (BuildContext context, index) {
-                            return libraries[index];
-                          },
-                        ),
+              ),
+              SizedBox(height: 20),
+              isSearchingLibrary
+                  ? Expanded(
+                      child: ListView.builder(
+                        itemCount: librariesSearch.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return librariesSearch[index];
+                        },
                       ),
-              ],
-            ),
+                    )
+                  : Expanded(
+                      child: ListView.builder(
+                        itemCount: libraries.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return libraries[index];
+                        },
+                      ),
+                    ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
