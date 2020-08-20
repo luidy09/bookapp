@@ -130,6 +130,10 @@ class _SaleState extends State<Sale> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Text("Venda e compre livros na feira ..."),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 height: (SizeConfig.isMall) ? 40.0 : 50.0,
                 decoration: BoxDecoration(
