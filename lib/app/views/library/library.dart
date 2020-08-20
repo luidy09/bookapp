@@ -3,7 +3,6 @@ import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/library/library_card.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Library extends StatefulWidget {
@@ -28,6 +27,18 @@ class _LibraryState extends State<Library> {
       phone1: "222 333 345",
       phone2: " 923 454 567",
     ),
+    LibraryCard(
+      idLibrary: 2,
+      username: "Livraria Lelo",
+      userImage: "assets/images/users/a2awzVm.jpg",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
+      email: "lelo@gmail.com",
+      phone1: "222 333 345",
+      phone2: " 923 454 567",
+    ),
+  ];
+
+  List<Widget> librariesSearch = [
     LibraryCard(
       idLibrary: 2,
       username: "Livraria Lelo",
@@ -128,13 +139,20 @@ class _LibraryState extends State<Library> {
                 isSearchingLibrary
                     ? Expanded(
                         child: ListView.builder(
+                          itemCount: librariesSearch.length,
+                          itemBuilder: (BuildContext context, index) {
+                            return librariesSearch[index];
+                          },
+                        ),
+                      )
+                    : Expanded(
+                        child: ListView.builder(
                           itemCount: libraries.length,
                           itemBuilder: (BuildContext context, index) {
                             return libraries[index];
                           },
                         ),
-                      )
-                    : Container(),
+                      ),
               ],
             ),
           ),

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:bookapp/app/models/books.dart';
 import 'package:bookapp/app/services/sql/db_helper.dart';
+import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/details/details_page.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:flutter/material.dart';
@@ -230,14 +231,16 @@ class _FormPageState extends State<FormPage> {
                                 : Center(
                                     child: _image == null
                                         ? CircleAvatar(
-                                            radius: 100,
-                                            backgroundColor: Colors.grey[100],
+                                            radius: 80,
+                                            backgroundColor: true
+                                                ? Colors.transparent
+                                                : Colors.grey[100],
                                           )
                                         /*CustomFormImage(
                                             img: AssetImage(
                                                 "assets/images/book.png"))*/
                                         : CircleAvatar(
-                                            radius: 100,
+                                            radius: 80,
                                             backgroundImage: FileImage(_image),
                                           ) /*CustomFormImage(
                                             img: FileImage(_image))*/
@@ -250,7 +253,7 @@ class _FormPageState extends State<FormPage> {
                             child: _image == null && !isUpdating
                                 ? IconButton(
                                     icon: Icon(Icons.add_a_photo,
-                                        size: 70, color: Colors.grey[700]),
+                                        size: 70, color: simpleGray),
                                     onPressed: () {
                                       _showdialogoptionsCam(context);
                                     },
@@ -271,7 +274,7 @@ class _FormPageState extends State<FormPage> {
                   ),
               child: Padding(
                 padding:
-                    const EdgeInsets.only(right: 10.0, left: 10.0, top: 15),
+                    const EdgeInsets.only(right: 10.0, left: 10.0, top: 10),
                 child: Form(
                   key: _formKey,
                   child: Column(
@@ -283,22 +286,11 @@ class _FormPageState extends State<FormPage> {
                         validator: (val) =>
                             val.length == 0 ? 'Digite o título' : null,
                         onSaved: (val) => title = val,
-                        style: TextStyle(color: iconColor),
+                        style: formLabelStyle,
                         decoration: InputDecoration(
                             isDense: true,
-                            border: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide.none,
-                              //borderSide: const BorderSide(),
-                            ),
-                            hintStyle: TextStyle(
-                              color: iconColor,
-                            ),
-                            filled: true,
-                            fillColor: fillColor,
-                            hintText: 'Título'),
+                            contentPadding: EdgeInsets.only(top: 30),
+                            labelText: 'Título'),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
@@ -306,24 +298,11 @@ class _FormPageState extends State<FormPage> {
                         validator: (val) =>
                             val.length == 0 ? 'Digite o nome do autor' : null,
                         onSaved: (val) => author = val,
-                        style: TextStyle(color: iconColor),
+                        style: formLabelStyle,
                         decoration: InputDecoration(
                             isDense: true,
-                            prefixIcon: Icon(Icons.account_circle,
-                                size: 30, color: iconColor),
-                            border: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide.none,
-                              //borderSide: const BorderSide(),
-                            ),
-                            hintStyle: TextStyle(
-                              color: iconColor,
-                            ),
-                            filled: true,
-                            fillColor: fillColor,
-                            hintText: 'Autor'),
+                            contentPadding: EdgeInsets.only(top: 30),
+                            labelText: 'Autor'),
                       ),
                       SizedBox(height: 10.0),
                       TextFormField(
@@ -331,24 +310,10 @@ class _FormPageState extends State<FormPage> {
                         validator: (val) =>
                             val.length == 0 ? 'Digite o género' : null,
                         onSaved: (val) => genre = val,
-                        style: TextStyle(color: iconColor),
+                        style: formLabelStyle,
                         decoration: InputDecoration(
-                            isDense: true,
-                            prefixIcon:
-                                Icon(Icons.receipt, size: 30, color: iconColor),
-                            border: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide.none,
-                              //borderSide: const BorderSide(),
-                            ),
-                            hintStyle: TextStyle(
-                              color: iconColor,
-                            ),
-                            filled: true,
-                            fillColor: fillColor,
-                            hintText: 'Género'),
+                            contentPadding: EdgeInsets.only(top: 30),
+                            labelText: 'Género'),
                       ),
                       SizedBox(height: 10.0),
                       Row(
@@ -362,25 +327,10 @@ class _FormPageState extends State<FormPage> {
                                   : null,
                               onSaved: (val) => pages = int.parse(val),
                               keyboardType: TextInputType.number,
-                              style: TextStyle(color: iconColor),
+                              style: formLabelStyle,
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  prefixIcon: Icon(Icons.import_contacts,
-                                      size: 30, color: iconColor),
-                                  border: OutlineInputBorder(
-                                    // width: 0.0 produces a thin "hairline" border
-                                    borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10.0),
-                                        topLeft: Radius.circular(10.0)),
-                                    borderSide: BorderSide.none,
-                                    //borderSide: const BorderSide(),
-                                  ),
-                                  hintStyle: TextStyle(
-                                    color: iconColor,
-                                  ),
-                                  filled: true,
-                                  fillColor: fillColor,
-                                  hintText: 'Páginas'),
+                                  contentPadding: EdgeInsets.only(top: 30),
+                                  labelText: 'Páginas'),
                             ),
                           ),
                           Flexible(
@@ -391,25 +341,10 @@ class _FormPageState extends State<FormPage> {
                                   ? 'Digite o preço do livro'
                                   : null,
                               onSaved: (val) => price = double.parse(val),
-                              style: TextStyle(color: iconColor),
+                              style: formLabelStyle,
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  prefixIcon: Icon(Icons.attach_money,
-                                      size: 30, color: iconColor),
-                                  border: OutlineInputBorder(
-                                    // width: 0.0 produces a thin "hairline" border
-                                    borderRadius: BorderRadius.only(
-                                        bottomRight: Radius.circular(10.0),
-                                        topRight: Radius.circular(10.0)),
-                                    borderSide: BorderSide.none,
-                                    //borderSide: const BorderSide(),
-                                  ),
-                                  hintStyle: TextStyle(
-                                    color: iconColor,
-                                  ),
-                                  filled: true,
-                                  fillColor: fillColor,
-                                  hintText: 'Preço'),
+                                  contentPadding: EdgeInsets.only(top: 30),
+                                  labelText: 'Preço'),
                             ),
                           ),
                         ],
@@ -422,24 +357,10 @@ class _FormPageState extends State<FormPage> {
                               ? 'Digite o nome da editora'
                               : null,
                           onSaved: (val) => publishing = val,
-                          style: TextStyle(color: iconColor),
+                          style: formLabelStyle,
                           decoration: InputDecoration(
-                              isDense: true,
-                              prefixIcon:
-                                  Icon(Icons.book, size: 30, color: iconColor),
-                              border: OutlineInputBorder(
-                                // width: 0.0 produces a thin "hairline" border
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10.0)),
-                                borderSide: BorderSide.none,
-                                //borderSide: const BorderSide(),
-                              ),
-                              hintStyle: TextStyle(
-                                color: iconColor,
-                              ),
-                              filled: true,
-                              fillColor: fillColor,
-                              hintText: 'Editora'),
+                              contentPadding: EdgeInsets.only(top: 30),
+                              labelText: 'Editora'),
                         ),
                       ),
                       SizedBox(height: 10.0),
@@ -450,24 +371,10 @@ class _FormPageState extends State<FormPage> {
                         minLines: 1, //Normal textInputField will be displayed
                         maxLines: 5, //
 
-                        style: TextStyle(color: iconColor),
+                        style: formLabelStyle,
                         decoration: InputDecoration(
-                            isDense: true,
-                            prefixIcon:
-                                Icon(Icons.info, size: 30, color: iconColor),
-                            border: OutlineInputBorder(
-                              // width: 0.0 produces a thin "hairline" border
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide.none,
-                              //borderSide: const BorderSide(),
-                            ),
-                            hintStyle: TextStyle(
-                              color: iconColor,
-                            ),
-                            filled: true,
-                            fillColor: fillColor,
-                            hintText: 'Descrição'),
+                            contentPadding: EdgeInsets.only(top: 30),
+                            labelText: 'Descrição'),
                       ),
                       SizedBox(
                         height: 15,
