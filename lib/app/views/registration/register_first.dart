@@ -1,5 +1,6 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/login/login.dart';
+import 'package:bookapp/app/views/registration/password.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -127,13 +128,14 @@ class _RegisterFirstState extends State<RegisterFirst> {
                         width: 160,
                         child: FlatButton(
                             onPressed: () {
-                              /*Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) => Container())); */
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      Password()));
                             },
                             padding: EdgeInsets.all(12.0),
                             shape: RoundedRectangleBorder(
                                 side: BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(30.0)),
+                                borderRadius: BorderRadius.circular(9.0)),
                             child: Text(
                               "Continuar",
                               //style: styleButton,

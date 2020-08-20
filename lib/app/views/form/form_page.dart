@@ -286,8 +286,6 @@ class _FormPageState extends State<FormPage> {
                         style: TextStyle(color: iconColor),
                         decoration: InputDecoration(
                             isDense: true,
-                            prefixIcon: Icon(Icons.text_format,
-                                size: 30, color: iconColor),
                             border: OutlineInputBorder(
                               // width: 0.0 produces a thin "hairline" border
                               borderRadius:

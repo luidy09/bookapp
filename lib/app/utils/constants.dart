@@ -38,10 +38,22 @@ const libraryFollowButtonTextColor = Color(0xffEBEBEB);
 
 const libraryPublicationColor = Color(0xff0D0F0E);
 
+//REGISTRATION
+
+const passwordContainerColor = Color(0xffF6F6F6);
+
 //STYLES
 
 const bookTitleStyle = TextStyle(
     color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold);
+
+const passwordDescriptionTitleStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold);
+
+const userTypeTextStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold);
+const nifTextStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.normal);
 
 const timeagoStyle =
     TextStyle(color: timeagoColor, fontSize: 14, fontWeight: FontWeight.normal);
@@ -131,6 +143,13 @@ const formLabelStyle =
     TextStyle(color: libraryProfileContactColor, fontSize: 13);
 
 const formButtonGreenlStyle = TextStyle(color: mainColorGreen, fontSize: 13);
+
+//PASSWORD
+
+const customKeyBoardNumberStyle =
+    TextStyle(color: libraryProfileContactColor, fontSize: 23);
+
+const passwordMatchErrorStyle = TextStyle(color: mainColorRed, fontSize: 12);
 
 getProgressColor(percent) {
   return (percent < 30)
