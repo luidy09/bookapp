@@ -1,7 +1,6 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/login/login.dart';
-import 'package:bookapp/app/views/registration/register_first.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 

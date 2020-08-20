@@ -2,7 +2,6 @@ import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/registration/confirm_password.dart';
 import 'package:bookapp/app/views/registration/register_first.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Password extends StatefulWidget {
   @override

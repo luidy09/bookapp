@@ -1,4 +1,3 @@
-import 'package:bookapp/app/components/user_info_widget.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/exchange/exchange.dart';
 import 'package:bookapp/app/views/exchange/proposaer_book_info.dart';
