@@ -10,6 +10,7 @@ import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/library/library.dart';
 import 'package:bookapp/app/views/publication/publication.dart';
 import 'package:bookapp/app/views/sale/sale.dart';
+import 'package:bookapp/app/views/settings/settings_page.dart';
 import 'package:bookapp/app/viewsmodels/change_theme_viewmodel.dart';
 import 'package:bookapp/app_widget.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class AppModule extends MainModule {
   List<Router> get routers => [
         Router('/', child: (context, args) => CarouselPageView()),
         Router('/home', child: (context, args) => HomePage()),
+        Router('/settings', child: (context, args) => SettingsPage()),
         Router('/dashboard', child: (context, args) => DashboardPage()),
         Router('/formu', child: (context, args) => FormPage()),
         Router('/detail', child: (context, args) => DetailsPage()),

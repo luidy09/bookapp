@@ -54,7 +54,7 @@ class _CustomFABBottomNavigationState extends State<CustomFABBottomNavigation> {
           ),
           IconButton(
             icon: Icon(
-              Icons.collections,
+              Icons.web_asset,
               color:
                   (widget.activeNumber == 4) ? mainColorRed : mainColorDarkBlue,
             ),

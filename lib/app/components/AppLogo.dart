@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class AppLogo extends StatelessWidget {
   final String logoAssetPath;
   double aspectRatio;

@@ -1,6 +1,5 @@
 import 'package:bookapp/app/components/book_detail_card.dart';
 import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
-import 'package:bookapp/app/components/customdrawer.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
 import 'package:bookapp/app/utils/constants.dart';
@@ -44,6 +43,13 @@ class _HomePageState extends State<HomePage> {
           ),
           elevation: 0.0,
           iconTheme: new IconThemeData(color: Color(0XFF1A002D)),
+          actions: [
+            IconButton(
+                icon: Icon(Icons.settings),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'settings');
+                })
+          ],
         ),
         body: Container(
           width: double.infinity,
