@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ExchangeDetail extends StatefulWidget {
-  final idExchange,
+  final isMine,
+      idExchange,
       title,
       genre,
       username,
@@ -19,6 +20,7 @@ class ExchangeDetail extends StatefulWidget {
       bookImage;
   ExchangeDetail(
       {Key key,
+      this.isMine,
       this.author,
       this.bookImage,
       this.idExchange,
@@ -137,13 +139,21 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: mainColorGreen,
-        onPressed: () {
-          print("Make new proposal");
-        },
-        child: const Icon(Icons.send),
-      ),
+      floatingActionButton: !(widget.isMine)
+          ? FloatingActionButton(
+              backgroundColor: mainColorGreen,
+              onPressed: () {
+                print("Make new proposal");
+              },
+              child: const Icon(Icons.send),
+            )
+          : FloatingActionButton(
+              backgroundColor: mainColorRed,
+              onPressed: () {
+                print("Make new proposal");
+              },
+              child: const Icon(Icons.close),
+            ),
     );
   }
 }

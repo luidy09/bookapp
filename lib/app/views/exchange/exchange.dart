@@ -65,6 +65,7 @@ class _ExchangeState extends State<Exchange> {
 
   List<Widget> myexchanges = [
     ExchangeCard(
+      isMine: true,
       idExchange: 3,
       username: "Jelson Neto",
       email: "jelsonneto@gmail.com",
@@ -79,6 +80,7 @@ class _ExchangeState extends State<Exchange> {
       userImage: "assets/images/users/photo-1521587765099-8835e7201186.jpeg",
     ),
     ExchangeCard(
+      isMine: true,
       idExchange: 1,
       username: "Jacob Silvano Pessela",
       email: "jacobpessela@gmail.com",
@@ -93,6 +95,7 @@ class _ExchangeState extends State<Exchange> {
       userImage: "assets/images/users/LgPx_hOQ.jpg",
     ),
     ExchangeCard(
+      isMine: true,
       idExchange: 2,
       username: "Diocleciano Gonga",
       email: "dioclecianogonga@gmail.com",

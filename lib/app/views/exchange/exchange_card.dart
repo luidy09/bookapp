@@ -15,9 +15,11 @@ class ExchangeCard extends StatelessWidget {
       email,
       phone1,
       phone2,
-      bookImage;
+      bookImage,
+      isMine;
   const ExchangeCard(
-      {this.idExchange,
+      {this.isMine = false,
+      this.idExchange,
       this.title,
       this.bookImage,
       this.author,
@@ -32,6 +34,7 @@ class ExchangeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String btnText = isMine ? "Ver propostas" : "Interessado";
     return Container(
       margin: EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
@@ -87,6 +90,7 @@ class ExchangeCard extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) => ExchangeDetail(
+                            isMine: isMine,
                             userImage: userImage,
                             username: username,
                             address: address,
@@ -111,7 +115,7 @@ class ExchangeCard extends StatelessWidget {
                           )),
                       child: Container(
                         child: Center(
-                            child: Text("Interessado", style: buttonTextStyle)),
+                            child: Text("$btnText ", style: buttonTextStyle)),
                         constraints: BoxConstraints.expand(),
                       ),
                     ),
