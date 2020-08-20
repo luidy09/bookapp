@@ -36,7 +36,7 @@ class CustomCarrosselPage extends StatelessWidget {
                       height: SizeConfig.isMall ? 200 : 300,
                       child: CircleAvatar(
                         child: Image.asset(imgPath, fit: BoxFit.contain),
-                        backgroundColor: Color(0xfff5f5f5),
+                        backgroundColor: Colors.transparent,
                         radius: 100.0,
                       ),
                     ),
