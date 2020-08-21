@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const Color intenseGray = Color(0xFFc2c2c2);
 
@@ -48,118 +49,193 @@ const passwordContainerColor = Color(0xffF6F6F6);
 
 //STYLES
 
-const bookTitleStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold);
+var bookTitleStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold),
+);
 
-const passwordDescriptionTitleStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold);
+var passwordDescriptionTitleStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold),
+);
 
-const userTypeTextStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold);
-const nifTextStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.normal);
+var userTypeTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold),
+);
 
-const timeagoStyle =
-    TextStyle(color: timeagoColor, fontSize: 14, fontWeight: FontWeight.normal);
-const timeagoMdStyle =
-    TextStyle(color: timeagoColor, fontSize: 13, fontWeight: FontWeight.normal);
+var nifTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.normal),
+);
 
-const timeagoSmallStyle =
-    TextStyle(color: timeagoColor, fontSize: 10, fontWeight: FontWeight.normal);
+var timeagoStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: timeagoColor, fontSize: 14, fontWeight: FontWeight.normal),
+);
 
-const authorNameStyle = TextStyle(
-    color: authorNameColor, fontSize: 16, fontWeight: FontWeight.normal);
-const authorNameSmallStyle = TextStyle(
-    color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal);
+var timeagoMdStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: timeagoColor, fontSize: 13, fontWeight: FontWeight.normal),
+);
 
-const bookPriceStyle = TextStyle(
-    color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal);
+var timeagoSmallStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: timeagoColor, fontSize: 10, fontWeight: FontWeight.normal),
+);
 
-const genreStyle = TextStyle(
-    color: genreTextColor, fontSize: 16, fontWeight: FontWeight.normal);
+var authorNameStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: authorNameColor, fontSize: 16, fontWeight: FontWeight.normal),
+);
 
-const priceStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 16, fontWeight: FontWeight.normal);
+var authorNameSmallStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal),
+);
 
-const deliveryPriceStyle =
-    TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.normal);
+var bookPriceStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: authorNameColor, fontSize: 11, fontWeight: FontWeight.normal),
+);
 
-const genreSmallRedStyle =
-    TextStyle(color: mainColorRed, fontSize: 11, fontWeight: FontWeight.normal);
+var genreStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: genreTextColor, fontSize: 16, fontWeight: FontWeight.normal),
+);
 
-const userNameStyle =
-    TextStyle(color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold);
+var priceStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 16, fontWeight: FontWeight.normal),
+);
 
-const addressInfoStyle = TextStyle(color: addressInfoColor, fontSize: 10);
+var deliveryPriceStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: Colors.black, fontSize: 16, fontWeight: FontWeight.normal),
+);
 
-const buttonTextStyle = TextStyle(color: buttonTextColor, fontSize: 16);
+var genreSmallRedStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorRed, fontSize: 11, fontWeight: FontWeight.normal),
+);
 
-const proposerNameStyle =
-    TextStyle(color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold);
+var userNameStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold),
+);
 
-const proposalBookNameStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold);
+var addressInfoStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: addressInfoColor, fontSize: 10),
+);
 
-const proposalBookGenreStyle = TextStyle(
-    color: genreTextColor, fontSize: 12, fontWeight: FontWeight.normal);
+var buttonTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: buttonTextColor, fontSize: 16),
+);
 
-const proposalBookAuthorStyle = TextStyle(
-    color: proposalBookAuthorColor,
-    fontSize: 12,
-    fontWeight: FontWeight.normal);
+var proposerNameStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: userNameColor, fontSize: 14, fontWeight: FontWeight.bold),
+);
 
-const proposalActionButtonStyle =
-    TextStyle(fontSize: 13, color: Colors.white, fontWeight: FontWeight.normal);
+var proposalBookNameStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold),
+);
+
+var proposalBookGenreStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: genreTextColor, fontSize: 12, fontWeight: FontWeight.normal),
+);
+
+var proposalBookAuthorStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: proposalBookAuthorColor,
+      fontSize: 12,
+      fontWeight: FontWeight.normal),
+);
+
+var proposalActionButtonStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      fontSize: 13, color: Colors.white, fontWeight: FontWeight.normal),
+);
 
 //Library Styles
 
-const librayUserNameStyle = TextStyle(
-    color: librayUserNameColor, fontSize: 17, fontWeight: FontWeight.bold);
+var librayUserNameStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: librayUserNameColor, fontSize: 17, fontWeight: FontWeight.bold),
+);
 
-const librayaContactStyle = TextStyle(color: librayaContactColor, fontSize: 10);
+var librayaContactStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: librayaContactColor, fontSize: 10),
+);
 
-const librayaFollowersStyle = TextStyle(color: mainColorGreen, fontSize: 8);
+var librayaFollowersStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: mainColorGreen, fontSize: 8),
+);
 
-const libraryProfileContactStyle =
-    TextStyle(color: libraryProfileContactColor, fontSize: 13);
+var libraryProfileContactStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryProfileContactColor, fontSize: 13),
+);
 
-const libraryFollowButtonTextStyle =
-    TextStyle(color: libraryFollowButtonTextColor, fontSize: 16);
+var libraryFollowButtonTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryFollowButtonTextColor, fontSize: 16),
+);
 
-const buttonBuyBookLibraryStyle =
-    TextStyle(color: libraryFollowButtonTextColor, fontSize: 12);
+var buttonBuyBookLibraryStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryFollowButtonTextColor, fontSize: 12),
+);
 
-const sellingDescriptionText = TextStyle(
-    color: librayUserNameColor, fontSize: 15, fontWeight: FontWeight.bold);
+var sellingDescriptionText = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: librayUserNameColor, fontSize: 15, fontWeight: FontWeight.bold),
+);
 
-const bookToSellStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 12, fontWeight: FontWeight.bold);
+var bookToSellStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 12, fontWeight: FontWeight.bold),
+);
 
 //PUBLICATION
-const libraryPublicationStyle = TextStyle(
-    color: libraryPublicationColor, fontSize: 14, fontWeight: FontWeight.bold);
+var libraryPublicationStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: libraryPublicationColor,
+      fontSize: 14,
+      fontWeight: FontWeight.bold),
+);
 
-const libraryPublicationTextStyle =
-    TextStyle(color: libraryPublicationColor, fontSize: 14);
-const buttonPubLibraryStyle =
-    TextStyle(color: libraryFollowButtonTextColor, fontSize: 16);
+var libraryPublicationTextStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryPublicationColor, fontSize: 14),
+);
 
-const userNamePubLibraryStyle = TextStyle(
-    color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold);
+var buttonPubLibraryStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryFollowButtonTextColor, fontSize: 16),
+);
+
+var userNamePubLibraryStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 15, fontWeight: FontWeight.bold),
+);
 
 //FORM LABEL STYLES
 
-const formLabelStyle =
-    TextStyle(color: libraryProfileContactColor, fontSize: 13);
+var formLabelStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryProfileContactColor, fontSize: 13),
+);
 
-const formButtonGreenlStyle = TextStyle(color: mainColorGreen, fontSize: 13);
+var formButtonGreenlStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: mainColorGreen, fontSize: 13),
+);
 
 //PASSWORD
 
-const customKeyBoardNumberStyle =
-    TextStyle(color: libraryProfileContactColor, fontSize: 23);
+var customKeyBoardNumberStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: libraryProfileContactColor, fontSize: 23),
+);
 
-const passwordMatchErrorStyle = TextStyle(color: mainColorRed, fontSize: 12);
+var passwordMatchErrorStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(color: mainColorRed, fontSize: 12),
+);
 
 getProgressColor(percent) {
   return (percent < 30)

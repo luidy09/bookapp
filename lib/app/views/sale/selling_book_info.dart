@@ -47,7 +47,7 @@ class SellingBookInfo extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("$timeago"),
+                Text("$timeago", style: timeagoStyle),
               ],
             ),
           ),
@@ -97,7 +97,7 @@ class SellingBookInfo extends StatelessWidget {
                       SizedBox(height: 10),
                       Text(
                         "${formatNumber(price)}",
-                        style: GoogleFonts.montserrat(textStyle: priceStyle),
+                        style: priceStyle,
                       ),
                     ],
                   ),
@@ -116,8 +116,7 @@ class SellingBookInfo extends StatelessWidget {
                       SizedBox(height: 10),
                       Text(
                         "$deliveryPayment",
-                        style: GoogleFonts.montserrat(
-                            textStyle: deliveryPriceStyle),
+                        style: deliveryPriceStyle,
                       ),
                     ],
                   ),

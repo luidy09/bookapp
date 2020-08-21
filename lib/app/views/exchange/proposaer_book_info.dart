@@ -37,7 +37,7 @@ class ProposerBookInfo extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text("$timeago"),
+                Text("$timeago", style: timeagoStyle),
               ],
             ),
           ),

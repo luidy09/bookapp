@@ -1,3 +1,4 @@
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
@@ -77,7 +78,7 @@ class LibraryBookSellingcard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "$price",
+                    "${formatNumber(price)}",
                     style: bookPriceStyle,
                   ),
                   Container(
