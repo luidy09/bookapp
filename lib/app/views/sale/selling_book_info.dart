@@ -15,9 +15,11 @@ class SellingBookInfo extends StatelessWidget {
       author,
       price,
       deliveryPrice,
-      delivery;
+      delivery,
+      timeago;
   SellingBookInfo(
       {Key key,
+      this.timeago,
       this.price,
       this.deliveryPrice,
       this.delivery,
@@ -39,7 +41,17 @@ class SellingBookInfo extends StatelessWidget {
       height: 200,
       child: Column(
         children: [
-          SizedBox(height: 20),
+          SizedBox(height: 10),
+          Container(
+            margin: EdgeInsets.only(right: 20),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text("$timeago"),
+              ],
+            ),
+          ),
+          SizedBox(height: 5),
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(

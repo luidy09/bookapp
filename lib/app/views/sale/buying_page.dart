@@ -118,6 +118,7 @@ class _BuyingPageState extends State<BuyingPage> {
                       delivery: widget.delivery,
                       price: widget.price,
                       deliveryPrice: deliveryPrice,
+                      timeago: "${widget.timeago}",
                     ),
                   ),
                 ],
