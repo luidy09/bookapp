@@ -10,6 +10,17 @@ class RegisterFirst extends StatefulWidget {
 }
 
 class _RegisterFirstState extends State<RegisterFirst> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController nomeController;
+  TextEditingController emailController;
+  TextEditingController enderecoController;
+  TextEditingController phoneController;
+  TextEditingController altphoneController;
+
+  validade() {
+    if (_formKey.currentState.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,115 +46,140 @@ class _RegisterFirstState extends State<RegisterFirst> {
           child: Center(
             child: SingleChildScrollView(
               child: Container(
-                  child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(
-                    height: 30.0,
-                  ),
-                  Container(
-                      child: TextField(
-                    style: formLabelStyle,
-                    decoration: InputDecoration(
-                        labelText: "Nome",
-                        contentPadding: EdgeInsets.only(top: 30)),
-                  )),
-                  Container(
-                      child: TextField(
-                    style: formLabelStyle,
-                    decoration: InputDecoration(
-                        labelText: "E-mail",
-                        contentPadding: EdgeInsets.only(top: 30)),
-                  )),
-                  Container(
-                      child: TextField(
-                    style: formLabelStyle,
-                    decoration: InputDecoration(
-                        labelText: "Endereço",
-                        contentPadding: EdgeInsets.only(top: 30)),
-                  )),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text("Telefone", style: formLabelStyle),
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            width: 50.0,
-                            child: TextField(
-                              style: formLabelStyle,
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hintText: "+244",
-                              ),
-                            )),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Expanded(
-                            child: Container(
-                                child: TextField(
-                          style: formLabelStyle,
-                        ))),
-                      ],
+                  child: Form(
+                key: _formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 30.0,
                     ),
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  ),
-                  Text(
-                    "Telefone (Alternativo)",
-                    style: formLabelStyle,
-                  ),
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            width: 50.0,
-                            child: TextField(
-                              style: formLabelStyle,
-                              enabled: false,
-                              decoration: InputDecoration(
-                                hintText: "+244",
-                              ),
-                            )),
-                        SizedBox(
-                          width: 10.0,
-                        ),
-                        Expanded(
-                          child: Container(
-                            child: TextField(
-                              style: formLabelStyle,
-                            ),
+                    Container(
+                        child: TextFormField(
+                      controller: nomeController,
+                      validator: (val) =>
+                          val == '' ? 'Digite o seu nome' : null,
+                      keyboardType: TextInputType.name,
+                      style: formLabelStyle,
+                      decoration: InputDecoration(
+                          labelText: "Nome",
+                          contentPadding: EdgeInsets.only(top: 30)),
+                    )),
+                    Container(
+                        child: TextFormField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      style: formLabelStyle,
+                      decoration: InputDecoration(
+                          labelText: "E-mail",
+                          contentPadding: EdgeInsets.only(top: 30)),
+                    )),
+                    Container(
+                        child: TextFormField(
+                      controller: enderecoController,
+                      validator: (val) =>
+                          val == '' ? 'Digite um endereço valido' : null,
+                      keyboardType: TextInputType.streetAddress,
+                      style: formLabelStyle,
+                      decoration: InputDecoration(
+                          labelText: "Endereço",
+                          contentPadding: EdgeInsets.only(top: 30)),
+                    )),
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text("Telefone", style: formLabelStyle),
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                              width: 50.0,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                style: formLabelStyle,
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  hintText: "+244",
+                                ),
+                              )),
+                          SizedBox(
+                            width: 10.0,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50),
-                    child: Center(
-                      child: Container(
-                        width: 160,
-                        child: FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      Password()));
-                            },
-                            padding: EdgeInsets.all(12.0),
-                            shape: RoundedRectangleBorder(
-                                side: BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(9.0)),
-                            child: Text(
-                              "Continuar",
-                              //style: styleButton,
-                            )),
+                          Expanded(
+                              child: Container(
+                                  child: TextFormField(
+                            controller: phoneController,
+                            validator: (val) => val == '' || val.length < 9
+                                ? 'Digite um telefone valido'
+                                : null,
+                            keyboardType: TextInputType.number,
+                            style: formLabelStyle,
+                          ))),
+                        ],
                       ),
                     ),
-                  )
-                ],
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      "Telefone (Alternativo)",
+                      style: formLabelStyle,
+                    ),
+                    Container(
+                      child: Row(
+                        children: <Widget>[
+                          Container(
+                              width: 50.0,
+                              child: TextField(
+                                keyboardType: TextInputType.number,
+                                style: formLabelStyle,
+                                enabled: false,
+                                decoration: InputDecoration(
+                                  hintText: "+244",
+                                ),
+                              )),
+                          SizedBox(
+                            width: 10.0,
+                          ),
+                          Expanded(
+                            child: Container(
+                              child: TextFormField(
+                                controller: altphoneController,
+                                validator: (val) => val == '' || val.length < 9
+                                    ? 'Digite um telefone valido'
+                                    : null,
+                                keyboardType: TextInputType.number,
+                                style: formLabelStyle,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50),
+                      child: Center(
+                        child: Container(
+                          width: 160,
+                          child: FlatButton(
+                              onPressed: () {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        Password()));
+                              },
+                              padding: EdgeInsets.all(12.0),
+                              shape: RoundedRectangleBorder(
+                                  side: BorderSide(color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(9.0)),
+                              child: Text(
+                                "Continuar",
+                                //style: styleButton,
+                              )),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               )),
             ),
           ),

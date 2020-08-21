@@ -2,7 +2,6 @@ import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
-import 'package:bookapp/app/views/library/library_publication_card.dart';
 import 'package:bookapp/app/views/publication/publication_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

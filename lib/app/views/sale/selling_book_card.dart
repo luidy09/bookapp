@@ -1,7 +1,4 @@
 import 'package:bookapp/app/components/selling_book_user_info_widget.dart';
-import 'package:bookapp/app/components/user_info_widget.dart';
-import 'package:bookapp/app/views/home/home_page.dart';
-import 'package:bookapp/app/views/registration/nif.dart';
 import 'package:bookapp/app/views/sale/buying_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -10,6 +10,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final _formKey = GlobalKey<FormState>();
+
+  TextEditingController phoneController;
+  TextEditingController senhaController;
+
+  validade() {
+    if (_formKey.currentState.validate()) {}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,40 +36,55 @@ class _LoginState extends State<Login> {
                     height: 30.0,
                   ),
                   Text("Telefone", style: formLabelStyle),
-                  Container(
-                    child: Row(
-                      children: <Widget>[
-                        Container(
-                            //PUT DISABLED BORDER COLOR
-                            width: 50.0,
-                            child: TextField(
+                  Form(
+                    key: _formKey,
+                    child: Column(children: <Widget>[
+                      Container(
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                                //PUT DISABLED BORDER COLOR
+                                width: 50.0,
+                                child: TextFormField(
+                                  controller: phoneController,
+                                  keyboardType: TextInputType.phone,
+                                  style: formLabelStyle,
+                                  enabled: false,
+                                  validator: (val) => val == ''
+                                      ? 'Digite o seu terminal'
+                                      : null,
+                                  decoration: InputDecoration(
+                                      hintText: "+244",
+                                      disabledBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: buttonBorderColor),
+                                      )),
+                                )),
+                            SizedBox(
+                              width: 10.0,
+                            ),
+                            Expanded(
+                                child: Container(
+                                    child: TextField(
                               style: formLabelStyle,
-                              enabled: false,
-                              decoration: InputDecoration(
-                                  hintText: "+244",
-                                  disabledBorder: UnderlineInputBorder(
-                                    borderSide:
-                                        BorderSide(color: buttonBorderColor),
-                                  )),
-                            )),
-                        SizedBox(
-                          width: 10.0,
+                            ))),
+                          ],
                         ),
-                        Expanded(
-                            child: Container(
-                                child: TextField(
-                          style: formLabelStyle,
-                        ))),
-                      ],
-                    ),
+                      ),
+                      Container(
+                          child: TextFormField(
+                            controller: senhaController,
+                        obscureText: true,
+                        keyboardType: TextInputType.number,
+                        style: formLabelStyle,
+                        validator: (val) =>
+                            val == '' ? 'Digite a sua senha' : null,
+                        decoration: InputDecoration(
+                            labelText: "Senha",
+                            contentPadding: EdgeInsets.only(top: 50)),
+                      )),
+                    ]),
                   ),
-                  Container(
-                      child: TextField(
-                    style: formLabelStyle,
-                    decoration: InputDecoration(
-                        labelText: "Senha",
-                        contentPadding: EdgeInsets.only(top: 50)),
-                  )),
                   SizedBox(
                     height: 40.0,
                   ),

@@ -1,7 +1,6 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/utils/functions/random_digits.dart';
-import 'package:bookapp/app/views/sale/sale.dart';
 import 'package:bookapp/app/views/sale/selling_book_info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
