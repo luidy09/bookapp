@@ -17,9 +17,11 @@ class ExchangeDetail extends StatefulWidget {
       phone1,
       phone2,
       author,
-      bookImage;
+      bookImage,
+      timeago;
   ExchangeDetail(
       {Key key,
+      this.timeago,
       this.isMine,
       this.author,
       this.bookImage,
@@ -119,6 +121,7 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
                       phone1: widget.phone1,
                       phone2: widget.phone2,
                       author: widget.author,
+                      timeago: widget.timeago,
                     ),
                   ),
                 ],

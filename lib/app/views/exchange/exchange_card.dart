@@ -90,6 +90,7 @@ class ExchangeCard extends StatelessWidget {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) => ExchangeDetail(
+                            timeago: timeago,
                             isMine: isMine,
                             userImage: userImage,
                             username: username,

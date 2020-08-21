@@ -38,7 +38,7 @@ class SellingBookInfo extends StatelessWidget {
     var deliveryPayment =
         delivery ? formatNumber(deliveryPrice) : "Sem entrega";
     return Container(
-      height: 200,
+      height: 210,
       child: Column(
         children: [
           SizedBox(height: 10),
