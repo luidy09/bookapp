@@ -78,6 +78,12 @@ const bookPriceStyle = TextStyle(
 const genreStyle = TextStyle(
     color: genreTextColor, fontSize: 16, fontWeight: FontWeight.normal);
 
+const priceStyle = TextStyle(
+    color: mainColorDarkBlue, fontSize: 16, fontWeight: FontWeight.normal);
+
+const deliveryPriceStyle =
+    TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.normal);
+
 const genreSmallRedStyle =
     TextStyle(color: mainColorRed, fontSize: 11, fontWeight: FontWeight.normal);
 
