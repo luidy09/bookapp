@@ -1,12 +1,26 @@
 import 'package:bookapp/app/components/user_info_widget.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SellingBookInfo extends StatelessWidget {
-  final genre, username, userImage, address, email, phone1, phone2, author;
+  final genre,
+      username,
+      userImage,
+      address,
+      email,
+      phone1,
+      phone2,
+      author,
+      price,
+      deliveryPrice,
+      delivery;
   SellingBookInfo(
       {Key key,
+      this.price,
+      this.deliveryPrice,
+      this.delivery,
       this.author,
       this.genre,
       this.username,
@@ -19,6 +33,8 @@ class SellingBookInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var deliveryPayment =
+        delivery ? formatNumber(deliveryPrice) : "Sem entrega";
     return Container(
       height: 200,
       child: Column(
@@ -68,7 +84,7 @@ class SellingBookInfo extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "2500.00 AOA",
+                        "${formatNumber(price)}",
                         style: GoogleFonts.montserrat(textStyle: priceStyle),
                       ),
                     ],
@@ -87,7 +103,7 @@ class SellingBookInfo extends StatelessWidget {
                       ),
                       SizedBox(height: 10),
                       Text(
-                        "1000.00 AOA",
+                        "$deliveryPayment",
                         style: GoogleFonts.montserrat(
                             textStyle: deliveryPriceStyle),
                       ),

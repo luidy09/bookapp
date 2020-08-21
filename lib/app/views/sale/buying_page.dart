@@ -1,19 +1,61 @@
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/utils/functions/random_digits.dart';
-import 'package:bookapp/app/views/exchange/proposaer_book_info.dart';
-import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/sale/sale.dart';
 import 'package:bookapp/app/views/sale/selling_book_info.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BuyingPage extends StatefulWidget {
+  final sellingId,
+      title,
+      timeago,
+      author,
+      genre,
+      bookImage,
+      price,
+      username,
+      address,
+      email,
+      phone1,
+      phone2,
+      userImage,
+      delivery,
+      isFromProfile;
+
+  BuyingPage({
+    this.isFromProfile = false,
+    this.delivery = false,
+    this.author,
+    this.bookImage,
+    this.genre,
+    this.price,
+    this.sellingId,
+    this.timeago,
+    this.title,
+    this.userImage,
+    this.address,
+    this.email,
+    this.phone1,
+    this.phone2,
+    this.username,
+  });
+
   @override
   _BuyingPageState createState() => _BuyingPageState();
 }
 
 class _BuyingPageState extends State<BuyingPage> {
   TextEditingController codController = TextEditingController();
+
+  double deliveryPrice;
+
+  @override
+  void initState() {
+    super.initState();
+
+    deliveryPrice = widget.delivery ? 1000.00 : 0.00;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +64,7 @@ class _BuyingPageState extends State<BuyingPage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
-        title: Text("A Arte de Seguir Alguém ",
+        title: Text("${widget.title}",
             style: GoogleFonts.montserrat(
                 textStyle: TextStyle(
               color: Color(0xFF1A002D),
@@ -31,8 +73,7 @@ class _BuyingPageState extends State<BuyingPage> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (BuildContext contetx) => Sale()));
+              Navigator.of(context).pop(context);
             }),
       ),
       body: SingleChildScrollView(
@@ -50,7 +91,7 @@ class _BuyingPageState extends State<BuyingPage> {
                           height: 230,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/landbook4.jpeg"),
+                              image: AssetImage("${widget.bookImage}"),
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -66,15 +107,17 @@ class _BuyingPageState extends State<BuyingPage> {
                     left: 10,
                     right: 10,
                     child: SellingBookInfo(
-                      userImage:
-                          "assets/images/users/photo-1463453091185-61582044d556.jpeg",
-                      username: "Livraria Lelo",
-                      address: "Luanda, Rua Amilcar Cabral , N 123",
-                      genre: "Motivacional",
-                      email: "lelo@gmail.com",
-                      phone1: "222 333 345",
-                      phone2: "923 454 567",
-                      author: "Dárdano Santos",
+                      userImage: "${widget.userImage}",
+                      username: "${widget.username}",
+                      address: "${widget.address}",
+                      genre: "${widget.genre}",
+                      email: "${widget.email}",
+                      phone1: "${widget.phone1}",
+                      phone2: "${widget.phone2}",
+                      author: "${widget.author}",
+                      delivery: widget.delivery,
+                      price: widget.price,
+                      deliveryPrice: deliveryPrice,
                     ),
                   ),
                 ],
@@ -107,7 +150,7 @@ class _BuyingPageState extends State<BuyingPage> {
                     ),
                     Container(
                         child: Text(
-                      "3500.00 AOA",
+                      "${formatNumber(deliveryPrice + widget.price)}",
                       style: GoogleFonts.montserrat(
                           textStyle: TextStyle(
                               fontSize: 18,

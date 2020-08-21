@@ -195,14 +195,29 @@ class SellingBookCard extends StatelessWidget {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (BuildContext contetx) =>
-                                              BuyingPage(),
+                                              BuyingPage(
+                                            delivery: true,
+                                            author: author,
+                                            bookImage: bookImage,
+                                            genre: genre,
+                                            price: price,
+                                            sellingId: sellingId,
+                                            timeago: timeago,
+                                            title: title,
+                                            userImage: userImage,
+                                            address: address,
+                                            email: email,
+                                            phone1: phone1,
+                                            phone2: phone2,
+                                            username: username,
+                                          ),
                                         ),
                                       );
                                     },
-                                    child: cardUserType(
-                                        type: " Com entrega",
-                                        typeIcon: Icons.motorcycle,
-                                        delivery: true),
+                                    child: cardReceptionType(
+                                      type: " Com entrega",
+                                      typeIcon: Icons.motorcycle,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: 20,
@@ -213,11 +228,25 @@ class SellingBookCard extends StatelessWidget {
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
                                           builder: (BuildContext contetx) =>
-                                              BuyingPage(),
+                                              BuyingPage(
+                                            author: author,
+                                            bookImage: bookImage,
+                                            genre: genre,
+                                            price: price,
+                                            sellingId: sellingId,
+                                            timeago: timeago,
+                                            title: title,
+                                            userImage: userImage,
+                                            address: address,
+                                            email: email,
+                                            phone1: phone1,
+                                            phone2: phone2,
+                                            username: username,
+                                          ),
                                         ),
                                       );
                                     },
-                                    child: cardUserType(
+                                    child: cardReceptionType(
                                       type: "Sem entrega",
                                       typeIcon: Icons.directions_walk,
                                     ),
@@ -235,7 +264,7 @@ class SellingBookCard extends StatelessWidget {
         });
   }
 
-  Widget cardUserType({type, typeIcon, bool delivery = false}) {
+  Widget cardReceptionType({type, typeIcon}) {
     return Container(
       height: 53,
       decoration: BoxDecoration(
