@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
 
-class LibraryProfileInfoCard extends StatelessWidget {
+class LibraryProfileInfoCard extends StatefulWidget {
   final images, username, userImage, address, email, phone1, phone2;
 
   LibraryProfileInfoCard({
@@ -15,6 +15,24 @@ class LibraryProfileInfoCard extends StatelessWidget {
     this.phone1,
     this.phone2,
   });
+
+  @override
+  _LibraryProfileInfoCardState createState() => _LibraryProfileInfoCardState();
+}
+
+class _LibraryProfileInfoCardState extends State<LibraryProfileInfoCard> {
+  bool isFollowing = false;
+
+  follow() {
+    setState(() {
+      if (!isFollowing) {
+        isFollowing = true;
+      } else {
+        isFollowing = false;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,25 +47,29 @@ class LibraryProfileInfoCard extends StatelessWidget {
               CircleAvatar(
                 radius: 60,
                 backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage("$userImage"),
+                backgroundImage: AssetImage("${widget.userImage}"),
               ),
               SizedBox(height: 10),
-              Container(child: Text("$username", style: librayUserNameStyle)),
+              Container(
+                  child:
+                      Text("${widget.username}", style: librayUserNameStyle)),
               SizedBox(
                 height: 5,
               ),
               Container(
-                  child: Text("$address", style: libraryProfileContactStyle)),
+                  child: Text("${widget.address}",
+                      style: libraryProfileContactStyle)),
               SizedBox(
                 height: 5,
               ),
               Container(
-                  child: Text("$email", style: libraryProfileContactStyle)),
+                  child: Text("${widget.email}",
+                      style: libraryProfileContactStyle)),
               SizedBox(
                 height: 5,
               ),
               Container(
-                child: Text("$phone1 / $phone2",
+                child: Text("${widget.phone1} / ${widget.phone2}",
                     style: libraryProfileContactStyle),
               ),
               SizedBox(
@@ -63,8 +85,8 @@ class LibraryProfileInfoCard extends StatelessWidget {
                   children: [
                     ImageStackCustom(
                       isUrl: false,
-                      totalCount: images.length,
-                      imageList: images,
+                      totalCount: widget.images.length,
+                      imageList: widget.images,
                       imageRadius: 25, // Radius of each images
                       imageCount:
                           3, // Maximum number of images to be shown in stack
@@ -81,9 +103,12 @@ class LibraryProfileInfoCard extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(7)),
                   padding: EdgeInsets.symmetric(horizontal: 45),
-                  color: mainColorGreen,
-                  onPressed: () {},
-                  child: Text("Seguir", style: libraryFollowButtonTextStyle),
+                  color: isFollowing ? mainColorDarkBlue : mainColorGreen,
+                  onPressed: () {
+                    follow();
+                  },
+                  child: Text(isFollowing ? "Seguindo" : "Seguir",
+                      style: libraryFollowButtonTextStyle),
                 ),
               ),
             ],
