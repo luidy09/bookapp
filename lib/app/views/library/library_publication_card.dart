@@ -1,3 +1,4 @@
+import 'package:bookapp/app/views/publication/publication_detail.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
@@ -91,7 +92,10 @@ class LibraryPublicationCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(7)),
                 padding: EdgeInsets.symmetric(horizontal: 40),
                 color: mainColorGreen,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (BuildContext context) => PublicationDetail()));
+                },
                 child: Text("Ver mais", style: buttonPubLibraryStyle),
               ),
             ),

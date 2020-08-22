@@ -190,13 +190,15 @@ class _ExchangeState extends State<Exchange> {
                         if (!isActiveButton) changeActive(0);
                       },
                       child: Text("Disponível",
-                          style: (isActiveButton)
-                              ? TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)
-                              : TextStyle(
-                                  fontSize: 16, color: Color(0xff9C9C9C))),
+                          style: GoogleFonts.montserrat(
+                            textStyle: (isActiveButton)
+                                ? TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)
+                                : TextStyle(
+                                    fontSize: 16, color: Color(0xff9C9C9C)),
+                          )),
                     ),
                     FlatButton(
                       shape: RoundedRectangleBorder(
@@ -210,13 +212,15 @@ class _ExchangeState extends State<Exchange> {
                         if (isActiveButton) changeActive(1);
                       },
                       child: Text("Meus Livros",
-                          style: (!isActiveButton)
-                              ? TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold)
-                              : TextStyle(
-                                  fontSize: 16, color: Color(0xff9C9C9C))),
+                          style: GoogleFonts.montserrat(
+                            textStyle: (!isActiveButton)
+                                ? TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold)
+                                : TextStyle(
+                                    fontSize: 16, color: Color(0xff9C9C9C)),
+                          )),
                     )
                   ],
                 ),

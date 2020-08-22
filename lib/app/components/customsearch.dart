@@ -6,6 +6,7 @@ import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomSearch extends StatefulWidget {
   @override
@@ -80,7 +81,9 @@ class _CustomSearchState extends State<CustomSearch> {
                                 color: Color(0xFF1A002D)),
                           ),
                     hintText: 'Pesquisar',
-                    hintStyle: TextStyle(),
+                    hintStyle: GoogleFonts.montserrat(
+                      textStyle: TextStyle(),
+                    ),
                     border: InputBorder.none,
                   ),
                 ),

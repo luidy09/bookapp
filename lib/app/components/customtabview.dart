@@ -5,6 +5,7 @@ import 'package:bookapp/app/utils/size_config.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomTabView extends StatefulWidget {
   CustomTabView({Key key}) : super(key: key);
@@ -123,12 +124,16 @@ class _CustomTabViewState extends State<CustomTabView> {
                           EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                       backgroundColor: mainColorGreen,
                       unselectedBackgroundColor: reducedColorGreen,
-                      unselectedLabelStyle:
-                          TextStyle(fontSize: 16, color: Color(0xff9C9C9C)),
-                      labelStyle: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                      unselectedLabelStyle: GoogleFonts.montserrat(
+                        textStyle:
+                            TextStyle(fontSize: 16, color: Color(0xff9C9C9C)),
+                      ),
+                      labelStyle: GoogleFonts.montserrat(
+                        textStyle: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
+                      ),
                       tabs: listaTab,
                     ),
                     SizedBox(height: SizeConfig.isMall ? 5.0 : 10),

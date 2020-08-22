@@ -15,6 +15,8 @@ const containerBorderColor = Color(0xffCECECE);
 
 var librayContainerColor = Color(0xffA2A2A2).withAlpha(10);
 
+var simpleBackgroundContainerColor = Color(0xffA2A2A2).withAlpha(10);
+
 const timeagoColor = Color(0xff9C9C9C);
 const authorNameColor = Color(0xffA9A9A9);
 const genreTextColor = Color(0xffEA5840);
@@ -27,6 +29,8 @@ const buttonBorderColor = Color(0xff707070);
 const buttonTextColor = Color(0xff0A0808);
 
 const proposalBookAuthorColor = Color(0xff8D8D8D);
+
+const pubBorderColor = Color(0xff979797);
 
 //HOME
 
@@ -54,6 +58,11 @@ var bookTitleStyle = GoogleFonts.montserrat(
       color: mainColorDarkBlue, fontSize: 17, fontWeight: FontWeight.bold),
 );
 
+var publicationTitleStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(
+      color: mainColorDarkBlue, fontSize: 16, fontWeight: FontWeight.bold),
+);
+
 var passwordDescriptionTitleStyle = GoogleFonts.montserrat(
   textStyle: TextStyle(
       color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold),
@@ -63,6 +72,8 @@ var userTypeTextStyle = GoogleFonts.montserrat(
   textStyle: TextStyle(
       color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold),
 );
+
+
 
 var nifTextStyle = GoogleFonts.montserrat(
   textStyle: TextStyle(

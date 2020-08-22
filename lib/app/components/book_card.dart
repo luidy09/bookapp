@@ -56,8 +56,7 @@ class BookCard extends StatelessWidget {
           padding: const EdgeInsets.only(left: 5.0, right: 5.0),
           margin: EdgeInsets.only(top: SizeConfig.isMall ? 5.0 : 10.0),
           decoration: BoxDecoration(
-              //color: simpleGray,
-              border: Border.all(color: simpleGray, width: 1),
+              color: simpleBackgroundContainerColor,
               borderRadius: BorderRadius.circular(10)),
           width: double.infinity,
           height: (SizeConfig.isMall) ? 75 : 100,
@@ -91,7 +90,9 @@ class BookCard extends StatelessWidget {
                           Container(
                             child: Text(
                               '$genre',
-                              style: TextStyle(color: Color(0XFFEB852E)),
+                              style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(color: Color(0XFFEB852E)),
+                              ),
                             ),
                           ),
                           Expanded(
@@ -116,7 +117,9 @@ class BookCard extends StatelessWidget {
                       SizedBox(height: SizeConfig.isMall ? 0 : 5),
                       Text(
                         '$author',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: GoogleFonts.montserrat(
+                          textStyle: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                       ),
                       SizedBox(height: SizeConfig.isMall ? 0 : 5.0),
                       Row(
@@ -133,14 +136,16 @@ class BookCard extends StatelessWidget {
                                 right: 10.0, top: SizeConfig.isMall ? 7 : 0),
                             child: Text(
                               "$percent%",
-                              style: TextStyle(
-                                color: (percent < 30)
-                                    ? Colors.redAccent
-                                    : (percent >= 30 && percent < 60)
-                                        ? Colors.orange
-                                        : Color(0xff7adbcb),
-                                fontSize: SizeConfig.isMall ? 7 : 13,
-                                fontWeight: FontWeight.normal,
+                              style: GoogleFonts.montserrat(
+                                textStyle: TextStyle(
+                                  color: (percent < 30)
+                                      ? Colors.redAccent
+                                      : (percent >= 30 && percent < 60)
+                                          ? Colors.orange
+                                          : Color(0xff7adbcb),
+                                  fontSize: SizeConfig.isMall ? 7 : 13,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
                             ),
                           )
