@@ -92,35 +92,47 @@ class _LibraryProfileState extends State<LibraryProfile> {
 
   List<Widget> publications = [
     LibraryPublicationCard(
-      username: "Livraria Lelo",
-      content:
-          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
-      pubId: 1,
-      pubImage: "assets/images/landbook1.jpg",
-      timeago: "há 1 dia",
-      title: "Promoção mês de Agosto",
-      userImage: "assets/images/users/NTIxMTkuanBn.jpg",
-    ),
+        username: "Livraria Lelo",
+        content:
+            "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+        pubId: 1,
+        pubImage: "assets/images/landbook1.jpg",
+        timeago: "há 1 dia",
+        title: "Promoção mês de Agosto",
+        userImage: "assets/images/users/NTIxMTkuanBn.jpg",
+        address: "Luanda, Rua Amilcar Cabral , N 123",
+        email: "livrarialelo@gmail.com",
+        phone1: "998 930 345",
+        phone2: "924 678 234",
+        reactions: 6),
     LibraryPublicationCard(
-      username: "Livraria Lelo",
-      content:
-          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
-      pubId: 1,
-      pubImage: "assets/images/book_landscape.jpg",
-      timeago: "há 1 dia",
-      title: "Promoção mês de Agosto",
-      userImage: "assets/images/users/MzYyNTIuanBn.jpg",
-    ),
+        username: "Livraria Lelo",
+        content:
+            "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+        pubId: 1,
+        pubImage: "assets/images/book_landscape.jpg",
+        timeago: "há 1 dia",
+        title: "Promoção mês de Agosto",
+        userImage: "assets/images/users/MzYyNTIuanBn.jpg",
+        address: "Luanda, Rua Amilcar Cabral , N 123",
+        email: "livrarialelo@gmail.com",
+        phone1: "998 930 345",
+        phone2: "924 678 234",
+        reactions: 6),
     LibraryPublicationCard(
-      username: "Livraria Lelo",
-      content:
-          "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
-      pubId: 1,
-      pubImage: "assets/images/landbook.jpg",
-      timeago: "há 1 dia",
-      title: "Promoção mês de Agosto",
-      userImage: "assets/images/users/XzAzMDE4MzAuanBn.jpg",
-    ),
+        username: "Livraria Lelo",
+        content:
+            "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
+        pubId: 1,
+        pubImage: "assets/images/landbook.jpg",
+        timeago: "há 1 dia",
+        title: "Promoção mês de Agosto",
+        userImage: "assets/images/users/XzAzMDE4MzAuanBn.jpg",
+        address: "Luanda, Rua Amilcar Cabral , N 123",
+        email: "livrarialelo@gmail.com",
+        phone1: "998 930 345",
+        phone2: "924 678 234",
+        reactions: 6),
   ];
 
   @override

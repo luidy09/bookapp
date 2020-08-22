@@ -4,17 +4,32 @@ import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
 
 class LibraryPublicationCard extends StatelessWidget {
-  final pubId, username, userImage, timeago, title, content, pubImage;
+  final pubId,
+      username,
+      userImage,
+      timeago,
+      title,
+      content,
+      pubImage,
+      address,
+      email,
+      phone1,
+      phone2,
+      reactions;
 
-  LibraryPublicationCard({
-    this.username,
-    this.content,
-    this.pubId,
-    this.pubImage,
-    this.timeago,
-    this.title,
-    this.userImage,
-  });
+  LibraryPublicationCard(
+      {this.username,
+      this.content,
+      this.pubId,
+      this.pubImage,
+      this.timeago,
+      this.title,
+      this.userImage,
+      this.address,
+      this.email,
+      this.phone1,
+      this.phone2,
+      this.reactions});
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +109,19 @@ class LibraryPublicationCard extends StatelessWidget {
                 color: mainColorGreen,
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => PublicationDetail()));
+                      builder: (BuildContext context) => PublicationDetail(
+                            title: title,
+                            username: username,
+                            userImage: userImage,
+                            timeago: timeago,
+                            content: content,
+                            pubImage: pubImage,
+                            address: address,
+                            phone1: phone1,
+                            phone2: phone2,
+                            email: email,
+                            reactions: reactions,
+                          )));
                 },
                 child: Text("Ver mais", style: buttonPubLibraryStyle),
               ),

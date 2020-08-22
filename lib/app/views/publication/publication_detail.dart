@@ -4,15 +4,60 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PublicationDetail extends StatefulWidget {
-  PublicationDetail({Key key}) : super(key: key);
+  final username,
+      address,
+      email,
+      phone1,
+      phone2,
+      userImage,
+      title,
+      pubImage,
+      content,
+      timeago,
+      reactions;
+  PublicationDetail({
+    Key key,
+    this.content,
+    this.title,
+    this.timeago,
+    this.reactions,
+    this.pubImage,
+    this.userImage,
+    this.address,
+    this.email,
+    this.phone1,
+    this.phone2,
+    this.username,
+  }) : super(key: key);
 
   @override
   _PublicationDetailState createState() => _PublicationDetailState();
 }
 
 class _PublicationDetailState extends State<PublicationDetail> {
-  String text =
-      "“Será a vida tão cara, ou a paz tão doce, que devam ser compradas ao preço de correntes e escravidão? Não permitais isso, Deus Todo-Poderoso! Não sei que rumo tomarão os outros; quanto a mim, dai-me a liberdade ou dai-me a morte!” ”Excerto de: Ben Dupré. “50 grandes ideias da humanidade que você precisa conhecer (Coleção 50 ideias)”. iBooks. ";
+  bool reacted = false;
+  int reactions;
+
+  react() {
+    setState(() {
+      if (!reacted) {
+        reactions++;
+        reacted = true;
+      } else {
+        reactions--;
+        reacted = false;
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    reactions = widget.reactions;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,6 +66,11 @@ class _PublicationDetailState extends State<PublicationDetail> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         centerTitle: true,
+        title: Text("${widget.username}",
+            style: GoogleFonts.montserrat(
+                textStyle: TextStyle(
+              color: Color(0XFF1A002D),
+            ))),
         elevation: 0.0,
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
@@ -43,8 +93,7 @@ class _PublicationDetailState extends State<PublicationDetail> {
                             height: 260,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image:
-                                    AssetImage("assets/images/landbook2.jpg"),
+                                image: AssetImage("${widget.pubImage}"),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -59,18 +108,27 @@ class _PublicationDetailState extends State<PublicationDetail> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("13 Agosto de 2019",
+                                    Text("${widget.timeago}",
                                         style: timeagoMdStyle),
                                     Container(
                                       height: 25,
                                       child: Row(
                                         children: [
-                                          Icon(Icons.favorite,
-                                              color: Color(0xff979797)),
+                                          IconButton(
+                                            icon: Icon(Icons.favorite,
+                                                color: (reacted)
+                                                    ? mainColorRed
+                                                    : Color(0xff979797)),
+                                            onPressed: () {
+                                              react();
+                                            },
+                                          ),
                                           Container(
                                             margin: EdgeInsets.only(top: 10),
                                             child: Text(
-                                              "999",
+                                              (reactions > 0)
+                                                  ? "$reactions"
+                                                  : "",
                                               style: TextStyle(
                                                   fontSize: 12,
                                                   color: Color(0xff979797)),
@@ -88,12 +146,12 @@ class _PublicationDetailState extends State<PublicationDetail> {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: UserInfoMinWidget(
-                              userImage: "assets/images/users/89.jpg",
-                              address: "Luanda, Rua Amilcar Cabral , N 123",
-                              email: "lelo@gmail.com",
-                              phone1: "222 333 345 ",
-                              phone2: "923 454 567",
-                              username: "Jane Doe",
+                              userImage: "${widget.userImage}",
+                              address: "${widget.address}",
+                              email: "${widget.email}",
+                              phone1: "${widget.phone1}",
+                              phone2: "${widget.phone2}",
+                              username: "${widget.username}",
                             ),
                           ),
                           SizedBox(
@@ -115,7 +173,7 @@ class _PublicationDetailState extends State<PublicationDetail> {
                               children: [
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  child: Text("Promoção para o mes de Abril ",
+                                  child: Text("${widget.title} ",
                                       style: publicationTitleStyle),
                                 ),
                                 SizedBox(
@@ -123,7 +181,7 @@ class _PublicationDetailState extends State<PublicationDetail> {
                                 ),
                                 Container(
                                   alignment: Alignment.topLeft,
-                                  child: Text("$text",
+                                  child: Text("${widget.content}",
                                       textAlign: TextAlign.justify,
                                       style: GoogleFonts.montserrat(
                                         textStyle: TextStyle(
