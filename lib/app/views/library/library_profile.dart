@@ -24,7 +24,7 @@ class LibraryProfile extends StatefulWidget {
 }
 
 class _LibraryProfileState extends State<LibraryProfile> {
-  List<String> images = [
+  List<String> followerImages = [
     "assets/images/users/n4Ngwvi7.jpg",
     "assets/images/users/NTIxMTkuanBn.jpg",
     "assets/images/users/KtCFjlD4.jpg",
@@ -162,7 +162,7 @@ class _LibraryProfileState extends State<LibraryProfile> {
             mainAxisSize: MainAxisSize.min,
             children: [
               LibraryProfileInfoCard(
-                images: images,
+                images: followerImages,
                 userImage: widget.userImage,
                 username: widget.username,
                 address: widget.address,
