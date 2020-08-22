@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:bookapp/app/utils/constants.dart';
 
@@ -74,16 +75,21 @@ class ProposalCard extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 114,
-                    width: 96,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(6),
-                        ),
-                        image: DecorationImage(
-                            image: AssetImage("$bookImage"),
-                            fit: BoxFit.cover)),
+                  InkWell(
+                    onTap: () {
+                      ShowBookImageDialog.show(context, bookImage, title);
+                    },
+                    child: Container(
+                      height: 114,
+                      width: 96,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(6),
+                          ),
+                          image: DecorationImage(
+                              image: AssetImage("$bookImage"),
+                              fit: BoxFit.cover)),
+                    ),
                   ),
                   SizedBox(
                     width: 15,

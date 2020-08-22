@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/utils/functions/random_digits.dart';
@@ -86,12 +87,18 @@ class _BuyingPageState extends State<BuyingPage> {
                   Container(
                     child: Column(
                       children: [
-                        Container(
-                          height: 230,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("${widget.bookImage}"),
-                              fit: BoxFit.cover,
+                        InkWell(
+                          onTap: () {
+                            ShowBookImageDialog.show(
+                                context, widget.bookImage, widget.title);
+                          },
+                          child: Container(
+                            height: 230,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("${widget.bookImage}"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),

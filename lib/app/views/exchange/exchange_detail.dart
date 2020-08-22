@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/exchange/exchange.dart';
 import 'package:bookapp/app/views/exchange/proposaer_book_info.dart';
@@ -59,7 +60,7 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
         title: "Lueji",
         userImage: "assets/images/users/XzAzMDE4MzAuanBn.jpg",
         username: "Pacú \$",
-        bookImage:  "assets/images/booksimages/lueji.jpg")
+        bookImage: "assets/images/booksimages/lueji.jpg")
   ];
   @override
   Widget build(BuildContext context) {
@@ -92,12 +93,18 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
                   Container(
                     child: Column(
                       children: [
-                        Container(
-                          height: 230,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("${widget.bookImage}"),
-                              fit: BoxFit.cover,
+                        InkWell(
+                          onTap: () {
+                            ShowBookImageDialog.show(
+                                context, widget.bookImage, widget.title);
+                          },
+                          child: Container(
+                            height: 230,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("${widget.bookImage}"),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                         ),
@@ -113,6 +120,7 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
                     left: 10,
                     right: 10,
                     child: ProposerBookInfo(
+                      numProposes: proposals.length,
                       userImage: widget.userImage,
                       username: widget.username,
                       address: widget.address,

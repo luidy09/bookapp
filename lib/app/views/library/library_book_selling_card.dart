@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/views/sale/buying_page.dart';
 import 'package:flutter/material.dart';
@@ -65,12 +66,17 @@ class LibraryBookSellingcard extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 180,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                      image: AssetImage("$bookImage"), fit: BoxFit.cover)),
+            InkWell(
+              onTap: () {
+                ShowBookImageDialog.show(context, bookImage, title);
+              },
+              child: Container(
+                height: 180,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("$bookImage"), fit: BoxFit.cover)),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(

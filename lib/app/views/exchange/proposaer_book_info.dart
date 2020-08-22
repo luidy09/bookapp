@@ -11,9 +11,11 @@ class ProposerBookInfo extends StatelessWidget {
       email,
       phone1,
       phone2,
-      author;
+      author,
+      numProposes;
   ProposerBookInfo(
       {Key key,
+      this.numProposes,
       this.timeago,
       this.author,
       this.genre,
@@ -27,16 +29,19 @@ class ProposerBookInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var proposta =
+        (numProposes > 0) ? "( $numProposes ) Propostas" : "Sem propostas";
     return Container(
       height: 156,
       child: Column(
         children: [
           SizedBox(height: 10),
           Container(
-            margin: EdgeInsets.only(right: 20),
+            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Text("$proposta", style: timeagoStyle),
                 Text("$timeago", style: timeagoStyle),
               ],
             ),

@@ -1,4 +1,5 @@
 import 'package:bookapp/app/components/selling_book_user_info_widget.dart';
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:bookapp/app/views/sale/buying_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -65,12 +66,18 @@ class SellingBookCard extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 180,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  image: DecorationImage(
-                      image: AssetImage("$bookImage"), fit: BoxFit.cover)),
+            InkWell(
+              onTap: () {
+                ShowBookImageDialog.show(context, bookImage, title);
+                print("Clicked");
+              },
+              child: Container(
+                height: 180,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    image: DecorationImage(
+                        image: AssetImage("$bookImage"), fit: BoxFit.cover)),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(

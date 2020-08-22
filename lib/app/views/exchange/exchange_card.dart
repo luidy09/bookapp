@@ -1,3 +1,4 @@
+import 'package:bookapp/app/components/show_book_image_dialog.dart';
 import 'package:bookapp/app/components/user_info_widget.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/exchange/exchange_detail.dart';
@@ -54,11 +55,16 @@ class ExchangeCard extends StatelessWidget {
                   Text("$timeago", style: timeagoStyle)
                 ],
               )),
-          Container(
-            height: 200,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("$bookImage"), fit: BoxFit.cover),
+          InkWell(
+            onTap: () {
+              ShowBookImageDialog.show(context, bookImage, title);
+            },
+            child: Container(
+              height: 200,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("$bookImage"), fit: BoxFit.cover),
+              ),
             ),
           ),
           Container(
