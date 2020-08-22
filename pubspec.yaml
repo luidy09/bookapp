@@ -60,6 +60,8 @@ flutter:
   assets:
     - assets/images/users/
     - assets/images/
+    - assets/images/libraries/
+    - assets/images/booksimages/
     - assets/images/book.png
     - assets/images/readbook.png
     - assets/images/bookCa.png

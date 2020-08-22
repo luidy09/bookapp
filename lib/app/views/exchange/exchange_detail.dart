@@ -59,7 +59,7 @@ class _ExchangeDetailState extends State<ExchangeDetail> {
         title: "Lueji",
         userImage: "assets/images/users/XzAzMDE4MzAuanBn.jpg",
         username: "Pacú \$",
-        bookImage: "assets/images/3596.jpg")
+        bookImage:  "assets/images/booksimages/lueji.jpg")
   ];
   @override
   Widget build(BuildContext context) {

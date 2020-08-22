@@ -34,7 +34,7 @@ class _LibraryProfileState extends State<LibraryProfile> {
   List<Widget> books = [
     LibraryBookSellingcard(
         author: "Dárdano Santos",
-        bookImage: "assets/images/landbook3.jpg",
+        bookImage: "assets/images/booksimages/seguir.jpg",
         genre: "Motivacional",
         price: 1700.00,
         sellingId: 1,
@@ -92,18 +92,18 @@ class _LibraryProfileState extends State<LibraryProfile> {
 
   List<Widget> publications = [
     LibraryPublicationCard(
-        username: "Livraria Lelo",
+       username: "Livraria Lelo",
         content:
             "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
         pubId: 1,
-        pubImage: "assets/images/landbook1.jpg",
+      pubImage: "assets/images/landbook1.jpg",
         timeago: "há 1 dia",
         title: "Promoção mês de Agosto",
-        userImage: "assets/images/users/NTIxMTkuanBn.jpg",
-        address: "Luanda, Rua Amilcar Cabral , N 123",
+        userImage: "assets/images/libraries/lelo.jpg",
+        address: "R. Rainha Ginga 47, Luanda",
         email: "livrarialelo@gmail.com",
-        phone1: "998 930 345",
-        phone2: "924 678 234",
+        phone1: "923 606 881",
+        phone2: "",
         reactions: 6),
     LibraryPublicationCard(
         username: "Livraria Lelo",
