@@ -1,6 +1,5 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ShowBookImageDialog {
   static Future<bool> show(context, image, title) {
@@ -23,7 +22,7 @@ class ShowBookImageDialog {
                 opacity: a1.value,
                 child: Container(
                     width: MediaQuery.of(context).size.width - 50,
-                    height: 430,
+                    height: 400,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: simpleBackgroundContainerColor,
@@ -36,7 +35,7 @@ class ShowBookImageDialog {
                         child: Center(
                           child: SingleChildScrollView(
                             child: Container(
-                              height: 380,
+                              height: 360,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   color: Colors.white,
