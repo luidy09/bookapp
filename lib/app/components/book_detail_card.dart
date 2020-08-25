@@ -136,7 +136,7 @@ class BookDetailCard extends StatelessWidget {
                         ? Card(
                             shadowColor: Colors.grey,
                             elevation: 5.0,
-                            child: Image.asset("assets/images/book.png",
+                            child: Image.asset("assets/images/default_book.png",
                                 fit: BoxFit.cover),
                           )
                         : Card(

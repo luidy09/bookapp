@@ -70,7 +70,7 @@ class BookCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(5),
                     image: DecorationImage(
                         image: imagePath == null || imagePath == ''
-                            ? AssetImage("assets/images/capa.jpg")
+                            ? AssetImage("assets/images/default_book.png")
                             : FileImage(File(imagePath)),
                         fit: BoxFit.fill)),
               ),

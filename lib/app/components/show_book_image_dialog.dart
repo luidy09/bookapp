@@ -21,21 +21,22 @@ class ShowBookImageDialog {
               child: Opacity(
                 opacity: a1.value,
                 child: Container(
-                    width: MediaQuery.of(context).size.width - 50,
+                    width: 300,
                     height: 400,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: simpleBackgroundContainerColor,
+                      //color: simpleBackgroundContainerColor,
                     ),
                     child: Material(
                       borderRadius: BorderRadius.circular(8),
                       color: simpleBackgroundContainerColor,
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        padding: const EdgeInsets.only(left: 5.0, right: 5.0),
                         child: Center(
                           child: SingleChildScrollView(
                             child: Container(
-                              height: 360,
+                              height: 365,
+                              width: 280,
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   color: Colors.white,
