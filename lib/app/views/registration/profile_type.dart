@@ -73,7 +73,7 @@ class _ProfileTypeState extends State<ProfileType> {
                   InkWell(
                     onTap: () {
                       print("Type 1");
-                      widget.data.update("userType", (existingValue) => "0",
+                      widget.data.update("userType", (existingValue) => "1",
                           ifAbsent: () => "1");
                       Navigator.of(context).push(
                         MaterialPageRoute(

@@ -134,7 +134,7 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
                   ),
                   hasError
                       ? Text(
-                          "Senha diferente da anterior...",
+                          "PIN diferente do anterior...",
                           style: passwordMatchErrorStyle,
                         )
                       : Text(""),

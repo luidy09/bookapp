@@ -31,12 +31,7 @@ class _WelcomePageState extends State<WelcomePage> {
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
             onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (BuildContext contetx) =>
-                      ConfirmPassword(data: widget.data),
-                ),
-              );
+              Navigator.pop(context);
             }),
       ),
       body: Padding(

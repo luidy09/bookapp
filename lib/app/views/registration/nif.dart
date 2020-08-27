@@ -1,5 +1,4 @@
 import 'package:bookapp/app/utils/constants.dart';
-import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/registration/profile_type.dart';
 import 'package:bookapp/app/views/registration/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +12,25 @@ class NIF extends StatefulWidget {
 }
 
 class _NIFState extends State<NIF> {
-  TextEditingController nifController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController nifController = new TextEditingController();
 
+  String get nif => nifController.text;
   @override
   void initState() {
     super.initState();
     print("DATA IN NIF");
     print(widget.data);
+  }
+
+  validate() {
+    if (_formKey.currentState.validate()) {
+      widget.data.update("nif", (existingValue) => nif, ifAbsent: () => nif);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => WelcomePage(
+                data: widget.data,
+              )));
+    }
   }
 
   @override
@@ -56,22 +67,26 @@ class _NIFState extends State<NIF> {
                   SizedBox(
                     height: 20,
                   ),
-                  TextFormField(
-                    textAlign: TextAlign.center,
-                    controller: nifController,
-                    validator: (val) => val.length == 0 ? 'Digite o NIF' : null,
-                    // onSaved: (val) => author = val,
-                    // style: TextStyle(color: iconColor),
-                    decoration: InputDecoration(
-                      isDense: true,
-                      border: OutlineInputBorder(
-                        // width: 0.0 produces a thin "hairline" border
-                        borderRadius: BorderRadius.all(Radius.circular(6)),
-                        borderSide: BorderSide.none,
-                        //borderSide: const BorderSide(),
+                  Form(
+                    key: _formKey,
+                    child: TextFormField(
+                      textAlign: TextAlign.center,
+                      controller: nifController,
+                      validator: (val) =>
+                          val.length == 0 ? 'Digite o NIF' : null,
+                      // onSaved: (val) => author = val,
+                      // style: TextStyle(color: iconColor),
+                      decoration: InputDecoration(
+                        isDense: true,
+                        border: OutlineInputBorder(
+                          // width: 0.0 produces a thin "hairline" border
+                          borderRadius: BorderRadius.all(Radius.circular(6)),
+                          borderSide: BorderSide.none,
+                          //borderSide: const BorderSide(),
+                        ),
+                        filled: true,
+                        fillColor: simpleGray,
                       ),
-                      filled: true,
-                      fillColor: simpleGray,
                     ),
                   ),
                   Padding(
@@ -81,11 +96,7 @@ class _NIFState extends State<NIF> {
                         width: 160,
                         child: FlatButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      WelcomePage(
-                                        data: widget.data,
-                                      )));
+                              validate();
                             },
                             padding: EdgeInsets.all(12.0),
                             shape: RoundedRectangleBorder(
