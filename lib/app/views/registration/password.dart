@@ -3,7 +3,12 @@ import 'package:bookapp/app/views/registration/confirm_password.dart';
 import 'package:bookapp/app/views/registration/register_first.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class Password extends StatefulWidget {
+  Map<String, String> data;
+
+  Password({this.data});
+
   @override
   _PasswordState createState() => _PasswordState();
 }
@@ -14,6 +19,13 @@ class _PasswordState extends State<Password> {
   List<Widget> dots = [];
   String password = "";
 
+  @override
+  void initState() {
+    super.initState();
+    print("DATA IN PASSWORD");
+    print(widget.data);
+  }
+
   addNumber(number) {
     if (password.trim().length != 4) {
       password = password + number;
@@ -23,6 +35,7 @@ class _PasswordState extends State<Password> {
           MaterialPageRoute(
             builder: (BuildContext context) => ConfirmPassword(
               password: password,
+              data: widget.data,
             ),
           ),
         );
@@ -71,8 +84,14 @@ class _PasswordState extends State<Password> {
           leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => RegisterFirst()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => RegisterFirst(
+                      data: widget.data,
+                      fill: true,
+                    ),
+                  ),
+                );
               }),
         ),
         body: Padding(
@@ -82,7 +101,7 @@ class _PasswordState extends State<Password> {
               child: Container(
                   child: Column(
                 children: <Widget>[
-                  Text("Escolha uma senha",
+                  Text("Digite um PIN de acesso",
                       style: passwordDescriptionTitleStyle),
                   SizedBox(height: 20),
                   Container(

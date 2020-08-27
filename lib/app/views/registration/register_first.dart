@@ -1,24 +1,71 @@
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/views/login/login.dart';
 import 'package:bookapp/app/views/registration/password.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterFirst extends StatefulWidget {
+  Map<String, String> data;
+  final bool fill;
+  RegisterFirst({this.data, this.fill = false});
+
   @override
   _RegisterFirstState createState() => _RegisterFirstState();
 }
 
 class _RegisterFirstState extends State<RegisterFirst> {
   final _formKey = GlobalKey<FormState>();
-  TextEditingController nomeController;
-  TextEditingController emailController;
-  TextEditingController enderecoController;
-  TextEditingController phoneController;
-  TextEditingController altphoneController;
+  TextEditingController nomeController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+  TextEditingController enderecoController = new TextEditingController();
+  TextEditingController phoneController = new TextEditingController();
+  TextEditingController altphoneController = new TextEditingController();
+
+  String get name => nomeController.text;
+  String get email => emailController.text;
+  String get address => enderecoController.text;
+  String get phone => phoneController.text;
+  String get altPhone => altphoneController.text;
+
+  @override
+  void initState() {
+    super.initState();
+    fillInputs();
+  }
+
+  fillInputs() {
+    if (widget.fill) {
+      nomeController.text = widget.data['name'] ?? "";
+      emailController.text = widget.data['email'] ?? "";
+      enderecoController.text = widget.data['address'] ?? "";
+      phoneController.text = widget.data['phone'] ?? "";
+      altphoneController.text = widget.data['altphone'] ?? "";
+    }
+  }
 
   validade() {
-    if (_formKey.currentState.validate()) {}
+    print("NAME IS : ${nomeController.text}");
+
+    if (_formKey.currentState.validate()) {
+      widget.data = {
+        "name": name,
+        "email": email,
+        "address": address,
+        "phone": phone,
+        "altphone": altPhone
+      };
+
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => Password(
+                data: widget.data,
+              )));
+      /* print(
+          "NAME: $name , Email: $email , Address : $address , PHONE : $phone , ALTPHONE : $altPhone ");
+
+          */
+    }
   }
 
   @override
@@ -69,9 +116,12 @@ class _RegisterFirstState extends State<RegisterFirst> {
                         child: TextFormField(
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
+                      validator: (val) => (val != '' && !isEmail(val))
+                          ? 'Digite um endereço de e-mail válido'
+                          : null,
                       style: formLabelStyle,
                       decoration: InputDecoration(
-                          labelText: "E-mail",
+                          labelText: "E-mail (Opcional)",
                           contentPadding: EdgeInsets.only(top: 30)),
                     )),
                     Container(
@@ -90,34 +140,23 @@ class _RegisterFirstState extends State<RegisterFirst> {
                     ),
                     Text("Telefone", style: formLabelStyle),
                     Container(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              width: 50.0,
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                style: formLabelStyle,
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  hintText: "+244",
-                                ),
-                              )),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                              child: Container(
-                                  child: TextFormField(
-                            controller: phoneController,
-                            validator: (val) => val == '' || val.length < 9
-                                ? 'Digite um telefone valido'
-                                : null,
-                            keyboardType: TextInputType.number,
-                            style: formLabelStyle,
-                          ))),
-                        ],
-                      ),
-                    ),
+                        child: TextFormField(
+                      controller: phoneController,
+                      validator: (val) => val == '' || val.length < 9
+                          ? 'Digite um telefone valido'
+                          : null,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: <TextInputFormatter>[
+                        WhitelistingTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(9)
+                      ],
+                      style: formLabelStyle,
+                      decoration: InputDecoration(
+                          prefix: Text(
+                        "+244 ",
+                        style: TextStyle(fontSize: 14),
+                      )),
+                    )),
                     SizedBox(
                       height: 10.0,
                     ),
@@ -126,34 +165,22 @@ class _RegisterFirstState extends State<RegisterFirst> {
                       style: formLabelStyle,
                     ),
                     Container(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                              width: 50.0,
-                              child: TextField(
-                                keyboardType: TextInputType.number,
-                                style: formLabelStyle,
-                                enabled: false,
-                                decoration: InputDecoration(
-                                  hintText: "+244",
-                                ),
-                              )),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          Expanded(
-                            child: Container(
-                              child: TextFormField(
-                                controller: altphoneController,
-                                validator: (val) => val == '' || val.length < 9
-                                    ? 'Digite um telefone valido'
-                                    : null,
-                                keyboardType: TextInputType.number,
-                                style: formLabelStyle,
-                              ),
-                            ),
-                          ),
+                      child: TextFormField(
+                        controller: altphoneController,
+                        validator: (val) => val == '' || val.length < 9
+                            ? 'Digite um telefone valido'
+                            : null,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: <TextInputFormatter>[
+                          WhitelistingTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(9)
                         ],
+                        style: formLabelStyle,
+                        decoration: InputDecoration(
+                            prefix: Text(
+                          "+244 ",
+                          style: TextStyle(fontSize: 14),
+                        )),
                       ),
                     ),
                     Padding(
@@ -163,9 +190,7 @@ class _RegisterFirstState extends State<RegisterFirst> {
                           width: 160,
                           child: FlatButton(
                               onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (BuildContext context) =>
-                                        Password()));
+                                validade();
                               },
                               padding: EdgeInsets.all(12.0),
                               shape: RoundedRectangleBorder(

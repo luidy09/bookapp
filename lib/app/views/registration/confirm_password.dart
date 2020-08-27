@@ -6,7 +6,9 @@ import 'package:bookapp/app/utils/constants.dart';
 
 class ConfirmPassword extends StatefulWidget {
   final password;
-  ConfirmPassword({this.password});
+  Map<String, String> data;
+
+  ConfirmPassword({this.password, this.data});
 
   @override
   _ConfirmPasswordState createState() => _ConfirmPasswordState();
@@ -18,6 +20,13 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
   List<Widget> dots = [];
   String password = "";
   bool hasError = false;
+
+  @override
+  void initState() {
+    super.initState();
+    print("DATA IN CONFIRM PASSWORD");
+    print(widget.data);
+  }
 
   addNumber(number) {
     if (password.trim().length != 4) {
@@ -31,9 +40,13 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
           print("Password diferente");
         } else {
           print("Password Matched");
+          widget.data.update("password", (existingValue) => password,
+              ifAbsent: () => password);
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (BuildContext context) => ProfileType(),
+              builder: (BuildContext context) => ProfileType(
+                data: widget.data,
+              ),
             ),
           );
         }
@@ -82,15 +95,18 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text("Escolha uma senha"),
           backgroundColor: Colors.white,
           centerTitle: true,
           elevation: 0.0,
           leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => Password()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        Password(data: widget.data),
+                  ),
+                );
               }),
         ),
         body: Padding(
@@ -100,7 +116,7 @@ class _ConfirmPasswordState extends State<ConfirmPassword> {
               child: Container(
                   child: Column(
                 children: <Widget>[
-                  Text("Confirme a sua senha",
+                  Text("Confirme o seu PIN de acesso",
                       style: passwordDescriptionTitleStyle),
                   SizedBox(height: 20),
                   Container(

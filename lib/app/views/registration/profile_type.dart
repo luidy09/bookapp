@@ -2,14 +2,27 @@ import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/registration/confirm_password.dart';
 import 'package:bookapp/app/views/registration/nif.dart';
+import 'package:bookapp/app/views/registration/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfileType extends StatefulWidget {
+  Map<String, String> data;
+
+  ProfileType({this.data});
+
   @override
   _ProfileTypeState createState() => _ProfileTypeState();
 }
 
 class _ProfileTypeState extends State<ProfileType> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print("DATA IN PROFILE TYPE");
+    print(widget.data);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +36,8 @@ class _ProfileTypeState extends State<ProfileType> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext contetx) => ConfirmPassword(),
+                  builder: (BuildContext contetx) =>
+                      ConfirmPassword(data: widget.data),
                 ),
               );
             }),
@@ -38,10 +52,13 @@ class _ProfileTypeState extends State<ProfileType> {
                   InkWell(
                     onTap: () {
                       print("Type 0");
+                      widget.data.update("userType", (existingValue) => "0",
+                          ifAbsent: () => "0");
 
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (BuildContext contetx) => HomePage(),
+                          builder: (BuildContext contetx) =>
+                              WelcomePage(data: widget.data),
                         ),
                       );
                     },
@@ -56,9 +73,12 @@ class _ProfileTypeState extends State<ProfileType> {
                   InkWell(
                     onTap: () {
                       print("Type 1");
+                      widget.data.update("userType", (existingValue) => "0",
+                          ifAbsent: () => "1");
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (BuildContext contetx) => NIF(),
+                          builder: (BuildContext contetx) =>
+                              NIF(data: widget.data),
                         ),
                       );
                     },

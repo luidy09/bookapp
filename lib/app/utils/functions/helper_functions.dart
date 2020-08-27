@@ -1,5 +1,3 @@
-
-
 String reverseNumber(String value) {
   String res = "";
   for (int i = value.length - 1; i >= 0; i--) {
@@ -19,7 +17,6 @@ String setDecimal(String decimal) {
 
   return decimal;
 }
-
 
 String formatNumber(double number) {
   String string = number.toString();
@@ -51,9 +48,17 @@ String formatNumber(double number) {
 
     String res = reverseNumber(result);
 
-    return (res + "," + setDecimal(partes[1])+" AOA");
+    return (res + "," + setDecimal(partes[1]) + " AOA");
   }
 
-  return (partes[0] + "," + setDecimal(partes[1])+" AOA");
+  return (partes[0] + "," + setDecimal(partes[1]) + " AOA");
 }
 
+bool isEmail(String email) {
+  String p =
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+
+  RegExp regExp = new RegExp(p);
+
+  return regExp.hasMatch(email);
+}

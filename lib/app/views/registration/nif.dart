@@ -1,15 +1,26 @@
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/registration/profile_type.dart';
+import 'package:bookapp/app/views/registration/welcome_page.dart';
 import 'package:flutter/material.dart';
 
 class NIF extends StatefulWidget {
+  Map<String, String> data;
+
+  NIF({this.data});
   @override
   _NIFState createState() => _NIFState();
 }
 
 class _NIFState extends State<NIF> {
   TextEditingController nifController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    print("DATA IN NIF");
+    print(widget.data);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +35,9 @@ class _NIFState extends State<NIF> {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (BuildContext contetx) => ProfileType(),
+                  builder: (BuildContext contetx) => ProfileType(
+                    data: widget.data,
+                  ),
                 ),
               );
             }),
@@ -70,7 +83,9 @@ class _NIFState extends State<NIF> {
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (BuildContext context) =>
-                                      HomePage()));
+                                      WelcomePage(
+                                        data: widget.data,
+                                      )));
                             },
                             padding: EdgeInsets.all(12.0),
                             shape: RoundedRectangleBorder(
