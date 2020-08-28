@@ -8,13 +8,12 @@ class UserModel {
   String imagem;
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    nome = json['nome'] ?? "";
-    endereco = json['endereco'] ?? "";
-    telefone = json['telefone'] ?? "";
-    telefone1 = json['telefone1'] ?? "";
+    nome = json['name'] ?? "";
+    endereco = json['address'] ?? "";
+    telefone = json['phone'] ?? "";
+    telefone1 = json['altphone'] ?? "";
     email = json['email'] ?? "";
-    senha = json['senha'] ?? "";
-    imagem = json['imagem'] ?? "";
+    senha = json['password'] ?? "";
   }
 
   Map<String, dynamic> toJsonAll() => {

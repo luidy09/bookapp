@@ -1,3 +1,6 @@
+import 'package:bookapp/app/models/library_model.dart';
+import 'package:bookapp/app/models/user_model.dart';
+import 'package:bookapp/app/network_requests/library_service.dart';
 import 'package:bookapp/app/views/registration/confirm_password.dart';
 
 import 'package:flutter/material.dart';
@@ -18,6 +21,15 @@ class _WelcomePageState extends State<WelcomePage> {
     super.initState();
     print("DATA IN WELCOME PAGE");
     print(widget.data);
+
+    registUser();
+  }
+
+  registUser() {
+    print("Init Registration");
+
+    LibraryModel library = LibraryModel.fromJson(widget.data);
+    var response = addLibrary(library.toJson());
   }
 
   @override
