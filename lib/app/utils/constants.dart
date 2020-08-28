@@ -73,8 +73,6 @@ var userTypeTextStyle = GoogleFonts.montserrat(
       color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.bold),
 );
 
-
-
 var nifTextStyle = GoogleFonts.montserrat(
   textStyle: TextStyle(
       color: mainColorDarkBlue, fontSize: 13, fontWeight: FontWeight.normal),
@@ -246,6 +244,12 @@ var customKeyBoardNumberStyle = GoogleFonts.montserrat(
 
 var passwordMatchErrorStyle = GoogleFonts.montserrat(
   textStyle: TextStyle(color: mainColorRed, fontSize: 12),
+);
+
+//ERROR DIALOG
+
+var dialogErrorStyle = GoogleFonts.montserrat(
+  textStyle: TextStyle(fontSize: 15, color: timeagoColor),
 );
 
 getProgressColor(percent) {

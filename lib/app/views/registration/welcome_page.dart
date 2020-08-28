@@ -21,15 +21,6 @@ class _WelcomePageState extends State<WelcomePage> {
     super.initState();
     print("DATA IN WELCOME PAGE");
     print(widget.data);
-
-    registUser();
-  }
-
-  registUser() {
-    print("Init Registration");
-
-    LibraryModel library = LibraryModel.fromJson(widget.data);
-    var response = addLibrary(library.toJson());
   }
 
   @override

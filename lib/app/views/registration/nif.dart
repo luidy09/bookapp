@@ -1,3 +1,5 @@
+import 'package:bookapp/app/models/library_model.dart';
+import 'package:bookapp/app/network_requests/library_service.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/views/registration/profile_type.dart';
 import 'package:bookapp/app/views/registration/welcome_page.dart';
@@ -23,22 +25,35 @@ class _NIFState extends State<NIF> {
     print(widget.data);
   }
 
+  registUser() {
+    print("Init Registration");
+
+    registerProcessingDialog(context);
+
+    LibraryModel library = LibraryModel.fromJson(widget.data);
+    addLibrary(library.toJson()).then((response) {
+      Navigator.pop(context);
+      print(response.code);
+
+      if (response.code != "201") {
+        registerErrorDialogue(
+            context: context,
+            message: "Ocorreu um erro ao efectuar o cadastro");
+      } else {
+        print("REGISTERED WITH SUCCESS");
+        /*Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) => WelcomePage(
+                data: widget.data, 
+              )));*/
+
+      }
+    });
+  }
+
   validate() {
     if (_formKey.currentState.validate()) {
-      // widget.data.update("nif", (existingValue) => nif, ifAbsent: () => nif);
-
-      //registerProcessingDialog(context);
-
-      registerErrorDialogue(
-          context: context, message: "Ocorreu um erro ao efectuar o cadastro");
-
-      /*
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) => WelcomePage(
-                data: widget.data,
-              )));
-
-              */
+      widget.data.update("nif", (existingValue) => nif, ifAbsent: () => nif);
+      registUser();
     }
   }
 
@@ -139,12 +154,13 @@ class _NIFState extends State<NIF> {
         builder: (BuildContext context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15.0)),
+                borderRadius: BorderRadius.circular(7.0)),
             child: Container(
               color: Colors.transparent,
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding:
+                      const EdgeInsets.only(top: 2.0, left: 5.0, right: 5.0),
                   child: ListBody(
                     children: <Widget>[
                       Container(
@@ -166,15 +182,11 @@ class _NIFState extends State<NIF> {
                             size: 60,
                             color: Colors.red,
                           )),
+                          SizedBox(height: 20),
                           Container(
                             child: Text(
                               "$message",
-                              style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: (!hasError)
-                                      ? Colors.black87
-                                      : Colors.red),
+                              style: dialogErrorStyle,
                             ),
                           ),
                           SizedBox(height: 30)

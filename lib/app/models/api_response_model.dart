@@ -10,7 +10,7 @@ class APIResponseModel {
 
   factory APIResponseModel.fromJson(Map<String, dynamic> json) =>
       APIResponseModel(
-          code: json["code"] ?? "000",
+          code: json["code"].toString() ?? "000",
           status: ((json["status"] ?? "error") == "error" ? 400 : 200),
           message: json["message"] ?? "",
           data: json["data"] ?? "");
