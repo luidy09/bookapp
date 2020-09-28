@@ -1,3 +1,31 @@
+import 'package:bookapp/app/services/shared_local_storage_service.dart';
+import 'package:flutter/material.dart';
+
+getUserTypeHome(context) async {
+  //Used sharedPrefs , get user type and decide the operation
+  SharedLocalStorageServices sharedPrefs = new SharedLocalStorageServices();
+
+  var type = await sharedPrefs.get("userType");
+
+  if (type == 1) {
+    Navigator.of(context).pushNamed('/reader_home');
+    //Navigator.pop(context);
+  }
+
+  if (type == 2) {
+    Navigator.of(context).pushNamed('/library_profile');
+  }
+  return type;
+}
+
+getPageIsAvailableStatus() async {
+  //Used sharedPrefs , get user type and decide the operation
+  SharedLocalStorageServices sharedPrefs = new SharedLocalStorageServices();
+
+  var type = await sharedPrefs.get("userType");
+  return type;
+}
+
 String reverseNumber(String value) {
   String res = "";
   for (int i = value.length - 1; i >= 0; i--) {

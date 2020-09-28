@@ -1,4 +1,7 @@
+import 'package:bookapp/app/models/api_response_model.dart';
+import 'package:bookapp/app/services/network_requests/user_service.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/dialogues.dart';
 import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/views/login/login.dart';
 import 'package:bookapp/app/views/registration/password.dart';
@@ -45,6 +48,18 @@ class _RegisterFirstState extends State<RegisterFirst> {
     }
   }
 
+  Future<bool> checkEmail(email) async {
+    APIResponseModel response = await verifyEmail(email);
+    print("Response ${response.message}");
+    return response.code == "201";
+  }
+
+  Future<bool> checkPhone(phone) async {
+    APIResponseModel response = await verifyPhone(phone);
+    print("Response ${response.message}");
+    return response.code == "201";
+  }
+
   validade() {
     print("NAME IS : ${nomeController.text}");
 
@@ -57,14 +72,45 @@ class _RegisterFirstState extends State<RegisterFirst> {
         "altphone": altPhone
       };
 
+      registerProcessingDialog(context);
+
+      Future.wait([checkEmail(email), checkPhone(phone)]).then((response) {
+        print("RESPONSE IS ");
+        Navigator.pop(context);
+        if (!response[0]) {
+          registerErrorDialogue(
+              isWarning: true,
+              context: context,
+              message: "E-mail já existente!");
+        } else if (!response[1]) {
+          registerErrorDialogue(
+              isWarning: true,
+              context: context,
+              message: "Telefone já existente!");
+        } else {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => Password(
+                    data: widget.data,
+                  )));
+        }
+
+        print(response);
+      });
+
+      //registerProcessingDialog(context);
+
+      /*
+        registerErrorDialogue(
+            context: context,
+            message: "Ocorreu um erro ao efectuar o cadastro");
+
+     
       Navigator.of(context).push(MaterialPageRoute(
           builder: (BuildContext context) => Password(
                 data: widget.data,
               )));
-      /* print(
-          "NAME: $name , Email: $email , Address : $address , PHONE : $phone , ALTPHONE : $altPhone ");
 
-          */
+              */
     }
   }
 

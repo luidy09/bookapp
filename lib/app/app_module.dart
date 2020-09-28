@@ -8,8 +8,11 @@ import 'package:bookapp/app/views/exchange/exchange.dart';
 import 'package:bookapp/app/views/form/form_page.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
 import 'package:bookapp/app/views/library/library.dart';
+import 'package:bookapp/app/views/library_user/library_profile_owner.dart';
 import 'package:bookapp/app/views/publication/publication.dart';
+import 'package:bookapp/app/views/publication/publication_available.dart';
 import 'package:bookapp/app/views/sale/sale.dart';
+import 'package:bookapp/app/views/sale/sale_available.dart';
 import 'package:bookapp/app/views/settings/settings_page.dart';
 import 'package:bookapp/app/viewsmodels/change_theme_viewmodel.dart';
 import 'package:bookapp/app_widget.dart';
@@ -42,7 +45,13 @@ class AppModule extends MainModule {
         Router('/detail', child: (context, args) => DetailsPage()),
         Router('/library', child: (context, args) => Library()),
         Router('/publication', child: (context, args) => Publication()),
+        Router('/publication_available',
+            child: (context, args) => PublicationAvailable()),
         Router('/exchange', child: (context, args) => Exchange()),
         Router('/sale', child: (context, args) => Sale()),
+        Router('/sale_available', child: (context, args) => SaleAvailable()),
+        Router('/library_profile',
+            child: (context, args) => LibraryProfileOwner()),
+        Router('/reader_home', child: (context, args) => HomePage()),
       ];
 }

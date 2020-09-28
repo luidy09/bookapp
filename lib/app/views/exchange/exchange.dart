@@ -1,6 +1,7 @@
-import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation_no_button.dart';
 import 'package:bookapp/app/components/customsearch_exchange.dart';
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/exchange/exchange_card.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
@@ -162,8 +163,7 @@ class _ExchangeState extends State<Exchange> {
           leading: IconButton(
               icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext contetx) => HomePage()));
+                getUserTypeHome(context);
               }),
         ),
         body: Padding(

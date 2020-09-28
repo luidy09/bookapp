@@ -110,4 +110,36 @@ class Book extends ChangeNotifier {
     favorite = map['favorite'];
     image = map['image'];
   }
+
+  Map<String, dynamic> toJson() {
+    var map = <String, dynamic>{
+      'pkLivro': idlivro,
+      'titulo': title ?? "",
+      'autor': author ?? "",
+      'genero': genre ?? "",
+      'paginas': pages ?? 0,
+      'preco': price ?? 0.0,
+      'publicacao': publishing ?? "",
+      'paragrafo': paragraph ?? 0,
+      'descricao': description ?? "",
+      'imagem': image ?? "",
+    };
+    return map;
+  }
+
+  Book.fromJson(Map<String, dynamic> map) {
+    idlivro = map['pkLivro'];
+    title = map['titulo'];
+    author = map['autor'];
+    genre = map['genero'];
+    pages = int.tryParse(map['paginas']);
+    price = double.tryParse(map['preco'].toString());
+    publishing = map['publicacao'];
+    paragraph = map['paragrafo'];
+    description = map['descricao'];
+    image = map['imagem'];
+  }
+
+  static List<Book> fromJsonList(List<dynamic> json) =>
+      (json == null) ? null : json.map((book) => Book.fromJson(book)).toList();
 }

@@ -1,5 +1,5 @@
 import 'package:bookapp/app/components/book_detail_card.dart';
-import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation_no_button.dart';
 import 'package:bookapp/app/components/customsearch.dart';
 import 'package:bookapp/app/components/customtabview.dart';
 import 'package:bookapp/app/utils/constants.dart';

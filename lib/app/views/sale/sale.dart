@@ -1,4 +1,4 @@
-import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation_no_button.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
@@ -187,13 +187,7 @@ class _SaleState extends State<Sale> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: mainColorGreen,
-        child: const Icon(Icons.add),
-        onPressed: () {},
-      ),
-      bottomNavigationBar: CustomFABBottomNavigation(
+      bottomNavigationBar: CustomFABBottomNavigationNoButton(
         activeNumber: 3,
       ),
     );

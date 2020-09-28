@@ -1,5 +1,3 @@
-
-
 import 'package:bookapp/app/interfaces/local_storage_interface.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,13 +11,12 @@ class SharedLocalStorageServices implements ILocalStorage {
   @override
   Future get(String key) async {
     var shared = await SharedPreferences.getInstance();
-   
+
     return shared.get(key);
-  
   }
 
   @override
-  Future put (String key, dynamic value) async {
+  Future put(String key, dynamic value) async {
     var shared = await SharedPreferences.getInstance();
     if (value is bool) {
       shared.setBool(key, value);
@@ -30,6 +27,5 @@ class SharedLocalStorageServices implements ILocalStorage {
     } else if (value is double) {
       shared.setDouble(key, value);
     }
- 
   }
 }

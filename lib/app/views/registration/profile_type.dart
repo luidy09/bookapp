@@ -57,9 +57,10 @@ class _ProfileTypeState extends State<ProfileType> {
 
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (BuildContext contetx) =>
-                              WelcomePage(data: widget.data),
-                        ),
+                            builder: (BuildContext contetx) => WelcomePage(
+                                  userId: 0,
+                                  userType: 0,
+                                )),
                       );
                     },
                     child: cardUserType(

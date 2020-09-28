@@ -1,5 +1,8 @@
+import 'package:bookapp/app/viewsmodels/store/userState.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+final userState = UserState();
 
 const Color intenseGray = Color(0xFFc2c2c2);
 

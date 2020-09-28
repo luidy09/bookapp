@@ -1,4 +1,6 @@
 import 'package:bookapp/app/components/ImageStackCustom.dart';
+import 'package:bookapp/app/models/library_model.dart';
+import 'package:bookapp/app/services/network_requests/library_service.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
@@ -47,7 +49,9 @@ class _LibraryProfileInfoCardState extends State<LibraryProfileInfoCard> {
               CircleAvatar(
                 radius: 60,
                 backgroundColor: Colors.transparent,
-                backgroundImage: AssetImage("${widget.userImage}"),
+                backgroundImage: (widget.userImage != "")
+                    ? AssetImage("assets/images/book.png")
+                    : AssetImage("assets/images/bookCa.png"),
               ),
               SizedBox(height: 10),
               Container(

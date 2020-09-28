@@ -2,7 +2,7 @@ import 'package:bookapp/app/models/books.dart';
 
 import 'package:mobx/mobx.dart';
 
-part 'bookState.g.dart';
+part "bookState.g.dart";
 
 class BookState = _BookState with _$BookState;
 

@@ -1,4 +1,4 @@
-import 'package:bookapp/app/components/custom_fab_bottom_navigation.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation_no_button.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
@@ -67,7 +67,7 @@ class _PublicationState extends State<Publication> {
         content:
             "Neste mes estamos em promoção visite a nossa livraria, temos livros a partir de 1000 Akz...",
         pubId: 1,
-      pubImage: "assets/images/landbook1.jpg",
+        pubImage: "assets/images/landbook1.jpg",
         timeago: "há 1 dia",
         title: "Promoção mês de Agosto",
         userImage: "assets/images/libraries/lelo.jpg",
@@ -185,7 +185,7 @@ class _PublicationState extends State<Publication> {
             ),
           ),
         ),
-        bottomNavigationBar: CustomFABBottomNavigationPub(
+        bottomNavigationBar: CustomFABBottomNavigationNoButton(
           activeNumber: 4,
         ));
   }

@@ -1,4 +1,5 @@
 import 'package:bookapp/app/utils/constants.dart';
+import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class CustomFABBottomNavigation extends StatefulWidget {
@@ -48,8 +49,16 @@ class _CustomFABBottomNavigationState extends State<CustomFABBottomNavigation> {
               color:
                   (widget.activeNumber == 3) ? mainColorRed : mainColorDarkBlue,
             ),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/sale');
+            onPressed: () async {
+              int type = await getPageIsAvailableStatus();
+
+              if (type == 1) {
+                Navigator.of(context).pushNamed('/sale');
+              }
+
+              if (type == 2) {
+                Navigator.of(context).pushNamed('/sale_available');
+              }
             },
           ),
           IconButton(
@@ -58,8 +67,16 @@ class _CustomFABBottomNavigationState extends State<CustomFABBottomNavigation> {
               color:
                   (widget.activeNumber == 4) ? mainColorRed : mainColorDarkBlue,
             ),
-            onPressed: () {
-              Navigator.of(context).pushNamed('/publication');
+            onPressed: () async {
+              int type = await getPageIsAvailableStatus();
+
+              if (type == 1) {
+                Navigator.of(context).pushNamed('/publication');
+              }
+
+              if (type == 2) {
+                Navigator.of(context).pushNamed('/publication_available');
+              }
             },
           ),
           SizedBox(width: 20)
@@ -137,18 +154,18 @@ class _CustomFABBottomNavigationCenterState
   }
 }
 
-class CustomFABBottomNavigationPub extends StatefulWidget {
+class CustomFABBottomNavigationNoButton extends StatefulWidget {
   final activeNumber;
 
-  CustomFABBottomNavigationPub({this.activeNumber});
+  CustomFABBottomNavigationNoButton({this.activeNumber});
 
   @override
-  _CustomFABBottomNavigationPubState createState() =>
-      _CustomFABBottomNavigationPubState();
+  _CustomFABBottomNavigationNoButtonState createState() =>
+      _CustomFABBottomNavigationNoButtonState();
 }
 
-class _CustomFABBottomNavigationPubState
-    extends State<CustomFABBottomNavigationPub> {
+class _CustomFABBottomNavigationNoButtonState
+    extends State<CustomFABBottomNavigationNoButton> {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(

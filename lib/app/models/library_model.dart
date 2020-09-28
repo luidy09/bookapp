@@ -13,6 +13,12 @@ class LibraryModel {
     user = UserModel.fromJson(json);
   }
 
+  LibraryModel.formJson(Map<String, dynamic> json) {
+    pkLivraria = json['idUsuario'] ?? 0;
+    nif = json['nif'] ?? "";
+    user = UserModel.formJson(json);
+  }
+
   Map<String, dynamic> toJson() => {
         'pkLivraria': pkLivraria ?? 0,
         'nome': user.nome,

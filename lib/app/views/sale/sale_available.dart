@@ -1,109 +1,93 @@
-import 'package:bookapp/app/models/user_model.dart';
-import 'package:bookapp/app/services/shared_local_storage_service.dart';
+import 'package:bookapp/app/components/custom_fab_bottom_navigation_no_button.dart';
 import 'package:bookapp/app/utils/constants.dart';
 import 'package:bookapp/app/utils/functions/helper_functions.dart';
 import 'package:bookapp/app/utils/size_config.dart';
 import 'package:bookapp/app/views/home/home_page.dart';
-import 'package:bookapp/app/views/library/library_card.dart';
+import 'package:bookapp/app/views/library_user/library_books.dart';
+import 'package:bookapp/app/views/library_user/library_select_book.dart';
+import 'package:bookapp/app/views/sale/selling_book_card.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Library extends StatefulWidget {
+class SaleAvailable extends StatefulWidget {
   @override
-  _LibraryState createState() => _LibraryState();
+  _SaleAvailableState createState() => _SaleAvailableState();
 }
 
-class _LibraryState extends State<Library> {
-// Future<List<library>> books;
-  bool isSearchingLibrary = false;
+class _SaleAvailableState extends State<SaleAvailable> {
+  bool isSearchingSellingBook = false;
 
   TextEditingController searchController = TextEditingController();
 
-  SharedLocalStorageServices sharedPrefs = new SharedLocalStorageServices();
-
-  List<Widget> libraries = [
-    LibraryCard(
-      idLibrary: 1,
-      username: "Livraria Lelo",
-      userImage: "assets/images/libraries/lelo.jpg",
-      address: "R. Rainha Ginga 47, Luanda",
-      email: "livrarialelo@gmail.com",
-      phone1: "923 606 881",
-      phone2: "",
+  List<Widget> sellingBooks = [
+    SellingBookCard(
+      author: "Pepetela",
+      bookImage: "assets/images/booksimages/lueji.jpg",
+      genre: "Contos",
+      price: 4500.00,
+      sellingId: 1,
+      timeago: "há 4 dias",
+      title: "Lueji ",
+      userImage: "assets/images/libraries/heberilton.jpg",
+      address: "Mutamba: Av. de Portugal, Prédio n°61, RC",
+      email: "livrariaheberilton@gmail.com",
+      phone1: "939 090 074",
+      phone2: "923 454 567",
+      username: "Livraria Heberilton",
     ),
-    LibraryCard(
-      idLibrary: 2,
-      username: "Livraria Barquinho",
-      userImage: "assets/images/libraries/barquinho2.jpg",
-      address: "Travessa Comandante Gika Avenida, Luanda, Angola",
-      email: "barquinho@josened.com",
-      phone1: "940 136 398",
-      phone2: "",
-    ),
-    LibraryCard(
-      idLibrary: 3,
-      username: "Livraria Irmãs Paulinas",
-      userImage: "assets/images/libraries/manaspaulinas.jpg",
-      address: "R. da Liberdade 120, Luanda",
-      email: "paulinaslivraria@netcabo.co.ao",
-      phone1: "930 048 976",
-      phone2: "",
-    ),
-    LibraryCard(
-      idLibrary: 4,
-      username: "Livraria Germinante",
-      userImage: "assets/images/libraries/germinante.jpg",
-      address: "",
-      email: "livrariagerminante@gmail.com",
-      phone1: "921474337",
-      phone2: "",
-    ),
-    LibraryCard(
-      idLibrary: 5,
-      username: "Livraria Kayala",
+    SellingBookCard(
+      author: "Miguel de Cervantes",
+      bookImage: "assets/images/booksimages/quixote.jpg",
+      genre: "Paródia",
+      price: 2700.00,
+      sellingId: 2,
+      timeago: "há 2 dia",
+      title: "Dom Quixote",
       userImage: "assets/images/libraries/kayala.jpg",
-      address: "Sambizanga Ngola Kiluanje, Luanda, Angola",
+      address: "Luanda, Rua Amilcar Cabral , N 123",
       email: "livrariakayala@gmail.com",
       phone1: "924 033 634",
       phone2: "923 971 628",
+      username: "Livraria Kayala",
     ),
-    LibraryCard(
-      idLibrary: 6,
-      username: "Livraria Heberilton",
+    SellingBookCard(
+      author: "Spencer Johnson",
+      bookImage: "assets/images/booksimages/queijo.jpg",
+      genre: "Ficção",
+      price: 3700.00,
+      sellingId: 3,
+      timeago: "há 1 dia",
+      title: "Quem Mexeu no Meu Queijo? ",
+      userImage: "assets/images/libraries/barquinho2.jpg",
+      address: "Travessa Comandante Gika Avenida, Luanda",
+      email: "barquinho@josened.com",
+      phone1: "940 136 398",
+      phone2: "",
+      username: "Livraria Barquinho",
+    ),
+  ];
+
+  List<Widget> sellingBooksSearch = [
+    SellingBookCard(
+      author: "Pepetela",
+      bookImage: "assets/images/booksimages/lueji.jpg",
+      genre: "Contos",
+      price: 4500.00,
+      sellingId: 1,
+      timeago: "há 4 dias",
+      title: "Lueji ",
       userImage: "assets/images/libraries/heberilton.jpg",
-      address: "Mutamba: Av. de Portugal, Prédio n°61, RC;",
-      email: "",
+      address: "Mutamba: Av. de Portugal, Prédio n°61, RC",
+      email: "livrariaheberilton@gmail.com",
       phone1: "939 090 074",
-      phone2: "",
+      phone2: "923 454 567",
+      username: "Livraria Heberilton",
     ),
   ];
-
-  List<Widget> librariesSearch = [
-    LibraryCard(
-      idLibrary: 3,
-      username: "Livraria Irmãs Paulinas",
-      userImage: "assets/images/libraries/manaspaulinas.jpg",
-      address: "R. da Liberdade 120, Luanda",
-      email: "paulinaslivraria@netcabo.co.ao",
-      phone1: "930 048 976",
-      phone2: "",
-    ),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  getLibraries(search) {
-    setState(() {
-      //books = dbHelper.searchBook(search);
-    });
-  }
 
   setIsSearchig(bool state) {
     setState(() {
-      isSearchingLibrary = state;
+      isSearchingSellingBook = state;
     });
   }
 
@@ -114,12 +98,12 @@ class _LibraryState extends State<Library> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text("Livrarias",
+        centerTitle: true,
+        title: Text("Feira do livro",
             style: GoogleFonts.montserrat(
                 textStyle: TextStyle(
               color: Color(0XFF1A002D),
             ))),
-        centerTitle: true,
         elevation: 0.0,
         leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Color(0XFF1A002D)),
@@ -128,11 +112,15 @@ class _LibraryState extends State<Library> {
             }),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+        padding: const EdgeInsets.only(right: 10, left: 10, top: 30),
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Text("Venda e compre livros na feira ..."),
+              SizedBox(
+                height: 20,
+              ),
               Container(
                 height: (SizeConfig.isMall) ? 40.0 : 50.0,
                 decoration: BoxDecoration(
@@ -146,11 +134,11 @@ class _LibraryState extends State<Library> {
                     //getBooks(val.trim());
 
                     if (val.isNotEmpty) {
-                      if (!isSearchingLibrary) {
+                      if (!isSearchingSellingBook) {
                         setIsSearchig(true);
                       }
                     } else {
-                      if (isSearchingLibrary) {
+                      if (isSearchingSellingBook) {
                         setIsSearchig(false);
                       }
                     }
@@ -159,7 +147,7 @@ class _LibraryState extends State<Library> {
                   autofocus: false,
                   enableInteractiveSelection: true,
                   decoration: InputDecoration(
-                    prefixIcon: !isSearchingLibrary
+                    prefixIcon: !isSearchingSellingBook
                         ? Icon(Icons.search,
                             size: (SizeConfig.isMall) ? 20 : 30,
                             color: Color(0xFF19002D))
@@ -180,26 +168,38 @@ class _LibraryState extends State<Library> {
                 ),
               ),
               SizedBox(height: 20),
-              isSearchingLibrary
+              !isSearchingSellingBook
                   ? Expanded(
                       child: ListView.builder(
-                        itemCount: librariesSearch.length,
+                        itemCount: sellingBooks.length,
                         itemBuilder: (BuildContext context, index) {
-                          return librariesSearch[index];
+                          return sellingBooks[index];
                         },
                       ),
                     )
                   : Expanded(
                       child: ListView.builder(
-                        itemCount: libraries.length,
+                        itemCount: sellingBooksSearch.length,
                         itemBuilder: (BuildContext context, index) {
-                          return libraries[index];
+                          return sellingBooksSearch[index];
                         },
                       ),
                     ),
             ],
           ),
         ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: mainColorGreen,
+        child: const Icon(Icons.add),
+        onPressed: () {
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (BuildContext context) => LibrarySelectBook()));
+        },
+      ),
+      bottomNavigationBar: CustomFABBottomNavigation(
+        activeNumber: 3,
       ),
     );
   }
